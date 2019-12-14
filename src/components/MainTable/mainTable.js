@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-
+import Sandbox from '../Information/modal/Sandbox'
+import AddingFormSandbox from '../Information/AddingForm/AddingFormSandbox'
+import YearInfoSandbox from '../Information/yearInfo/yearInfoSandbox'
+import NominalInfoSandbox from '../Information/nominalInfo/nominalInfoSandbox'
+import styles from './mainTable.module.css'
 
 class MainTable extends Component {
     constructor(props) {
@@ -12,16 +16,16 @@ class MainTable extends Component {
 
 
         return <div>
-            'Here will be best bonistics catalog'
-        <table width="80%" border="1" cellpadding="4">
-                <caption>Добыча драгоценных камней</caption>
+            
+        <table className = {styles.tablestyle} width="80%" border="1" cellpadding="4" >
+                <caption>'Here will be best bonistics catalog'</caption>
                 <tr>
                     <td>Кассир</td>
                     <td colspan="42">Ростовцев</td>
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="42">1855</td>
+                    <td colspan="42"><YearInfoSandbox/></td>
                 </tr>
                 <Header state={this.props.catalogItems[0]} />
                 <UpperInfoRow info={this.props.catalogItems} />
@@ -38,7 +42,7 @@ class MainTable extends Component {
 
 const Header = (props) => {
 
-    let headerArr = props.state.consistOf.map(i => { return (<td colspan="6">{i}</td>) })
+    let headerArr = props.state.consistOf.map(i => { return (<td colspan="6"><NominalInfoSandbox i ={i} /></td>) })
     let headerArrDir = props.state.consistOf.map(i => {
         return (<>
             <td>В</td>
@@ -83,7 +87,11 @@ const InfoRow = (props) => {
         console.log(concatArray)
         let catalogArray = concatArray.map((item) => {
             return (
-                <td>{item.status ? 'И' : null}</td>
+                <td>{item.status ? <div className = {styles.infoCell}><Sandbox description ={item.description}/>
+                <div className = {styles.infoCellDetail}>Смотреть информацию</div>
+                </div> :
+                <div className = {styles.infoCell}><AddingFormSandbox description ={item.description}/>
+                <div className = {styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}</td>
             )
         })
         return (
