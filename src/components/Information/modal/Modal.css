@@ -52,3 +52,6 @@
 .modalImg{
   width:80%
 }
+.activeImageStatus{
+  background-color: orange;
+}

@@ -23,8 +23,8 @@ const AddingForm = ({
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-              <div className="modalTitle">Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рублей'}{description.nominal === 5 && 'рублей'}
-                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.kassir}-{description.director}</div>
+              <div className="modalTitle">Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
+                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
                 <div>Опишите Ваш экземпляр</div>
                 <div><textarea></textarea></div>
                 <Button onClick={onSubmit} >Прикрепить файлы</Button>
@@ -54,7 +54,7 @@ AddingForm.propTypes = {
 
 AddingForm.defaultProps = {
   title: 'Modal title',
-
+  
   isOpen: true,
   onCancel: () => { },
   onSubmit: () => { },

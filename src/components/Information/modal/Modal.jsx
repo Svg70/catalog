@@ -20,8 +20,8 @@ const Modal = ({
             <div className="modalWindow">
               <div className="modalHeader">
                 {/* upravl: 'Ростовцев', director: 'Владимирцов', kassir: 'Веселовский', nominal: 1 */}
-                <div className="modalTitle">{description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рублей'}{description.nominal === 5 && 'рублей'}
-                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.kassir}-{description.director}</div>
+                <div className="modalTitle">{description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
+                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
@@ -34,7 +34,8 @@ const Modal = ({
                 <div><NavLink to='/sourses'>Источники/ссылки:</NavLink>{description.sourses}</div>
               </div>
               <div className="modalFooter">
-                <Button onClick={onCancel} invert>Cancel</Button>
+                <Button onClick={onCancel} invert>Закрыть</Button>
+                <Button  >Внести дополнение в каталог</Button>
 
               </div>
             </div>

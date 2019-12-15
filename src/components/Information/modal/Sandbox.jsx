@@ -23,11 +23,13 @@ class Sandbox extends Component {
   }
 
   render() {
+    let cellStyle= this.props.description.photos.photo1&&this.props.description.photos.photo2?'activeImageStatus':null
     return (
+     
       <Fragment>
 
         
-        <span onClick={this.openModal}>И</span>
+        <span onClick={this.openModal} className ={cellStyle}>И</span>
         <Modal
 
           description ={this.props.description}
