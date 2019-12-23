@@ -1,10 +1,12 @@
 .tablestyle{
-  border-collapse: collapse
+  border-collapse: collapse;
+  font-size: 12px;
 }
 
 
 .infoCell{
-    cursor: pointer
+    cursor: pointer;
+    margin: -2px -3px -2px -3px;
   }
   .infoCellDetail{
     display:none;

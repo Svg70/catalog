@@ -25,10 +25,16 @@ const AddingForm = ({
               <div className="modalBody">
               <div className="modalTitle">Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
                   {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
-                <div>Опишите Ваш экземпляр</div>
-                <div><textarea></textarea></div>
+                <div>Каталог сайта Perekupi.ru позволяет посетитеям вносить информацию 
+                  о своих коллекционных экземплярах. 
+                  Подобное взаимодействие между коллекционерами позволит быстро и эффективно собрать статистику и популяризировать тему.
+                  <br/><b>Для внесения информации опишите провенанс вашего экземпляра:</b>
+                </div>
+                <div><textarea style={{width: '80%', marginTop: '10px', border: '1px solid black', height: '60px'}}></textarea></div>
+                <div style={{ marginTop: '10px', marginBottom: '10px'}}>Прикрепите фото вашего экземпляра. Наиболее оптимальный вариант 3 фотографии: 
+                  аверс, реверс и на просвет.
+                </div>
                 <Button onClick={onSubmit} >Прикрепить файлы</Button>
-
               </div>
               <div className="modalFooter">
                 <Button onClick={onCancel} invert>Закрыть</Button>

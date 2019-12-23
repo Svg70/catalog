@@ -28,7 +28,7 @@ class YearInfoSandbox extends Component {
       <Fragment>
 
         
-        <div className= 'yearPointer' onClick={this.openModal}>1855
+        <div className= 'yearPointer' onClick={this.openModal}>{this.props.year}
         <div className= 'yearPointerDescr'>Смотреть общую статистику по году</div>
         </div>
         <YearInfo

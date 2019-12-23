@@ -8,7 +8,9 @@ export const SimpleSlider = (props) => {
   let srcSecond = props.photos.photo2?props.photos.photo2:NoPhoto
   return<Slider props={props} dots>
     <div >
+      <div className= {styles.imageInfo}>
       <img  className = {styles.center}  src ={srcOne}/>
+      </div>
     </div>
     <div >
       <img className = {styles.center}   src ={srcSecond}/>

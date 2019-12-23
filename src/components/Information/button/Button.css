@@ -1,7 +1,7 @@
 .btn {
   position: relative;
   padding: 10px 15px;
-  background-color: #7CC6fE;
+  background-color: #e49844;
   border: none;
   color: #FFF;
   font-weight: 600;
@@ -12,7 +12,7 @@
 }
 
 .btn:hover {
-  background-color: #70B4E6;
+  background-color: #e49844;
 }
 
 .btn[disabled] {
@@ -21,8 +21,8 @@
 }
 
 .btn.active {
-  background-color: #23C9FF;
-  border: 1px solid #5EB2F2;
+  background-color: #e49844;
+  border: 1px solid #e49844;
   box-shadow: 0px 0 2px 0px #C0C0C0;
 }
 

@@ -7,44 +7,34 @@ class Sandbox extends Component {
   state = {
     isOpen: false,
   }
-
   openModal = () => {
     this.setState({ isOpen: true });
   }
-
   handleSubmit = () => {
     console.log('Submit function!');
     this.setState({ isOpen: false });
   }
-
   handleCancel = () => {
     console.log('Cancel function!');
     this.setState({ isOpen: false });
   }
 
   render() {
-    let cellStyle= this.props.description.photos.photo1&&this.props.description.photos.photo2?'activeImageStatus':null
+    let cellStyle = this.props.description.photos.photo1 && this.props.description.photos.photo2 ? 'activeImageStatus' : null
     return (
-     
       <Fragment>
-
-        
-        <span onClick={this.openModal} className ={cellStyle}>И</span>
+        <span onClick={this.openModal} className={cellStyle}>И</span>
         <Modal
-
-          description ={this.props.description}
+          description={this.props.description}
           title="Test Dialog window"
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}
         >
-        {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a</p> */}
         </Modal>
-
       </Fragment>
     );
   }
 }
-
 export default Sandbox;
-/* eslint-enable */
+
