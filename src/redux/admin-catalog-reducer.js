@@ -7,7 +7,7 @@ const SET_AUTH = 'SET_AUTH'
 
 
 let initialstate = {
-    adminIsAuth: true,
+    adminIsAuth: false,
     userName: 'Admin',
 
     preloader: false,
