@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import Modal from './Modal';
-import Button from '../button/Button';
+import styles from './Modal.module.css';
 
-class Sandbox extends Component {
+class CommonWindowContainer extends Component {
   state = {
     isOpen: false,
   }
@@ -20,13 +20,13 @@ class Sandbox extends Component {
   }
 
   render() {
-    let cellStyle = this.props.description.photos.photo1 && this.props.description.photos.photo2 ? 'activeImageStatus' : null
+   
+    let cellStyle = this.props.description.photos.photo1 && this.props.description.photos.photo2 ? styles.activeImageStatus : styles.unactiveImageStatus
     return (
       <Fragment>
         <span onClick={this.openModal} className={cellStyle}>И</span>
         <Modal
           description={this.props.description}
-          title="Test Dialog window"
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}
@@ -36,5 +36,5 @@ class Sandbox extends Component {
     );
   }
 }
-export default Sandbox;
+export default CommonWindowContainer;
 

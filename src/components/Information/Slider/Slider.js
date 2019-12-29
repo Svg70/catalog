@@ -4,9 +4,11 @@ import styles from './Slider.module.css'
 import NoPhoto from '../../../images/NoPhoto.png'
 
 export const SimpleSlider = (props) => {
+  debugger
   let srcOne = props.photos.photo1?props.photos.photo1:NoPhoto
   let srcSecond = props.photos.photo2?props.photos.photo2:NoPhoto
-  return<Slider props={props} dots>
+  
+  return <Slider props={props} dots>
     <div >
       <div className= {styles.imageInfo}>
       <img  className = {styles.center}  src ={srcOne}/>
@@ -14,7 +16,6 @@ export const SimpleSlider = (props) => {
     </div>
     <div >
       <img className = {styles.center}   src ={srcSecond}/>
-    </div>
-    
+    </div>   
   </Slider>
 };

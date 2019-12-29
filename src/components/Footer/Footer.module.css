@@ -68,6 +68,7 @@
   .firstLine{
     height: 60%;
     align-items: center;
+    margin-left: 0;
   }
   .firstFooter{
     height: 320px;
@@ -81,6 +82,10 @@
 }
 .secondLine{
   height: 40%;
+  margin-left: 0;
+}
+.line{
+  margin-left: 0;
 }
 }
 .navigationLink a {

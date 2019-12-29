@@ -3,31 +3,35 @@ import PropTypes from 'prop-types';
 
 import Portal from '../portal/Portal';
 import Button from '../button/Button';
-import './NumberInfo.css';
+import styles from './NumberInfo.module.css';
 import  {SimpleSlider } from '../Slider/Slider';
 import { NavLink } from 'react-router-dom';
 import exit from './../../../images/exit.png'
+import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js';
+// import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer';
 
 const NumberInfo = ({
   isOpen, onCancel, description
 }) => {
 
+let numbersArray = description.numbers.map((item, i) => <EachNumberInfoContainer item = {item} key = {i}/>)
   return (
     <>
       {isOpen &&
         <Portal>
-          <div className="modalOverlay">
-          <div className="modalWindow">
-              <div className="modalHeader">
+          <div className={styles.modalOverlay}>
+          <div className={styles.modalWindow}>
+              <div className={styles.modalHeader}>
 
-                <div className="modalTitle">{description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
+                <div className={styles.modalTitle}>{description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
                   {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
                 <div onClick={onCancel}><img src={exit}/></div> 
               </div>
+              {numbersArray}
 
-              <div className="modalFooter">
+              <div className={styles.modalFooter}>
                 <Button onClick={onCancel} invert>Закрыть</Button>
-                <Button  >Внести дополнение в каталог</Button>
+                
               </div>
             </div>
           </div>

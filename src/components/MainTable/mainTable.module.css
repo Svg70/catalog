@@ -10,11 +10,11 @@
   }
   .infoCellDetail{
     display:none;
-    margin-left: 30px;
+    margin-left:-200px;
     padding:10px;
     margin-top: 300px;
     background:#f3f3f3;
-    height:20px;
+    height:10px;
     -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
     -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
     box-shadow:0 5px 5px rgba(0,0,0,0.3);
@@ -23,6 +23,6 @@
     display:block;
     position:absolute;
     top:0px;
-    z-index:9999;
-    width:400px;
+    z-index:2;
+    width:200px;
   }

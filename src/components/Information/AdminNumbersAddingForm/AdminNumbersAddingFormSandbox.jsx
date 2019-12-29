@@ -14,15 +14,6 @@ class AdminNumbersAddingFormSandbox extends Component {
     this.setState({ isOpen: true });
   }
 
-  // handleSubmit = (common, varieties) => {
-  //   debugger
-    
-  //   let nominal = this.props.item.description.nominal
-  //   let number = this.props.item.number
-  //   console.log('Submit function!');
-  //   this.props.changeDataBaseCeilInfo( nominal, number, common, varieties)
-    
-  // }
 
   handleCancel = () => {
     console.log('Cancel function!');
@@ -34,11 +25,11 @@ class AdminNumbersAddingFormSandbox extends Component {
       <Fragment>
         <span onClick={this.openModal}>И</span>
         <AdminNumbersAddingForm
-          item ={this.props.item}
-          description ={this.props.item.description}
+          
+          description ={this.props.description}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
-          number ={this.props.item.number}
+          
           changeDataBaseCeilInfo = {this.props.changeDataBaseCeilInfo}
           // onSubmit={this.handleSubmit}
         >

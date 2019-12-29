@@ -34,25 +34,6 @@
     
 }
 
-
-.infoEnt{
-    margin-right: 10%;
-}
-.infoEnt{
-    cursor: pointer
-  }
-.infoEntDetail{
-    display:none;
-    margin-left: 30px;
-    padding:10px;
-    margin-top: 100px;
-    background:#f3f3f3;
-    height:20px;
-    -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
-    -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
-    box-shadow:0 5px 5px rgba(0,0,0,0.3);
-  }
-  
   .links{
     cursor: pointer;
     display: flex
@@ -102,4 +83,41 @@
 .navigationLink a {
   color: #999999;
   text-decoration: none;
+}
+
+.navigationLinkTop a {
+  color: black;
+  text-decoration: none;
+}
+.infoEntrance{
+  cursor: pointer;
+  margin-right: 10%;
+  /* margin: -2px -3px -2px -3px; */
+}
+.infoEntranceDetail{
+  display:none;
+  margin-left: 30px;
+  padding:10px;
+  /* margin-top: 300px; */
+  background:#f3f3f3;
+  height:20px;
+  -moz-box-shadow:0 5px 5px rgba(0,0,0,0.3);
+  -webkit-box-shadow:0 5px 5px rgba(0,0,0,0.3);
+  box-shadow:0 5px 5px rgba(0,0,0,0.3);
+}
+.infoEntrance:hover .infoEntranceDetail{
+  display:block;
+  position:absolute;
+  top:50px;
+  right: 150px;
+  z-index:2;
+  width:200px;
+}
+
+.autorizedHeader{
+  display: flex;
+  width: 20%;
+  margin-right: 10%;
+  justify-content: space-between;
+  align-items: center;
 }

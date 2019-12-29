@@ -6,7 +6,7 @@ import Button from '../button/Button';
 import './AdminAddingForm.css';
 
 const AdminAddingForm = ({
-  isOpen, onCancel, onSubmit, item, description, number, changeDataBaseCeilInfo
+  isOpen, onCancel, onSubmit, description, number, changeDataBaseCeilInfo
 }) => {
 
   let [editMode, setEditMode] = useState(false);

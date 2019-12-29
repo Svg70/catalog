@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import AddingForm from './AddingForm';
-import Button from '../button/Button';
+import EachNumberInfo from './EachNumberInfo';
 
-class AddingFormSandbox extends Component {
+
+class EachNumberInfoContainer extends Component {
   state = {
-    isOpen: false,
+    isOpen: false, 
   }
 
   openModal = () => {
@@ -25,23 +25,20 @@ class AddingFormSandbox extends Component {
   render() {
     return (
       <Fragment>
-
-        
-        <span onClick={this.openModal}>+</span>
-        <AddingForm
-
-          description ={this.description}
-          title="Test Dialog window"
+        <div onClick={this.openModal}>{this.props.item.number}</div>
+        <EachNumberInfo
+          item = {this.props.item}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}
         >
-         </AddingForm>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a</p>
+        </EachNumberInfo>
 
       </Fragment>
     );
   }
 }
 
-export default AddingFormSandbox;
+export default EachNumberInfoContainer;
 /* eslint-enable */

@@ -5,7 +5,7 @@ import Portal from '../portal/Portal';
 import Icon from '../icon/Icon';
 import Button from '../button/Button';
 import './AddingForm.css';
-import SimpleExample, { MyCarousel, SimpleSlider } from '../Slider/Slider';
+
 import { NavLink } from 'react-router-dom';
 
 const AddingForm = ({

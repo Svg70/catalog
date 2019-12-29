@@ -7,19 +7,18 @@ import MainTable from './mainTable';
 import {getCatalogList} from './../../redux/admin-catalog-reducer'
 
 class MainTableContainer extends React.Component{
+    
     componentDidMount(){
         this.props.getCatalogList()
     }
     render(){
-        return <MainTable state = {this.props.state}/>
+        return <MainTable state = {this.props.state} userIsAuth={this.props.userIsAuth}/>
     }
 }
 
 const mapStateToProps = (store) => ({
-    state: store.AdminCatalog
+    state: store.AdminCatalog,
+    userIsAuth: store.loginPage.userIsAuth
 })
-//join this 3 HOC below in ONE Compose
-// let AuthRedirectComponent = withAuthRedirect(ContentContainer)
-// let WithRouterProfileContainer = withRouter(AuthRedirectComponent)
-// export default connect(mapStateToProps, {setProfile: setProfileAC,  profileShow: profileShowThunkCreator})(WithRouterProfileContainer)
+
 export default connect(mapStateToProps,{getCatalogList})(MainTableContainer)
