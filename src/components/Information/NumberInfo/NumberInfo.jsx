@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Portal from '../portal/Portal';
 import Button from '../button/Button';
 import styles from './NumberInfo.module.css';
-import  {SimpleSlider } from '../Slider/Slider';
+import { SimpleSlider } from '../Slider/Slider';
 import { NavLink } from 'react-router-dom';
 import exit from './../../../images/exit.png'
 import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js';
@@ -14,24 +14,25 @@ const NumberInfo = ({
   isOpen, onCancel, description
 }) => {
 
-let numbersArray = description.numbers.map((item, i) => <EachNumberInfoContainer item = {item} key = {i}/>)
+  let numbersArray = description.numbers.map((item, i) => <div style ={{display: 'flex', cursor: 'pointer'}}><EachNumberInfoContainer item={item} key={i} />,</div>)
   return (
     <>
       {isOpen &&
         <Portal>
           <div className={styles.modalOverlay}>
-          <div className={styles.modalWindow}>
+            <div className={styles.modalWindow}>
               <div className={styles.modalHeader}>
 
                 <div className={styles.modalTitle}>{description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
                   {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
-                <div onClick={onCancel}><img src={exit}/></div> 
+                <div onClick={onCancel}><img src={exit} /></div>
               </div>
-              {numbersArray}
-
+              <div className={styles.modalBody}>
+                {numbersArray}
+              </div>
               <div className={styles.modalFooter}>
                 <Button onClick={onCancel} invert>Закрыть</Button>
-                
+
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import Slider from 'infinite-react-carousel';
 import styles from './Slider.module.css'
 import NoPhoto from '../../../images/NoPhoto.png'
 
-export const SimpleSlider = (props) => {
+export const SimpleSliderBig = (props) => {
   let srcOne = props.photos.photo1?props.photos.photo1:NoPhoto
   let srcSecond = props.photos.photo2?props.photos.photo2:NoPhoto
   

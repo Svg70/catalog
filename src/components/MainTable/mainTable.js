@@ -3,9 +3,6 @@ import AddingFormSandbox from '../Information/AddingForm/AddingFormSandbox'
 import YearInfoSandbox from '../Information/yearInfo/yearInfoSandbox'
 import NominalInfoSandbox from '../Information/nominalInfo/nominalInfoSandbox'
 import styles from './mainTable.module.css'
-import { dal } from '../../dal/dal'
-import AdminAddingFormSandbox from '../Information/AdminAddingForm copy/AdminAddingFormSandbox'
-import AdminNumbersAddingFormSandboxContainer from '../Information/AdminNumbersAddingForm/AdminNumbersAddingFormSandbox'
 import CommonWindowContainer from '../Information/CommonWindow/CommonWindowContainer'
 
 class MainTable extends Component {
@@ -181,6 +178,7 @@ const Header = (props) => {
 
 
 const UpperInfoRow = (props) => {
+    
     let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
     return (
         <>
@@ -190,9 +188,18 @@ const UpperInfoRow = (props) => {
 }
 
 const InfoRow = (props) => {
-    let propsObj = props.info
-    let concatArray = props.info.row
 
+    let propsObj = props.info.row
+    let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
+        propsObj[0].nominals[3].state, propsObj[0].nominals[4].state, propsObj[0].nominals[5].state, propsObj[0].nominals[6].state, propsObj[1].nominals[0].state,
+        propsObj[1].nominals[1].state,
+        propsObj[1].nominals[2].state,
+        propsObj[1].nominals[3].state,
+        propsObj[1].nominals[4].state,
+        propsObj[1].nominals[5].state,
+        propsObj[2].nominals[0].state,
+        propsObj[2].nominals[1].state,
+        propsObj[2].nominals[2].state)
     console.log(concatArray)
 
     // renderSwitch(param) {
@@ -211,7 +218,7 @@ const InfoRow = (props) => {
             <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
                 <div className={styles.infoCellDetail}>Смотреть информацию</div>
             </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} />
+                <div className={styles.infoCell}><AddingFormSandbox description={item} sign ={'+'} />
                     <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
             </td>
         </>
@@ -219,7 +226,7 @@ const InfoRow = (props) => {
     })
     return (
         <tr>
-            <td>{propsObj.kassir}</td>
+            <td>{props.info.kassir}</td>
             {catalogArray}
         </tr>)
 

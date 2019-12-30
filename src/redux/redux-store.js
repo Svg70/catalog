@@ -1,14 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 
 import thunkMiddleware from 'redux-thunk'
-import AdminManagementReducer from "./admin-management-reducer";
+
 import AdminCatalogReducer from "./admin-catalog-reducer";
 import { registrationReducer } from "./registration-reducer";
 import { loginReducer } from "./auth-reducer";
 
 
 let reducers = combineReducers({
-    adminManagement: AdminManagementReducer,
+
     AdminCatalog: AdminCatalogReducer,
     registrationPage: registrationReducer,
     loginPage: loginReducer

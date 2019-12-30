@@ -12,6 +12,10 @@ import NumberInfoSandbox from '../NumberInfo/NumberInfoSandbox';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeDescriptionCells } from '../../../redux/admin-catalog-reducer';
 import ImageLoader from '../../imageLoader';
+import AddingFormSandbox from '../AddingForm/AddingFormSandbox';
+
+
+import BigImageSliderContainer from './BigImageSlider/EachNumberInfoContainer.js';
 
 const Modal = ({
   isOpen, onCancel, description
@@ -26,6 +30,7 @@ const Modal = ({
   let [editMode, setEditMode] = useState(false)
 
   useEffect(() => {
+    // setNewStatus(description.status)
     setNewCommon(description.common)
     setNewVarieties(description.varieties)
     setNewAstimation(description.astimation)
@@ -41,8 +46,14 @@ const Modal = ({
   }
 
   const deactivateEditModeRequest = () => {
+    debugger
     setEditMode(false)
-    dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses))
+    dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses, status))
+  }
+
+  let [status, setNewStatus] = useState(false)
+  const onStatusChange = (e) => {
+    setNewStatus(e.currentTarget.checked)
   }
 
   let [common, setNewCommon] = useState(description.common)
@@ -86,39 +97,43 @@ const Modal = ({
               </div>
               <div className={styles.modalBody}>
                 <SimpleSlider photos={description.photos} />
+                <BigImageSliderContainer item = {description}/>
                   {!editMode &&
                   <div >
-                    <div style = {{width: '200px'}}><span><b>Описание:{' '}</b>{description.common}</span></div>
-                     <div><b>Разновидности:{' '}</b>{description.varieties}
-                     <div><b><NumberInfoSandbox  description={description} name={"Известные номера"} /></b></div>
+                    <div><b>Описание:{' '}</b>{description.common}</div>
+                     <div><b>Разновидности:{' '}</b>{description.varieties}</div>
+                     <div style = {{cursor: 'pointer', textDecoration: 'underline'}}><b><NumberInfoSandbox  description={description} name={"Известные номера"} /></b></div>
                      <div><b>Ориентировочная стоимость:{' '}</b>{description.astimation}</div>
                 <div><b>Дополнительная информация:{' '}</b>{description.kassirInfo}</div>
                 <div><b>Источники/ссылки:{' '}</b>{description.sourses}</div>
+                {approved && userIsAuth && !adminIsAuth && <AddingFormSandbox description={description} sign ={<Button>Добавить в каталог</Button>} />}
                 {adminIsAuth ? <div style = {{ display: 'flex', alignItems: 'center'}}><img src={change} style={{ width: '40px', cursor: 'pointer' }} onClick={activateEditMode} /> 
                                  
                               <ImageLoader description= {description}/>
 
                               </div>
                               : null}
-                    </div>
+                    
                      </div>
 
                   }
                   {editMode &&
                     <div >
-                      <input style={{ width: '90%' }} autoFocus={true} onChange={onCommonChange}
+                      <div><input type = "checkbox" checked={status} onChange = {onStatusChange}/> Статус записи</div>
+                      Описание: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onCommonChange}
                         value={common} />
-                      <input style={{ width: '90%' }} autoFocus={true} onChange={onVarietiesChange}
+                      Разновидности: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onVarietiesChange}
                         value={varieties} />
-                                              <input style={{ width: '90%' }} autoFocus={true} onChange={onAstimationChange}
+                      Ориентировочная стоимость: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onAstimationChange}
                         value={astimation} />
-                                              <input style={{ width: '90%' }} autoFocus={true} onChange={onAddInfoChange}
+                      Дополнительная информация: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onAddInfoChange}
                         value={kassirInfo} />
-                                              <input style={{ width: '90%' }} autoFocus={true} onChange={onSoursesChange}
+                      Источники/ссылки: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onSoursesChange}
                         value={sourses} />
                       <button onClick={deactivateEditModeRequest}>Внести изменения</button>
                       <button onClick={deactivateEditMode}>Закрыть</button>
-                    </div>}
+                    </div>
+                    }
 
                 
       

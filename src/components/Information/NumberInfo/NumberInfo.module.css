@@ -10,7 +10,6 @@
 
 .modalWindow {
   position: absolute;
-  overflow: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -41,7 +40,12 @@
 .modalTitle {
   font-weight: bold;
 }
-
+.modalBody{
+  display: flex;
+  align-items: flex-start;
+  width: 200px;
+  color:green
+}
 .modalFooter {
   display: flex;
   justify-content: flex-end;

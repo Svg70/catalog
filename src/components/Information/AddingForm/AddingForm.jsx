@@ -5,12 +5,18 @@ import Portal from '../portal/Portal';
 import Icon from '../icon/Icon';
 import Button from '../button/Button';
 import './AddingForm.css';
+import { useSelector } from 'react-redux';
+import AdminEditMode from '../CommonWindow/AdmiEditMode';
 
-import { NavLink } from 'react-router-dom';
+
 
 const AddingForm = ({
-  isOpen, onCancel, onSubmit,description
+  isOpen, onCancel, onSubmit, description
 }) => {
+  const userIsAuth = useSelector(store => store.loginPage.userIsAuth)
+  const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
+  const approved = useSelector(store => store.loginPage.approved)
+
 
   return (
     <>
@@ -24,7 +30,15 @@ const AddingForm = ({
               </div>
               <div className="modalBody">
               <div className="modalTitle">Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
-                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
+                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}
+                  </div>
+                  
+    { !userIsAuth && !adminIsAuth &&<div>Авторизируйтесь в системе, чтобы аносить позиции в каталог</div>}
+                  
+    { userIsAuth && !adminIsAuth && <div>дождитесь подтверждения вашей регистрации</div>}
+                  
+    { approved && userIsAuth && !adminIsAuth &&
+                  <div>
                 <div>Каталог сайта Perekupi.ru позволяет посетитеям вносить информацию 
                   о своих коллекционных экземплярах. 
                   Подобное взаимодействие между коллекционерами позволит быстро и эффективно собрать статистику и популяризировать тему.
@@ -35,10 +49,19 @@ const AddingForm = ({
                   аверс, реверс и на просвет.
                 </div>
                 <Button onClick={onSubmit} >Прикрепить файлы</Button>
+                <Button onClick={onSubmit} >Отправить</Button>
+                      </div>}
+
+    { adminIsAuth &&
+                  <div>
+
+                    <AdminEditMode description = {description}/>
+                    
+                      </div>}
               </div>
               <div className="modalFooter">
                 <Button onClick={onCancel} invert>Закрыть</Button>
-                <Button onClick={onSubmit} >Отправить</Button>
+                
 
               </div>
             </div>

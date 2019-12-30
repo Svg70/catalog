@@ -4,8 +4,8 @@ import * as axios from "axios";
 
 
 const instance = axios.create({
-    withCredentials: true,
-    // baseURL: 'http://localhost:5000',
+    withCredentials: false,
+    baseURL: 'https://serene-cliffs-91865.herokuapp.com',
     headers:{"Content-Type": "application/json"},
     
 })
@@ -36,11 +36,11 @@ export const LoginAPI = {
 
 export const TableAPI = {
     
-    changeDescriptionCells(id, year, nominal, number, common,varieties,astimation,kassirInfo,sourses){
-
-        return instance.put(`/catalog/kasssir/${id}/year/${year}/nominal/${nominal}/number/${number}`, { common,varieties,astimation,kassirInfo,sourses  })
+    changeDescriptionCells(id, year, nominal, number, common,varieties,astimation,kassirInfo,sourses, status, photo1, photo2){
+        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}`, { common,varieties,astimation,kassirInfo,sourses,status,photo1, photo2  })
     },
     changeDescriptionPhotos(id, year, nominal, number, photo1, photo2){
-        return instance.put(`/catalog/kasssir/${id}/year/${year}/nominal/${nominal}/number/${number}`, { photo1, photo2 })
+        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}`, { photo1, photo2 })
     }
+
 }

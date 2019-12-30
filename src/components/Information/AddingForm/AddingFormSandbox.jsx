@@ -27,11 +27,10 @@ class AddingFormSandbox extends Component {
       <Fragment>
 
         
-        <span onClick={this.openModal}>+</span>
+        <span onClick={this.openModal}>{this.props.sign}</span>
         <AddingForm
 
-          description ={this.description}
-          title="Test Dialog window"
+          description ={this.props.description}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}
