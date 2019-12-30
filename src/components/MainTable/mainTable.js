@@ -4,7 +4,8 @@ import YearInfoSandbox from '../Information/yearInfo/yearInfoSandbox'
 import NominalInfoSandbox from '../Information/nominalInfo/nominalInfoSandbox'
 import styles from './mainTable.module.css'
 import CommonWindowContainer from '../Information/CommonWindow/CommonWindowContainer'
-
+import { useSelector } from 'react-redux'
+import Krutilka from './../../images/preloader.gif'
 class MainTable extends Component {
     constructor(props) {
         super(props)
@@ -188,6 +189,7 @@ const UpperInfoRow = (props) => {
 }
 
 const InfoRow = (props) => {
+let preloader = useSelector(store => store.AdminCatalog.preloader)
 
     let propsObj = props.info.row
     let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
@@ -215,20 +217,24 @@ const InfoRow = (props) => {
 
     let catalogArray = concatArray.map((item) => {
         return (<>
-            <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
+        
+         <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
                 <div className={styles.infoCellDetail}>Смотреть информацию</div>
             </div> :
                 <div className={styles.infoCell}><AddingFormSandbox description={item} sign ={'+'} />
                     <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
-            </td>
+            </td> 
         </>
         )
     })
     return (
-        <tr>
+        <>
+        {preloader && <img src={Krutilka} />}
+        {!preloader && <tr>
             <td>{props.info.kassir}</td>
             {catalogArray}
-        </tr>)
+        </tr>}
+        </>)
 
 }
 export default MainTable

@@ -10,7 +10,7 @@ const SET_AUTH = 'SET_AUTH'
 
 let initialstate = {
 
-    preloader: false,
+    preloader: true,
 
     catalogItems: [
         {
@@ -3567,6 +3567,7 @@ export const getCatalogList = () => {
     return (dispatch) => {
         dispatch(isLoading(true))
         dal.getItems().then(response => {
+            debugger
             dispatch(setCatalogList(response.data[0].catalogItems),
                 dispatch(isLoading(false)))
         }
