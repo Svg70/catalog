@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Portal from '../portal/Portal';
 import Icon from '../icon/Icon';
 import Button from '../button/Button';
-import './AddingForm.css';
+import styles from'./AddingForm.module.css';
 import { useSelector } from 'react-redux';
 import AdminEditMode from '../CommonWindow/AdmiEditMode';
 
@@ -22,14 +22,14 @@ const AddingForm = ({
     <>
       {isOpen &&
         <Portal>
-          <div className="modalOverlay">
-            <div className="modalWindow">
-              <div className="modalHeader">
-                <div className="modalTitle">Форма добавления позиции в каталог</div>
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalWindow}>
+              <div className={styles.modalHeader}>
+                <div className={styles.modalTitle}>Форма добавления позиции в каталог</div>
                 <Icon name="times" onClick={onCancel} />
               </div>
-              <div className="modalBody">
-              <div className="modalTitle">Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
+              <div className={styles.modalBody}>
+              <div className={styles.modalTitle}>Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
                   {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}
                   </div>
                   
@@ -59,7 +59,7 @@ const AddingForm = ({
                     
                       </div>}
               </div>
-              <div className="modalFooter">
+              <div className={styles.modalFooter}>
                 <Button onClick={onCancel} invert>Закрыть</Button>
                 
 
