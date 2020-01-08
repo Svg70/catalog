@@ -18,7 +18,7 @@ class MainTableContainer extends React.Component{
 
 const mapStateToProps = (store) => ({
     state: store.AdminCatalog,
-    userIsAuth: store.loginPage.userIsAuth
+    userIsAuth: store.loginPage.userIsAuth,
 })
 
 export default connect(mapStateToProps,{getCatalogList})(MainTableContainer)

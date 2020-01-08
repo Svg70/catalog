@@ -18,7 +18,7 @@ class MainTable extends Component {
 
     render() {
         return <div>
-            {Object.keys(this.props.state).length !== 0 ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+            {!this.props.state.preloader? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
                     <td>Управляющий</td>
@@ -27,22 +27,23 @@ class MainTable extends Component {
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="24"><YearInfoSandbox thisYear={1858} info={this.props.state.catalogItems58}/></td>
-                    <td colspan="21"><YearInfoSandbox thisYear={1859} info={this.props.state.catalogItems58}/></td>
-                    <td colspan="15"><YearInfoSandbox thisYear={1860} info={this.props.state.catalogItems58}/></td>
-                    <td colspan="20"><YearInfoSandbox thisYear={1861} info={this.props.state.catalogItems58}/></td>
-                    <td colspan="22"><YearInfoSandbox thisYear={1862} info={this.props.state.catalogItems58}/></td>
+                    <td colspan="24"><YearInfoSandbox thisYear={1858} info={this.props.state.catalogItems58} /></td>
+                    <td colspan="21"><YearInfoSandbox thisYear={1859} info={this.props.state.catalogItems58} /></td>
+                    <td colspan="15"><YearInfoSandbox thisYear={1860} info={this.props.state.catalogItems58} /></td>
+                    <td colspan="20"><YearInfoSandbox thisYear={1861} info={this.props.state.catalogItems58} /></td>
+                    <td colspan="22"><YearInfoSandbox thisYear={1862} info={this.props.state.catalogItems58} /></td>
                 </tr>
                 <Header state={this.props.state.catalogItems58} />
-                <UpperInfoRow info={this.props.state.catalogItems58} userIsAuth={this.props.userIsAuth} />
-            </table>:<div><img src={Krutilka} /></div>}
+
+                    <UpperInfoRow info={this.props.state.catalogItems58} userIsAuth={this.props.userIsAuth} />
+            </table>: <div><img src={Krutilka} /></div>}
         </div>
     }
 }
 
 const Header = (props) => {
 
-    let headerArr58 = [1, 3, 5, 10].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear = {1858} thisNominal={i} info={props.state} /></td>) })
+    let headerArr58 = [1, 3, 5, 10].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear={1858} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir58 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
@@ -77,7 +78,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr59 = [1, 3, 5].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear = {1859} thisNominal={i} info={props.state}/></td>) })
+    let headerArr59 = [1, 3, 5].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear={1859} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir59 = [1, 3, 5].map(i => {
         return (<>
             <td>
@@ -117,7 +118,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr60 = [1, 3, 5].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear = {1860} thisNominal={i} info={props.state}/></td>) })
+    let headerArr60 = [1, 3, 5].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1860} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir60 = [1, 3, 5].map(i => {
         return (<>
             <td>
@@ -147,7 +148,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr61 = [1, 3, 5, 10].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear = {1861} thisNominal={i} info={props.state}/></td>) })
+    let headerArr61 = [1, 3, 5, 10].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1861} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir61 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
@@ -176,9 +177,9 @@ const Header = (props) => {
                 </div>
             </td>
         </>)
-        
+
     })
-    let headerArr62 = [1, 3].map(i => { return (<td colspan="11"><NominalInfoSandbox thisYear = {1862} thisNominal={i} info={props.state}/></td>) })
+    let headerArr62 = [1, 3].map(i => { return (<td colspan="11"><NominalInfoSandbox thisYear={1862} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir62 = [1, 3].map(i => {
         return (<>
             <td>
@@ -237,7 +238,7 @@ const Header = (props) => {
                 </div>
             </td>
         </>)
-        
+
     })
     return (
         <>
@@ -247,7 +248,7 @@ const Header = (props) => {
             </tr>
             <tr>
                 <td>Кассир</td>
-            {headerArrDir58}{headerArrDir59}{headerArrDir60}{headerArrDir61}{headerArrDir62}
+                {headerArrDir58}{headerArrDir59}{headerArrDir60}{headerArrDir61}{headerArrDir62}
             </tr>
         </>
     )
@@ -255,7 +256,7 @@ const Header = (props) => {
 
 
 const UpperInfoRow = (props) => {
-    
+
     let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
     return (
         <>
@@ -265,7 +266,7 @@ const UpperInfoRow = (props) => {
 }
 
 const InfoRow = (props) => {
-let preloader = useSelector(store => store.AdminCatalog.preloader)
+
 
     let propsObj = props.info.row
     let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
@@ -278,29 +279,28 @@ let preloader = useSelector(store => store.AdminCatalog.preloader)
         propsObj[3].nominals[3].state,
         propsObj[4].nominals[0].state,
         propsObj[4].nominals[1].state,
-        
-        )
+
+    )
 
 
     let catalogArray = concatArray.map((item) => {
         return (<>
-        
-         <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
+
+            <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
                 <div className={styles.infoCellDetail}>Смотреть информацию</div>
             </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} sign ={'+'} />
+                <div className={styles.infoCell}><AddingFormSandbox description={item} sign={'+'} />
                     <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
-            </td> 
+            </td>
         </>
         )
     })
     return (
         <>
-        {preloader && <img src={Krutilka} />}
-        {!preloader && <tr>
-            <td>{props.info.kassir}</td>
-            {catalogArray}
-        </tr>}
+            <tr>
+                <td>{props.info.kassir}</td>
+                {catalogArray}
+            </tr>
         </>)
 
 }

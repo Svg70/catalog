@@ -8,10 +8,12 @@ const SET_CATALOG_LIST_58 = 'SET_CATALOG_LIST_58'
 const SET_CATALOG_LIST_63 = 'SET_CATALOG_LIST_63'
 const IS_LOADING = 'IS_LOADING'
 const SET_AUTH = 'SET_AUTH'
-
+const BUTTON_DISABLE = 'BUTTON_DISABLE'
 
 
 let initialstate = {
+    preloader: true,
+    buttonDisable: false,
     catalogItems43:[],
     catalogItems:[],
     catalogItems58:[],
@@ -40,10 +42,15 @@ let AdminCatalogReducer = (state = initialstate, action) => {
             let stateCopy = { ...state, catalogItems63: action.response }
             return stateCopy
         }
-        // case IS_LOADING: {
-        //     let stateCopy = { ...state, preloader: action.loadingStatus }
-        //     return stateCopy
-        //}
+        case IS_LOADING: {
+            let stateCopy = { ...state, preloader: action.loadingStatus }
+            return stateCopy
+        }
+        case BUTTON_DISABLE: {
+
+            let stateCopy = { ...state, buttonDisable: action.buttonStatus }
+            return stateCopy
+        }
         case SET_AUTH: {
             let stateCopy = { ...state, adminIsAuth: action.loginStatus }
             return stateCopy
@@ -53,6 +60,9 @@ let AdminCatalogReducer = (state = initialstate, action) => {
     }
 }
 
+const buttonDisabledAC = (buttonStatus) => {
+    return{type: BUTTON_DISABLE, buttonStatus}
+}
 const setCatalogList = (response) => {
 
     return { type: SET_CATALOG_LIST, response }
@@ -130,38 +140,47 @@ export const getCatalogList63 = (table) => {
 export const changeDescriptionCells = (id, year, nominal, number, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2) =>
 
     async (dispatch, getStore) => {
+        dispatch(buttonDisabledAC(true))
         let response = await TableAPI.changeDescriptionCells(id, year, nominal, number, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2)
         
         if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
         if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
         if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
         if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
+        dispatch(buttonDisabledAC(false))
     };
 
 export const changeDescriptionPhotos = (id, year, nominal, number, photo1, photo2) =>
+    
     async (dispatch, getStore) => {
+        dispatch(buttonDisabledAC(true))
         let response = await TableAPI.changeDescriptionPhotos(id, year, nominal, number, photo1, photo2)
         if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
         if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
         if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
         if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
+        dispatch(buttonDisabledAC(false))
     };
 export const numberEditRequest = (id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ) => 
     async (dispatch, getStore) =>{
+        dispatch(buttonDisabledAC(true))
         let response = await NumbersEditingAPI.numberEdit(id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 )
         if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
         if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
         if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
         if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems)) 
-}
+        dispatch(buttonDisabledAC(false))
+    }
 export const numberDeleteRequest = (id, year, nominal, number, itemNumber) => 
     async (dispatch, getStore) =>{
+        dispatch(buttonDisabledAC(true))
         let response = await NumbersEditingAPI.numberDelete(id, year, nominal, number, itemNumber)
         if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
         if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
         if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
         if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
-}
+        dispatch(buttonDisabledAC(false))
+    }
 
 
 

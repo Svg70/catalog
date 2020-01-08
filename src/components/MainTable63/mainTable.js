@@ -18,7 +18,7 @@ class MainTable extends Component {
 
     render() {
         return <div>
-            {Object.keys(this.props.state).length !== 0 ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+            {!this.props.state.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
                     <td>Управляющий</td>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../button/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeDescriptionCells } from '../../../redux/admin-catalog-reducer';
 
 
 const AdminEditMode = ({ description }) => {
-
+  const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
   const dispatch = useDispatch()
   const deactivateEditModeRequest = () => {
     dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses,status, image1,image2 ))
@@ -127,7 +127,7 @@ const AdminEditMode = ({ description }) => {
     </div>
 {/* Загрузка изображений */}
 
-    <Button onClick={deactivateEditModeRequest}>Внести изменения</Button>
+    <Button onClick={deactivateEditModeRequest} disabled ={buttonDisable}>Внести изменения</Button>
 
   </div>
 }

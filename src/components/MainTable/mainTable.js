@@ -18,7 +18,8 @@ class MainTable extends Component {
 
     render() {
         return <div>
-            {Object.keys(this.props.state).length !== 0 ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+            {!this.props.state.preloader ?
+            <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
                     <td>Управляющий</td>
@@ -31,8 +32,10 @@ class MainTable extends Component {
                     <td colspan="24"><YearInfoSandbox thisYear={1857} info={this.props.state.catalogItems}/></td>
                 </tr>
                 <Header state={this.props.state.catalogItems} />
-                <UpperInfoRow info={this.props.state.catalogItems} userIsAuth={this.props.userIsAuth} />
+                
+                <UpperInfoRow info={this.props.state.catalogItems} userIsAuth={this.props.userIsAuth} />}
             </table>:<div><img src={Krutilka} /></div>}
+            
         </div>
     }
 }
@@ -181,13 +184,13 @@ const UpperInfoRow = (props) => {
     let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
     return (
         <>
-            {rowsArray}
+           {rowsArray}
         </>
     )
 }
 
 const InfoRow = (props) => {
-let preloader = useSelector(store => store.AdminCatalog.preloader)
+
 
     let propsObj = props.info.row
     let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
@@ -216,11 +219,10 @@ let preloader = useSelector(store => store.AdminCatalog.preloader)
     })
     return (
         <>
-        {preloader && <img src={Krutilka} />}
-        {!preloader && <tr>
+        <tr>
             <td>{props.info.kassir}</td>
             {catalogArray}
-        </tr>}
+        </tr>
         </>)
 
 }

@@ -8,7 +8,7 @@ import styles from './AddingForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import AdminEditMode from '../CommonWindow/AdmiEditMode';
 import SingleImageLoader from '../singleImageLoader';
-import { sendApplication } from '../../../redux/applications-reducer';
+import { sendApplication, sendMessageAC } from '../../../redux/applications-reducer';
 
 
 
@@ -19,6 +19,7 @@ const AddingForm = ({
   const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
   const approved = useSelector(store => store.loginPage.approved)
   const message = useSelector(store => store.applications.message)
+  const buttonDisable = useSelector(store => store.applications.buttonDisable)
   const dispatch = useDispatch()
   const [image1, setImage1] = useState('')
   const [image2, setImage2] = useState('')
@@ -42,6 +43,11 @@ const AddingForm = ({
   const newApplicationCreation = () => {
     console.log(name,  addingItemDescription, image1, image2, image3)
     dispatch(sendApplication(name,  addingItemDescription, image1, image2, image3))
+  }
+
+  const deleteUserMessage = () => {
+    onCancel()
+    dispatch(sendMessageAC(null))
   }
 
 
@@ -78,7 +84,7 @@ const AddingForm = ({
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc1} numberName ={1}/>
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc2} numberName ={2}/>
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc3} numberName ={3}/>
-                    <Button onClick={newApplicationCreation} >Отправить</Button>
+                    <Button onClick={newApplicationCreation} disabled={buttonDisable}>Отправить</Button>
                     <div>{message}</div>
                   </div>}
 
@@ -90,7 +96,7 @@ const AddingForm = ({
                   </div>}
               </div>
               <div className={styles.modalFooter}>
-                <Button onClick={onCancel} invert>Закрыть</Button>
+                <Button onClick={deleteUserMessage} invert>Закрыть</Button>
 
 
               </div>

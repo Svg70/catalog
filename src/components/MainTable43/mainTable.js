@@ -18,7 +18,7 @@ class MainTable extends Component {
 
     render() {
         return <div>
-            {Object.keys(this.props.state).length !== 0 ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+            {!this.props.state.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
                     <td>Управляющий</td>
@@ -27,13 +27,14 @@ class MainTable extends Component {
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="21"><YearInfoSandbox thisYear={1843} info={this.props.state.catalogItems43}/></td>
-                    <td colspan="14"><YearInfoSandbox thisYear={1847} info={this.props.state.catalogItems43}/></td>
-                    <td colspan="28"><YearInfoSandbox thisYear={1851} info={this.props.state.catalogItems43}/></td>
-                    <td colspan="16"><YearInfoSandbox thisYear={1854} info={this.props.state.catalogItems43}/></td>
+                    <td colspan="21"><YearInfoSandbox thisYear={1843} info={this.props.state.catalogItems43} /></td>
+                    <td colspan="14"><YearInfoSandbox thisYear={1847} info={this.props.state.catalogItems43} /></td>
+                    <td colspan="28"><YearInfoSandbox thisYear={1851} info={this.props.state.catalogItems43} /></td>
+                    <td colspan="16"><YearInfoSandbox thisYear={1854} info={this.props.state.catalogItems43} /></td>
                 </tr>
                 <Header state={this.props.state.catalogItems43} />
-                <UpperInfoRow info={this.props.state.catalogItems43} userIsAuth={this.props.userIsAuth} />
+
+                    <UpperInfoRow info={this.props.state.catalogItems43} userIsAuth={this.props.userIsAuth} />
             </table>:<div><img src={Krutilka} /></div>}
         </div>
     }
@@ -44,7 +45,7 @@ class MainTable extends Component {
 
 const Header = (props) => {
 
-    let headerArr43 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1843} thisNominal={i} info={props.state} /></td>) })
+    let headerArr43 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear={1843} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir43 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
             <td>
@@ -64,7 +65,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr47 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="2"><NominalInfoSandbox thisYear = {1847} thisNominal={i} info={props.state}/></td>) })
+    let headerArr47 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="2"><NominalInfoSandbox thisYear={1847} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir47 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
             <td>
@@ -79,7 +80,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr51 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear = {1851} thisNominal={i} info={props.state}/></td>) })
+    let headerArr51 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear={1851} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir51 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
             <td>
@@ -104,7 +105,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr54 = [1, 3, 5, 10].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear = {1854} thisNominal={i} info={props.state}/></td>) })
+    let headerArr54 = [1, 3, 5, 10].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear={1854} thisNominal={i} info={props.state} /></td>) })
     let headerArrDir54 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
@@ -137,7 +138,7 @@ const Header = (props) => {
             </tr>
             <tr>
                 <td>Кассир</td>
-            {headerArrDir43}{headerArrDir47}{headerArrDir51}{headerArrDir54}
+                {headerArrDir43}{headerArrDir47}{headerArrDir51}{headerArrDir54}
             </tr>
         </>
     )
@@ -145,7 +146,7 @@ const Header = (props) => {
 
 
 const UpperInfoRow = (props) => {
-    
+
     let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
     return (
         <>
@@ -155,7 +156,7 @@ const UpperInfoRow = (props) => {
 }
 
 const InfoRow = (props) => {
-let preloader = useSelector(store => store.AdminCatalog.preloader)
+
 
     let propsObj = props.info.row
     let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
@@ -181,23 +182,22 @@ let preloader = useSelector(store => store.AdminCatalog.preloader)
 
     let catalogArray = concatArray.map((item) => {
         return (<>
-        
-         <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
+
+            <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
                 <div className={styles.infoCellDetail}>Смотреть информацию</div>
             </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} sign ={'+'} />
+                <div className={styles.infoCell}><AddingFormSandbox description={item} sign={'+'} />
                     <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
-            </td> 
+            </td>
         </>
         )
     })
     return (
         <>
-        {preloader && <img src={Krutilka} />}
-        {!preloader && <tr>
-            <td>{props.info.kassir}</td>
-            {catalogArray}
-        </tr>}
+            <tr>
+                <td>{props.info.kassir}</td>
+                {catalogArray}
+            </tr>
         </>)
 
 }

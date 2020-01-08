@@ -15,6 +15,7 @@ class AddingFormSandbox extends Component {
   handleSubmit = () => {
     console.log('Submit function!');
     this.setState({ isOpen: false });
+
   }
 
   handleCancel = () => {
