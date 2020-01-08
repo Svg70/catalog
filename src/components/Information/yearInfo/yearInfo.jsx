@@ -9,8 +9,25 @@ import SimpleExample, { MyCarousel, SimpleSlider } from '../Slider/Slider';
 import { NavLink } from 'react-router-dom';
 
 const YearInfo = ({
-  isOpen, onCancel, onSubmit
+  isOpen, onCancel, onSubmit, info, thisYear
 }) => {
+  let nominalsArr = []
+info.map(item => { 
+  for(let i = 0; i < item.row.length; i++){
+    nominalsArr = nominalsArr.concat(item.row[i].nominals)
+  
+}})
+let determineCellsArray = []
+for(let i = 0; i < nominalsArr.length; i++){
+  determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
+console.log(determineCellsArray)
+let totalYearItemsCount = 0
+for(let i =0; i < determineCellsArray.length; i++){
+if(determineCellsArray[i].year === thisYear){
+      totalYearItemsCount = totalYearItemsCount+determineCellsArray[i].numbers.length
+} }
+console.log(totalYearItemsCount)
+
 
   return (
     <>
@@ -19,11 +36,11 @@ const YearInfo = ({
           <div className="modalOverlay">
             <div className="modalWindow">
               <div className="modalHeader">
-                <div className="modalTitle">Статистика по 1855 году</div>
+                <div className="modalTitle">Статистика по {thisYear} году</div>
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-                <div>Статистика</div>
+                    <div>В {thisYear} зафиксировано {totalYearItemsCount} коллекционных позиций</div>
 
               </div>
               <div className="modalFooter">

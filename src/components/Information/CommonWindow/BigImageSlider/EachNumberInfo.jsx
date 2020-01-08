@@ -7,9 +7,8 @@ import './EachNumberInfo.css';
 import { SimpleSliderBig } from '../../SliderBig/Slider';
 
 const BigImageSlider = ({
-  isOpen, onCancel, onSubmit, item
+  isOpen, onCancel, item
 }) => {
-debugger
   return (
     <>
       { isOpen &&

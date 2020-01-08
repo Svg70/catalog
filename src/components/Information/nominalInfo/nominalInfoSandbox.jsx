@@ -24,16 +24,16 @@ class NominalInfoSandbox extends Component {
   }
 
   render() {
+
     return (
       <Fragment>
-
-        
-        <div className= 'nominalPointer' onClick={this.openModal}>{this.props.i}
+        <div className= 'nominalPointer' onClick={this.openModal}>{this.props.thisNominal}
         <div className= 'nominalPointerDescr'>Смотреть общую статистику по номиналу</div>
         </div>
         <NominalInfo
-
-          i ={this.props.i}
+          info = {this.props.info}
+          thisYear = {this.props.thisYear}
+          thisNominal ={this.props.thisNominal}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}

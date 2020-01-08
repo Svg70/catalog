@@ -22,16 +22,18 @@ class MainTable extends Component {
 
                 <tr>
                     <td>Управляющий</td>
-                    <td colspan="108">Ростовцев</td>
+                    <td colspan="63">Халчинский</td>
+                    <td colspan="16">Юрьев</td>
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="42"><YearInfoSandbox thisYear={1855} info={this.props.state.catalogItems}/></td>
-                    <td colspan="42"><YearInfoSandbox thisYear={1856} info={this.props.state.catalogItems}/></td>
-                    <td colspan="24"><YearInfoSandbox thisYear={1857} info={this.props.state.catalogItems}/></td>
+                    <td colspan="21"><YearInfoSandbox thisYear={1843} info={this.props.state.catalogItems43}/></td>
+                    <td colspan="14"><YearInfoSandbox thisYear={1847} info={this.props.state.catalogItems43}/></td>
+                    <td colspan="28"><YearInfoSandbox thisYear={1851} info={this.props.state.catalogItems43}/></td>
+                    <td colspan="16"><YearInfoSandbox thisYear={1854} info={this.props.state.catalogItems43}/></td>
                 </tr>
-                <Header state={this.props.state.catalogItems} />
-                <UpperInfoRow info={this.props.state.catalogItems} userIsAuth={this.props.userIsAuth} />
+                <Header state={this.props.state.catalogItems43} />
+                <UpperInfoRow info={this.props.state.catalogItems43} userIsAuth={this.props.userIsAuth} />
             </table>:<div><img src={Krutilka} /></div>}
         </div>
     }
@@ -41,83 +43,44 @@ class MainTable extends Component {
 
 
 const Header = (props) => {
-    let headerArr55 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear = {1855} thisNominal={i} info={props.state} /></td>) })
-    let headerArrDir55 = [1, 3, 5, 10, 25, 50, 100].map(i => {
+
+    let headerArr43 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1843} thisNominal={i} info={props.state} /></td>) })
+    let headerArrDir43 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>В
-                <div className={styles.infoCellDetail}>Владимирцов</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>Л
-                <div className={styles.infoCellDetail}>Лазарев</div>
+                <div className={styles.infoCell}>Г
+                <div className={styles.infoCellDetail}>Готовцев</div>
                 </div>
             </td>
             <td>
                 <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Поморский</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Стоянов</div>
+                <div className={styles.infoCellDetail}>Правотархов</div>
                 </div>
             </td>
             <td>
                 <div className={styles.infoCell}>Ч
                 <div className={styles.infoCellDetail}>Чухломин</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
                 </div>
             </td>
         </>)
     })
-    let headerArr56 = [1, 3, 5, 10, 25, 50].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear = {1856} thisNominal={i} info={props.state}/></td>) })
-    let headerArrDir56 = [1, 3, 5, 10, 25, 50].map(i => {
+    let headerArr47 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="2"><NominalInfoSandbox thisYear = {1847} thisNominal={i} info={props.state}/></td>) })
+    let headerArrDir47 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
-            <td>
-                <div className={styles.infoCell}>В
-                <div className={styles.infoCellDetail}>Владимирцов</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
-                </div>
-            </td>
             <td>
                 <div className={styles.infoCell}>Л
                 <div className={styles.infoCellDetail}>Лазарев</div>
                 </div>
             </td>
             <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Поморский</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Стоянов</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>Ч
-                <div className={styles.infoCellDetail}>Чухломин</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
+                <div className={styles.infoCell}>Т
+                <div className={styles.infoCellDetail}>Торопогрицкий</div>
                 </div>
             </td>
         </>)
     })
-    let headerArr57 = [1, 3, 5].map(i => { return (<td colspan="8"><NominalInfoSandbox thisYear = {1857} thisNominal={i} info={props.state}/></td>) })
-    let headerArrDir57 = [1, 3, 5 ].map(i => {
+    let headerArr51 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear = {1851} thisNominal={i} info={props.state}/></td>) })
+    let headerArrDir51 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
             <td>
                 <div className={styles.infoCell}>В
@@ -125,18 +88,8 @@ const Header = (props) => {
                 </div>
             </td>
             <td>
-                <div className={styles.infoCell}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
-                </div>
-            </td>
-            <td>
                 <div className={styles.infoCell}>Л
                 <div className={styles.infoCellDetail}>Лазарев</div>
-                </div>
-            </td>
-            <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Поморский</div>
                 </div>
             </td>
             <td>
@@ -149,14 +102,29 @@ const Header = (props) => {
                 <div className={styles.infoCellDetail}>Чухломин</div>
                 </div>
             </td>
+        </>)
+    })
+    let headerArr54 = [1, 3, 5, 10].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear = {1854} thisNominal={i} info={props.state}/></td>) })
+    let headerArrDir54 = [1, 3, 5, 10].map(i => {
+        return (<>
             <td>
-                <div className={styles.infoCell}>Ш
-                <div className={styles.infoCellDetail}>Шитц</div>
+                <div className={styles.infoCell}>В
+                <div className={styles.infoCellDetail}>Владимирцов</div>
                 </div>
             </td>
             <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
+                <div className={styles.infoCell}>Л
+                <div className={styles.infoCellDetail}>Лазарев</div>
+                </div>
+            </td>
+            <td>
+                <div className={styles.infoCell}>С
+                <div className={styles.infoCellDetail}>Стоянов</div>
+                </div>
+            </td>
+            <td>
+                <div className={styles.infoCell}>Ч
+                <div className={styles.infoCellDetail}>Чухломин</div>
                 </div>
             </td>
         </>)
@@ -165,11 +133,11 @@ const Header = (props) => {
         <>
             <tr>
                 <td>Номинал</td>
-                {headerArr55}{headerArr56}{headerArr57}
+                {headerArr43}{headerArr47}{headerArr51}{headerArr54}
             </tr>
             <tr>
                 <td>Кассир</td>
-            {headerArrDir55}{headerArrDir56}{headerArrDir57}
+            {headerArrDir43}{headerArrDir47}{headerArrDir51}{headerArrDir54}
             </tr>
         </>
     )
@@ -197,9 +165,18 @@ let preloader = useSelector(store => store.AdminCatalog.preloader)
         propsObj[1].nominals[3].state,
         propsObj[1].nominals[4].state,
         propsObj[1].nominals[5].state,
+        propsObj[1].nominals[6].state,
         propsObj[2].nominals[0].state,
         propsObj[2].nominals[1].state,
-        propsObj[2].nominals[2].state)
+        propsObj[2].nominals[2].state,
+        propsObj[2].nominals[3].state,
+        propsObj[2].nominals[4].state,
+        propsObj[2].nominals[5].state,
+        propsObj[2].nominals[6].state,
+        propsObj[3].nominals[0].state,
+        propsObj[3].nominals[1].state,
+        propsObj[3].nominals[2].state,
+        propsObj[3].nominals[3].state)
 
 
     let catalogArray = concatArray.map((item) => {

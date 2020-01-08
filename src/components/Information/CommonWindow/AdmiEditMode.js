@@ -8,8 +8,6 @@ const AdminEditMode = ({ description }) => {
 
   const dispatch = useDispatch()
   const deactivateEditModeRequest = () => {
-    debugger
-    console.log(description.id, description.year, description.nominal, description.number, common, varieties, astimation, kassirInfo, sourses,status, image1,image2)
     dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses,status, image1,image2 ))
   }
 
@@ -62,7 +60,6 @@ const AdminEditMode = ({ description }) => {
       }
     )
     const file = await res.json()
-
     setImage1(file.secure_url)
     setLoading(false)
   }
@@ -81,7 +78,6 @@ const AdminEditMode = ({ description }) => {
       }
     )
     const file = await res.json()
-
     setImage2(file.secure_url)
     setLoading(false)
   }
@@ -99,6 +95,7 @@ const AdminEditMode = ({ description }) => {
       value={kassirInfo} />
     Источники/ссылки: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onSoursesChange}
       value={sourses} />
+
 {/* Загрузка изображений */}
     <div>
       <div>Загрузите фото 1</div>

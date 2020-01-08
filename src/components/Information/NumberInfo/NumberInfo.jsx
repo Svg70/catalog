@@ -1,20 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import Portal from '../portal/Portal';
 import Button from '../button/Button';
 import styles from './NumberInfo.module.css';
-import { SimpleSlider } from '../Slider/Slider';
-import { NavLink } from 'react-router-dom';
-import exit from './../../../images/exit.png'
+import exit from './../../../images/exit.png';
+import { numberEditRequest, numberDeleteRequest } from './../../../redux/admin-catalog-reducer'
 import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js';
+import { useDispatch, useSelector } from 'react-redux';
+import SingleImageLoader from '../singleImageLoader';
 // import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer';
 
 const NumberInfo = ({
   isOpen, onCancel, description
 }) => {
+  const [itemNumber, setItemNumber] = useState('')
+  const [itemNumberInfo, setItemNumberInfo] = useState('')
+  const dispatch = useDispatch()
+  const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
 
-  let numbersArray = description.numbers.map((item, i) => <div style ={{display: 'flex', cursor: 'pointer'}}><EachNumberInfoContainer item={item} key={i} />,</div>)
+
+  const onItemNumberChange = (e) => {
+    setItemNumber(e.currentTarget.value)
+  }
+  const onItemNumberInfoChange = (e) => {
+    setItemNumberInfo(e.currentTarget.value)
+  }
+
+
+  const numberEdit = () => {
+    dispatch(numberEditRequest(description.id, description.year, description.nominal, description.number, itemNumber, itemNumberInfo, image1, image2))
+  }
+
+  const numberDelete = (itemNumber) => {
+    dispatch(numberDeleteRequest(description.id, description.year, description.nominal, description.number, itemNumber))
+  }
+  // Загрузка изображений start
+  const [image1, setImage1] = useState('')
+  const [image2, setImage2] = useState('')
+
+  const imageReturnFunc1 = (imageLink) =>{
+
+    setImage1(imageLink)
+  }
+  const imageReturnFunc2 = (imageLink) =>{
+    setImage2(imageLink)
+  }
+  const numbersArray = description.numbers.map((item, i) => <div style={{ display: 'flex', cursor: 'pointer' }}>
+    <EachNumberInfoContainer item={item} key={i} numberDelete = {numberDelete} /> | </div>)
   return (
     <>
       {isOpen &&
@@ -22,14 +54,26 @@ const NumberInfo = ({
           <div className={styles.modalOverlay}>
             <div className={styles.modalWindow}>
               <div className={styles.modalHeader}>
-
-                <div className={styles.modalTitle}>{description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
+                <div className={styles.modalTitle}>Известные номера типа {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
                   {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}</div>
                 <div onClick={onCancel}><img src={exit} /></div>
               </div>
               <div className={styles.modalBody}>
-                {numbersArray}
-              </div>
+              <div style={{ display: 'flex', cursor: 'pointer', flexWrap: 'wrap', width: '100%' }}>{numbersArray}</div>
+              {adminIsAuth &&
+                <>
+                  <div>
+                    Добавить номер в каталог
+                  Номер: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onItemNumberChange}
+                      value={itemNumber} />
+                    Описание: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onItemNumberInfoChange}
+                      value={itemNumberInfo} />
+                    <SingleImageLoader imageReturnFunc = {imageReturnFunc1} numberName ={1}/>
+                    <SingleImageLoader imageReturnFunc = {imageReturnFunc2} numberName ={2}/>
+                  </div>
+                  <Button onClick={numberEdit}>Внести изменения</Button>
+                </>}
+                </div>
               <div className={styles.modalFooter}>
                 <Button onClick={onCancel} invert>Закрыть</Button>
 

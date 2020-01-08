@@ -28,18 +28,17 @@ class YearInfoSandbox extends Component {
       <Fragment>
 
         
-        <div className= 'yearPointer' onClick={this.openModal}>{this.props.year}
+        <div className= 'yearPointer' onClick={this.openModal}>{this.props.thisYear}
         <div className= 'yearPointerDescr'>Смотреть общую статистику по году</div>
         </div>
         <YearInfo
-
-          description ={this.props.description}
-          title="Test Dialog window"
+          thisYear = {this.props.thisYear}
+          info ={this.props.info}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}
         >
-        {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a</p> */}
+        
         </YearInfo>
 
       </Fragment>

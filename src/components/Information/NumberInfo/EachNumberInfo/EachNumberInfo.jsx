@@ -2,15 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Portal from '../../portal/Portal';
 import Button from '../../button/Button';
-
 import './EachNumberInfo.css';
 import { SimpleSlider } from '../../Slider/Slider';
 import BigImageSliderContainer from '../../CommonWindow/BigImageSlider/EachNumberInfoContainer.js';
 
+import { useSelector, useDispatch } from 'react-redux';
+
+
+
 const EachNumberInfo = ({
-  isOpen, onCancel, onSubmit, item
+  isOpen, onCancel, item, numberDelete, props
 }) => {
-debugger
+
+  const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
+  
+  const numberDeleteSend = () => {
+    numberDelete(item.number)
+  }
+
   return (
     <>
       { isOpen &&
@@ -29,6 +38,7 @@ debugger
                 </div>
               </div>
               <div className="modalFooter">
+              {adminIsAuth && <Button onClick = {numberDeleteSend}>Удалить номер</Button>}
                 <Button onClick={onCancel} invert>Закрыть</Button>
               </div>
             </div>

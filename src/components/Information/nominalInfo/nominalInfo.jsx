@@ -8,9 +8,25 @@ import './nominalInfo.css';
 
 
 const NominalInfo = ({
-  isOpen, onCancel, onSubmit, i
+  isOpen, onCancel, onSubmit, thisNominal, thisYear, info
 }) => {
 
+  let nominalsArr = []
+  info.map(item => { 
+    for(let i = 0; i < item.row.length; i++){
+      nominalsArr = nominalsArr.concat(item.row[i].nominals)
+    
+  }})
+  let determineCellsArray = []
+  for(let i = 0; i < nominalsArr.length; i++){
+    determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
+  console.log(determineCellsArray)
+  let totalYearNominalItemsCount = 0
+  for(let i =0; i < determineCellsArray.length; i++){
+  if(determineCellsArray[i].year === thisYear && determineCellsArray[i].nominal === thisNominal){
+    totalYearNominalItemsCount = totalYearNominalItemsCount+determineCellsArray[i].numbers.length
+  } }
+  console.log(totalYearNominalItemsCount)
   return (
     <>
       {isOpen &&
@@ -18,11 +34,11 @@ const NominalInfo = ({
           <div className="modalOverlay">
             <div className="modalWindow">
               <div className="modalHeader">
-      <div className="modalTitle">Статистика по {i} рубль 1855 годa</div>
+      <div className="modalTitle">Статистика по {thisNominal} рубль {thisYear} годa</div>
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-                <div>Статистика</div>
+      <div>Известно {totalYearNominalItemsCount} коллекционных позиций</div>
 
               </div>
               <div className="modalFooter">
@@ -36,22 +52,6 @@ const NominalInfo = ({
   );
 };
 
-NominalInfo.propTypes = {
-  title: PropTypes.string,
-  info: PropTypes.string,
-  isOpen: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onSubmit: PropTypes.func,
-  children: PropTypes.node,
-};
 
-NominalInfo.defaultProps = {
-  title: 'Modal title',
-
-  isOpen: true,
-  onCancel: () => { },
-  onSubmit: () => { },
-  children: null,
-};
 
 export default NominalInfo;

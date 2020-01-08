@@ -46,7 +46,6 @@ const Modal = ({
   }
 
   const deactivateEditModeRequest = () => {
-    debugger
     setEditMode(false)
     dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses, status))
   }
@@ -134,10 +133,6 @@ const Modal = ({
                       <button onClick={deactivateEditMode}>Закрыть</button>
                     </div>
                     }
-
-                
-      
-                
               </div>
               <div className={styles.modalFooter}>
                 <Button onClick={onCancel}>Закрыть</Button>
