@@ -8,6 +8,7 @@ import { numberEditRequest, numberDeleteRequest } from './../../../redux/admin-c
 import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleImageLoader from '../singleImageLoader';
+
 // import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer';
 
 const NumberInfo = ({
@@ -64,7 +65,7 @@ const NumberInfo = ({
                 <>
                   <div>
                     Добавить номер в каталог
-                  Номер: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onItemNumberChange}
+                  Номер: <textarea required = {true} style={{ width: '90%' }} autoFocus={true} onChange={onItemNumberChange}
                       value={itemNumber} />
                     Описание: <textarea style={{ width: '90%' }} autoFocus={true} onChange={onItemNumberInfoChange}
                       value={itemNumberInfo} />
