@@ -66,9 +66,9 @@ const AddingForm = ({
                   {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}
                 </div>
 
-                {!userIsAuth && !adminIsAuth && <div>Авторизируйтесь в системе, чтобы аносить позиции в каталог</div>}
+                {!userIsAuth && !adminIsAuth && <div>Авторизируйтесь в системе, чтобы вносить позиции в каталог</div>}
 
-                {userIsAuth && !adminIsAuth && <div>дождитесь подтверждения вашей регистрации</div>}
+                {userIsAuth && !adminIsAuth && !approved &&<div>дождитесь подтверждения вашей регистрации</div>}
 
                 {approved && userIsAuth && !adminIsAuth &&
                   <div>

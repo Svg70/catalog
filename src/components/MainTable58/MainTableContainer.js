@@ -9,6 +9,7 @@ import {getCatalogList58} from './../../redux/admin-catalog-reducer'
 class MainTableContainer58 extends React.Component{
     
     componentDidMount(){
+        debugger
         this.props.getCatalogList58(3)
         
     }

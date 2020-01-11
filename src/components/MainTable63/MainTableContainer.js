@@ -13,7 +13,6 @@ class MainTableContainer63 extends React.Component{
         
     }
     render(){
-        debugger
         return <MainTable state = {this.props.state} userIsAuth={this.props.userIsAuth}/>
     }
 }

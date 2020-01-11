@@ -20,13 +20,13 @@ info.map(item => {
 let determineCellsArray = []
 for(let i = 0; i < nominalsArr.length; i++){
   determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
-console.log(determineCellsArray)
+
 let totalYearItemsCount = 0
 for(let i =0; i < determineCellsArray.length; i++){
 if(determineCellsArray[i].year === thisYear){
       totalYearItemsCount = totalYearItemsCount+determineCellsArray[i].numbers.length
 } }
-console.log(totalYearItemsCount)
+
 
 
   return (

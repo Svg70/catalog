@@ -17,6 +17,7 @@ const instance = axios.create({
 
 export const dal = {
     getItems(table) {
+        debugger
         return instance.get(`/catalog/${table}`)
     },
     changeDataBaseCeil( nominal, number, common, varieties){
@@ -60,7 +61,6 @@ export const NumbersEditingAPI = {
 }
 export const ApplicationsAPI = {
     makeNewApplication(name,  description, photo1, photo2, photo3){
-        debugger
         return instance.post(`/applications/new`, {name,  description, photo1, photo2, photo3})
     }
 }

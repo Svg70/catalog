@@ -64,7 +64,7 @@ useEffect(()=>{
         </div>} />
         <Route exact path='/catalog/catalog66' render={() => <div className="tableWrapper">
         <h2>1866-1895гг</h2>
-          {/* <MainTableContainer66 /> */}
+          <MainTableContainer66 />
       </div>} />
         <Route exact path='/catalog/catalog95' render={() => <div className="tableWrapper">
           Каталог 95-12

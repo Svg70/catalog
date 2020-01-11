@@ -33,7 +33,7 @@ class MainTable extends Component {
                 </tr>
                 <Header state={this.props.state.catalogItems} />
                 
-                <UpperInfoRow info={this.props.state.catalogItems} userIsAuth={this.props.userIsAuth} />}
+                <UpperInfoRow info={this.props.state.catalogItems} userIsAuth={this.props.userIsAuth} />
             </table>:<div><img src={Krutilka} /></div>}
             
         </div>
