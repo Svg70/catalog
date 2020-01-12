@@ -4,13 +4,15 @@ import AdminCatalogReducer from "./admin-catalog-reducer";
 import { registrationReducer } from "./registration-reducer";
 import { loginReducer } from "./auth-reducer";
 import ApplicationsReducer from "./applications-reducer";
+import StatisticsReducer from "./statistics-reducer";
 
 
 let reducers = combineReducers({
     AdminCatalog: AdminCatalogReducer,
     registrationPage: registrationReducer,
     loginPage: loginReducer,
-    applications: ApplicationsReducer
+    applications: ApplicationsReducer,
+    statistics: StatisticsReducer
 
 })
 let store = createStore(reducers, applyMiddleware(thunkMiddleware))

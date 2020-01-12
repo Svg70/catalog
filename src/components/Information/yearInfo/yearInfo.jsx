@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Portal from '../portal/Portal';
@@ -7,25 +7,40 @@ import Button from '../button/Button';
 import './yearInfo.css';
 import SimpleExample, { MyCarousel, SimpleSlider } from '../Slider/Slider';
 import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTotalYearCountThunk, getTotalYearCount } from '../../../redux/statistics-reducer';
 
 const YearInfo = ({
   isOpen, onCancel, onSubmit, info, thisYear
 }) => {
-  let nominalsArr = []
-info.map(item => { 
-  for(let i = 0; i < item.row.length; i++){
-    nominalsArr = nominalsArr.concat(item.row[i].nominals)
-  
-}})
-let determineCellsArray = []
-for(let i = 0; i < nominalsArr.length; i++){
-  determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
+ const totalYearCount = useSelector(store => store.statistics.totalYearCount)
+ const dispatch = useDispatch()
 
-let totalYearItemsCount = 0
-for(let i =0; i < determineCellsArray.length; i++){
-if(determineCellsArray[i].year === thisYear){
-      totalYearItemsCount = totalYearItemsCount+determineCellsArray[i].numbers.length
-} }
+ const getData = () => {
+  dispatch(getTotalYearCountThunk(thisYear))
+ }
+ const onClose = () => {
+  dispatch(getTotalYearCount(null))
+  onCancel()
+ }
+ useEffect(()=>{
+  
+}, [totalYearCount])
+// let nominalsArr = []
+// info.map(item => { 
+//   for(let i = 0; i < item.row.length; i++){
+//     nominalsArr = nominalsArr.concat(item.row[i].nominals)
+  
+// }})
+// let determineCellsArray = []
+// for(let i = 0; i < nominalsArr.length; i++){
+//   determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
+
+// let totalYearItemsCount = 0
+// for(let i =0; i < determineCellsArray.length; i++){
+// if(determineCellsArray[i].year === thisYear){
+//       totalYearItemsCount = totalYearItemsCount+determineCellsArray[i].numbers.length
+// } }
 
 
 
@@ -40,11 +55,12 @@ if(determineCellsArray[i].year === thisYear){
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-                    <div>В {thisYear} зафиксировано {totalYearItemsCount} коллекционных позиций</div>
+                    <div>В {thisYear} зафиксировано {totalYearCount} коллекционных позиций</div>
 
               </div>
               <div className="modalFooter">
-                <Button onClick={onCancel} invert>Закрыть</Button>
+                <Button onClick = {getData}> Запросить данные</Button>
+                <Button onClick={onClose} invert>Закрыть</Button>
               </div>
             </div>
           </div>

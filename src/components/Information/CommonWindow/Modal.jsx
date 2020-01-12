@@ -46,8 +46,9 @@ const Modal = ({
   }
 
   const deactivateEditModeRequest = () => {
+    debugger
     setEditMode(false)
-    dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses, status))
+    dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number,description.upravl, common,varieties,astimation,kassirInfo,sourses, status))
   }
 
   let [status, setNewStatus] = useState(false)

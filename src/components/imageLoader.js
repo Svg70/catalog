@@ -48,7 +48,7 @@ function ImageLoader({description}) {
   }
 
   const sendPutRequest = () => {
-     dispatch(changeDescriptionPhotos(description.id, description.year, description.nominal, description.number, image1, image2))
+     dispatch(changeDescriptionPhotos(description.id, description.year, description.nominal, description.number,description.upravl, image1, image2))
   }
 
   return (

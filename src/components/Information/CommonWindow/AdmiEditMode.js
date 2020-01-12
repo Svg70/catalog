@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../button/Button';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDescriptionCells } from '../../../redux/admin-catalog-reducer';
-
+import Button from '@material-ui/core/Button';
 
 const AdminEditMode = ({ description }) => {
   const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
   const dispatch = useDispatch()
   const deactivateEditModeRequest = () => {
-    dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, common,varieties,astimation,kassirInfo,sourses,status, image1,image2 ))
+    dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number, description.upravl, common,varieties,astimation,kassirInfo,sourses,status, image1,image2 ))
   }
 
   let [status, setNewStatus] = useState(description.status)
@@ -127,8 +127,9 @@ const AdminEditMode = ({ description }) => {
     </div>
 {/* Загрузка изображений */}
 
-    <Button onClick={deactivateEditModeRequest} disabled ={buttonDisable}>Внести изменения</Button>
-
+    <Button variant="contained" color="primary" onClick={deactivateEditModeRequest} disabled ={buttonDisable}>
+    Внести изменения
+</Button>
   </div>
 }
 export default AdminEditMode

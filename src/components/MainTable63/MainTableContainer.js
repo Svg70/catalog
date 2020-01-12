@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 import { compose } from 'redux';
 import MainTable from './mainTable';
-import {getCatalogList63} from '../../redux/admin-catalog-reducer'
+import {getCatalogList} from '../../redux/admin-catalog-reducer'
 
 class MainTableContainer63 extends React.Component{
     
     componentDidMount(){
-        this.props.getCatalogList63(4)
+        this.props.getCatalogList(4)
         
     }
     render(){
@@ -22,4 +22,4 @@ const mapStateToProps = (store) => ({
     userIsAuth: store.loginPage.userIsAuth
 })
 
-export default connect(mapStateToProps,{getCatalogList63})(MainTableContainer63)
+export default connect(mapStateToProps,{getCatalogList})(MainTableContainer63)

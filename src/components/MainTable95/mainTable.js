@@ -6,47 +6,41 @@ import styles from './mainTable.module.css'
 import CommonWindowContainer from '../Information/CommonWindow/CommonWindowContainer'
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
+import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
 class MainTable extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-
-    componentDidMount() {
-
-    }
-
     render() {
         return <div>
             {!this.props.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
                     <td>Управляющий</td>
-                    <td colspan="38">Ламанский</td>
-                    <td colspan="18">Цимсен</td>
-                    <td colspan="14">Жуковский</td>
                     <td colspan="8">Плеске</td>
+                    <td colspan="10">Тимашев</td>
+                    <td colspan="10">Коншин</td>
+                    <td colspan="24">Шипов</td>
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="7"><YearInfoSandbox thisYear={1866} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1870} info={this.props.state}/></td>
-                    <td colspan="6"><YearInfoSandbox thisYear={1872} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1874} info={this.props.state}/></td>
-                    <td colspan="6"><YearInfoSandbox thisYear={1876} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1878} info={this.props.state}/></td>
-                    <td colspan="4"><YearInfoSandbox thisYear={1880} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1882} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1884} info={this.props.state}/></td>
-                    <td colspan="3"><YearInfoSandbox thisYear={1886} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1887} info={this.props.state}/></td>
-                    <td colspan="4"><YearInfoSandbox thisYear={1889} info={this.props.state}/></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1890} info={this.props.state}/></td>
-                    <td colspan="6"><YearInfoSandbox thisYear={1892} info={this.props.state}/></td>
-                    <td colspan="4"><YearInfoSandbox thisYear={1894} info={this.props.state}/></td>
-                    <td colspan="3"><YearInfoSandbox thisYear={1895} info={this.props.state}/></td>
+                    <td colspan="6"><YearInfoSandbox thisYear={1898} thisUpravl ={'Плеске'} /></td>
+                    <td colspan="2"><YearInfoSandbox thisYear={1899} thisUpravl ={'Плеске'}/></td>
+                    <td colspan="6"><YearInfoSandbox thisYear={1898} thisUpravl ={'Тимашев'}/></td>
+                    <td colspan="2"><YearInfoSandbox thisYear={1899} thisUpravl ={'Тимашев'}/></td>
+                    <td colspan="1"><YearInfoSandbox thisYear={1905} thisUpravl ={'Тимашев'}/></td>
+                    <td colspan="1"><YearInfoSandbox thisYear={1909} thisUpravl ={'Тимашев'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1898} thisUpravl ={'Коншин'}/></td>
+                    <td colspan="1"><YearInfoSandbox thisYear={1899} thisUpravl ={'Коншин'}/></td>
+                    <td colspan="1"><YearInfoSandbox thisYear={1905} thisUpravl ={'Коншин'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1909} thisUpravl ={'Коншин'}/></td>
+                    <td colspan="1"><YearInfoSandbox thisYear={1910} thisUpravl ={'Коншин'}/></td>
+                    <td colspan="1"><YearInfoSandbox thisYear={1912} thisUpravl ={'Коншин'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1898} thisUpravl ={'Шипов'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1899} thisUpravl ={'Шипов'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1905} thisUpravl ={'Шипов'}/></td>
+                    <td colspan="9"><YearInfoSandbox thisYear={1909} thisUpravl ={'Шипов'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1910} thisUpravl ={'Шипов'}/></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1912} thisUpravl ={'Шипов'}/></td>
                 </tr>
-                <Header state={this.props.state} />
+                <Header />
                 <UpperInfoRow info={this.props.state} userIsAuth={this.props.userIsAuth} />
             </table>:<div><img src={Krutilka} /></div>}
         </div>
@@ -58,91 +52,70 @@ class MainTable extends Component {
 
 const Header = (props) => {
 
-    let headerArr66 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1866} thisNominal={i} info={props.state} /></td>) })
-    let headerArr70 = [1, 5, 10, 25, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1870} thisNominal={i} info={props.state}/></td>) })
-    let headerArr72 = [1, 3, 5, 10, 25, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1872} thisNominal={i} info={props.state}/></td>) })
-    let headerArr74 = [1, 3, 5, 10, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1874} thisNominal={i} info={props.state}/></td>) })
-    let headerArr76 = [1, 3, 5, 10, 25, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1876} thisNominal={i} info={props.state} /></td>) })
-    let headerArr78 = [1, 3, 5, 10, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1878} thisNominal={i} info={props.state}/></td>) })
-    let headerArr80 = [1, 3, 5, 10].map(i => { return (<td ><NominalInfoSandbox thisYear = {1880} thisNominal={i} info={props.state}/></td>) })
-    let headerArr82 = [1, 3, 5, 10, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1882} thisNominal={i} info={props.state}/></td>) })
-    let headerArr84 = [1, 3, 5, 10, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1884} thisNominal={i} info={props.state} /></td>) })
-    let headerArr86 = [1, 10, 100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1886} thisNominal={i} info={props.state}/></td>) })
-    let headerArr87 = [1, 3, 5, 10, 25].map(i => { return (<td ><NominalInfoSandbox thisYear = {1887} thisNominal={i} info={props.state}/></td>) })
-    let headerArr89 = [1, 3, 5, 10].map(i => { return (<td ><NominalInfoSandbox thisYear = {1889} thisNominal={i} info={props.state}/></td>) })
-    let headerArr90 = [1, 3, 5, 10, 25].map(i => { return (<td ><NominalInfoSandbox thisYear = {1890} thisNominal={i} info={props.state} /></td>) })
-    let headerArr92 = [1, 3, 5, 10, 25, 25].map(i => { return (<td ><NominalInfoSandbox thisYear = {1892} thisNominal={i} info={props.state}/></td>) })
-    let headerArr94 = [1, 3, 5, 10].map(i => { return (<td ><NominalInfoSandbox thisYear = {1894} thisNominal={i} info={props.state}/></td>) })
-    let headerArr95 = [1, 3, 5].map(i => { return (<td ><NominalInfoSandbox thisYear = {1895} thisNominal={i} info={props.state}/></td>) })
-    
+    let headerArr98Pleske = [1, 3, 5, 10, 100, 500].map(i => { return (<td ><NominalInfoSandbox thisYear = {1898} thisNominal={i} thisUpravl ={'Плеске'} /></td>) })
+    let headerArr99Pleske = [25, 50].map(i => { return (<td ><NominalInfoSandbox thisYear = {1899} thisNominal={i} thisUpravl ={'Плеске'}/></td>) })
+    let headerArr98Timashev = [1, 3, 5, 10, 100, 500].map(i => { return (<td ><NominalInfoSandbox thisYear = {1898} thisNominal={i} thisUpravl ={'Тимашев'}/></td>) })
+    let headerArr99Timashev = [25, 50].map(i => { return (<td ><NominalInfoSandbox thisYear = {1899} thisNominal={i} thisUpravl ={'Тимашев'}/></td>) })
+    let headerArr05Timashev = [3].map(i => { return (<td ><NominalInfoSandbox thisYear = {1905} thisNominal={i} thisUpravl ={'Тимашев'} /></td>) })
+    let headerArr09Timashev = [10].map(i => { return (<td ><NominalInfoSandbox thisYear = {1909} thisNominal={i} thisUpravl ={'Тимашев'} /></td>) })
+    let headerArr98Konshin = [1, 100, 500].map(i => { return (<td ><NominalInfoSandbox thisYear = {1898} thisNominal={i} thisUpravl ={'Коншин'} /></td>) })
+    let headerArr99Konshin = [50].map(i => { return (<td ><NominalInfoSandbox thisYear = {1899} thisNominal={i} thisUpravl ={'Коншин'} /></td>) })
+    let headerArr05Konshin = [3].map(i => { return (<td ><NominalInfoSandbox thisYear = {1905} thisNominal={i} thisUpravl ={'Коншин'} /></td>) })
+    let headerArr09Konshin = [5, 10, 25].map(i => { return (<td ><NominalInfoSandbox thisYear = {1909} thisNominal={i} thisUpravl ={'Коншин'}/></td>) })
+    let headerArr10Konshin = [100].map(i => { return (<td ><NominalInfoSandbox thisYear = {1910} thisNominal={i} thisUpravl ={'Коншин'} /></td>) })
+    let headerArr12Konshin = [500].map(i => { return (<td ><NominalInfoSandbox thisYear = {1912} thisNominal={i} thisUpravl ={'Коншин'}/></td>) })
+    let headerArr98Shipov = [1].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1898} thisNominal={i} thisUpravl ={'Шипов'} /></td>) })
+    let headerArr99Shipov = [50].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1899} thisNominal={i} thisUpravl ={'Шипов'} /></td>) })
+    let headerArr05Shipov = [3].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1905} thisNominal={i} thisUpravl ={'Шипов'}/></td>) })
+    let headerArr09Shipov = [5, 10, 25].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1909} thisNominal={i} thisUpravl ={'Шипов'}/></td>) })
+    let headerArr10Shipov = [100].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1910} thisNominal={i} thisUpravl ={'Шипов'}/></td>) })
+    let headerArr12Shipov = [500].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear = {1912} thisNominal={i} thisUpravl ={'Шипов'}/></td>) })
+
+
+    let headerArrShipovGovernment = [1, 50, 3, 5, 10, 25, 100, 500].map(i => {
+        return (<>
+            <td>
+                <div className={styles.infoCell}>И
+                <div className={styles.infoCellDetail}>Императорское правительство</div>
+                </div>
+            </td>
+            <td>
+                <div className={styles.infoCell}>Вр
+                <div className={styles.infoCellDetail}>Временное правительство</div>
+                </div>
+            </td>
+            <td>
+                <div className={styles.infoCell}>С
+                <div className={styles.infoCellDetail}>Советское правительство</div>
+                </div>
+            </td>
+            
+        </>)
+    })
     return (
         <>
             <tr>
                 <td>Номинал</td>
-                {headerArr66}{headerArr70}{headerArr72}{headerArr74}
-                {headerArr76}{headerArr78}{headerArr80}{headerArr82}
-                {headerArr84}{headerArr86}{headerArr87}{headerArr89}
-                {headerArr90}{headerArr92}{headerArr94}{headerArr95}
+                {headerArr98Pleske}{headerArr99Pleske}{headerArr98Timashev}{headerArr99Timashev}
+                {headerArr05Timashev}{headerArr09Timashev}{headerArr98Konshin}{headerArr99Konshin}
+                {headerArr05Konshin}{headerArr09Konshin}{headerArr10Konshin}{headerArr12Konshin}
+                {headerArr98Shipov}{headerArr99Shipov}{headerArr05Shipov}{headerArr09Shipov}
+                {headerArr10Shipov}{headerArr12Shipov}
+            </tr>
+            <tr>
+                <td>Кассир</td>
+                <td colspan="8">
+                </td>
+                <td colspan="10">
+                    </td>
+                    <td colspan="10"  style ={{textAlign: 'right'}}>
+                        Власть :
+                    </td>{headerArrShipovGovernment}
             </tr>
         </>
     )
 }
 
-
-const UpperInfoRow = (props) => {
-    
-    let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
-    return (
-        <>
-            {rowsArray}
-        </>
-    )
-}
-
-const InfoRow = (props) => {
-let preloader = useSelector(store => store.AdminCatalog.preloader)
-
-    
-    // let concatArray =[]
-    // for(let i =0; i <= props.info.row.length; i++){
-    //     concatArray = concatArray.concat(props.info.row[i].nominals)
-    // }
-    let info = props.info.row
-    let nominalsArr = []
-    info.map(item => { 
-      for(let i = 0; i < item.nominals.length; i++){
-        nominalsArr = nominalsArr.concat(item.nominals[i])
-      
-    }})
-    console.log(nominalsArr)
-    let concatArray = []
-    for(let i = 0; i < nominalsArr.length; i++){
-        concatArray = concatArray.concat(nominalsArr[i].state)}
-    console.log(concatArray)
-
-
-    let catalogArray = concatArray.map((item) => {
-        return (<>
-        
-         <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
-                <div className={styles.infoCellDetail}>Смотреть информацию</div>
-            </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} sign ={'+'} />
-                    <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
-            </td> 
-        </>
-        )
-    })
-    return (
-        <>
-        {preloader && <img src={Krutilka} />}
-        {!preloader && <tr>
-            <td>{props.info.kassir}</td>
-            {catalogArray}
-        </tr>}
-        </>)
-
-}
 export default MainTable
 
 

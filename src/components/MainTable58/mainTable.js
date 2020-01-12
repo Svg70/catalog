@@ -6,16 +6,9 @@ import styles from './mainTable.module.css'
 import CommonWindowContainer from '../Information/CommonWindow/CommonWindowContainer'
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
+import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
+// import InfoRow from './../MainTable43/mainTable'
 class MainTable extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-
-    componentDidMount() {
-
-    }
-
     render() {
         return <div>
             {!this.props.state.preloader? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
@@ -27,13 +20,13 @@ class MainTable extends Component {
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="24"><YearInfoSandbox thisYear={1858} info={this.props.state.catalogItems58} /></td>
-                    <td colspan="21"><YearInfoSandbox thisYear={1859} info={this.props.state.catalogItems58} /></td>
-                    <td colspan="15"><YearInfoSandbox thisYear={1860} info={this.props.state.catalogItems58} /></td>
-                    <td colspan="20"><YearInfoSandbox thisYear={1861} info={this.props.state.catalogItems58} /></td>
-                    <td colspan="22"><YearInfoSandbox thisYear={1862} info={this.props.state.catalogItems58} /></td>
+                    <td colspan="24"><YearInfoSandbox thisYear={1858} /></td>
+                    <td colspan="21"><YearInfoSandbox thisYear={1859} /></td>
+                    <td colspan="15"><YearInfoSandbox thisYear={1860} /></td>
+                    <td colspan="20"><YearInfoSandbox thisYear={1861} /></td>
+                    <td colspan="22"><YearInfoSandbox thisYear={1862} /></td>
                 </tr>
-                <Header state={this.props.state.catalogItems58} />
+                <Header/>
 
                     <UpperInfoRow info={this.props.state.catalogItems58} userIsAuth={this.props.userIsAuth} />
             </table>: <div><img src={Krutilka} /></div>}
@@ -43,7 +36,7 @@ class MainTable extends Component {
 
 const Header = (props) => {
 
-    let headerArr58 = [1, 3, 5, 10].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear={1858} thisNominal={i} info={props.state} /></td>) })
+    let headerArr58 = [1, 3, 5, 10].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear={1858} thisNominal={i}  /></td>) })
     let headerArrDir58 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
@@ -78,7 +71,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr59 = [1, 3, 5].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear={1859} thisNominal={i} info={props.state} /></td>) })
+    let headerArr59 = [1, 3, 5].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear={1859} thisNominal={i}  /></td>) })
     let headerArrDir59 = [1, 3, 5].map(i => {
         return (<>
             <td>
@@ -118,7 +111,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr60 = [1, 3, 5].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1860} thisNominal={i} info={props.state} /></td>) })
+    let headerArr60 = [1, 3, 5].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1860} thisNominal={i} /></td>) })
     let headerArrDir60 = [1, 3, 5].map(i => {
         return (<>
             <td>
@@ -148,7 +141,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr61 = [1, 3, 5, 10].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1861} thisNominal={i} info={props.state} /></td>) })
+    let headerArr61 = [1, 3, 5, 10].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1861} thisNominal={i} /></td>) })
     let headerArrDir61 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
@@ -179,7 +172,7 @@ const Header = (props) => {
         </>)
 
     })
-    let headerArr62 = [1, 3].map(i => { return (<td colspan="11"><NominalInfoSandbox thisYear={1862} thisNominal={i} info={props.state} /></td>) })
+    let headerArr62 = [1, 3].map(i => { return (<td colspan="11"><NominalInfoSandbox thisYear={1862} thisNominal={i} /></td>) })
     let headerArrDir62 = [1, 3].map(i => {
         return (<>
             <td>
@@ -254,56 +247,6 @@ const Header = (props) => {
     )
 }
 
-
-const UpperInfoRow = (props) => {
-
-    let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
-    return (
-        <>
-            {rowsArray}
-        </>
-    )
-}
-
-const InfoRow = (props) => {
-
-
-    let propsObj = props.info.row
-    let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
-        propsObj[0].nominals[3].state, propsObj[1].nominals[0].state, propsObj[1].nominals[1].state, propsObj[1].nominals[2].state, propsObj[2].nominals[0].state,
-        propsObj[2].nominals[1].state,
-        propsObj[2].nominals[2].state,
-        propsObj[3].nominals[0].state,
-        propsObj[3].nominals[1].state,
-        propsObj[3].nominals[2].state,
-        propsObj[3].nominals[3].state,
-        propsObj[4].nominals[0].state,
-        propsObj[4].nominals[1].state,
-
-    )
-
-
-    let catalogArray = concatArray.map((item) => {
-        return (<>
-
-            <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
-                <div className={styles.infoCellDetail}>Смотреть информацию</div>
-            </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} sign={'+'} />
-                    <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
-            </td>
-        </>
-        )
-    })
-    return (
-        <>
-            <tr>
-                <td>{props.info.kassir}</td>
-                {catalogArray}
-            </tr>
-        </>)
-
-}
 export default MainTable
 
 

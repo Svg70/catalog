@@ -6,6 +6,7 @@ import styles from './mainTable.module.css'
 import CommonWindowContainer from '../Information/CommonWindow/CommonWindowContainer'
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
+import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
 class MainTable extends Component {
     constructor(props) {
         super(props)
@@ -27,11 +28,11 @@ class MainTable extends Component {
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="42"><YearInfoSandbox thisYear={1855} info={this.props.state.catalogItems}/></td>
-                    <td colspan="42"><YearInfoSandbox thisYear={1856} info={this.props.state.catalogItems}/></td>
-                    <td colspan="24"><YearInfoSandbox thisYear={1857} info={this.props.state.catalogItems}/></td>
+                    <td colspan="42"><YearInfoSandbox thisYear={1855} /></td>
+                    <td colspan="42"><YearInfoSandbox thisYear={1856} /></td>
+                    <td colspan="24"><YearInfoSandbox thisYear={1857} /></td>
                 </tr>
-                <Header state={this.props.state.catalogItems} />
+                <Header />
                 
                 <UpperInfoRow info={this.props.state.catalogItems} userIsAuth={this.props.userIsAuth} />
             </table>:<div><img src={Krutilka} /></div>}
@@ -44,7 +45,7 @@ class MainTable extends Component {
 
 
 const Header = (props) => {
-    let headerArr55 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear = {1855} thisNominal={i} info={props.state} /></td>) })
+    let headerArr55 = [1, 3, 5, 10, 25, 50, 100].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear = {1855} thisNominal={i}  /></td>) })
     let headerArrDir55 = [1, 3, 5, 10, 25, 50, 100].map(i => {
         return (<>
             <td>
@@ -79,7 +80,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr56 = [1, 3, 5, 10, 25, 50].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear = {1856} thisNominal={i} info={props.state}/></td>) })
+    let headerArr56 = [1, 3, 5, 10, 25, 50].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear = {1856} thisNominal={i} /></td>) })
     let headerArrDir56 = [1, 3, 5, 10, 25, 50].map(i => {
         return (<>
             <td>
@@ -119,7 +120,7 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArr57 = [1, 3, 5].map(i => { return (<td colspan="8"><NominalInfoSandbox thisYear = {1857} thisNominal={i} info={props.state}/></td>) })
+    let headerArr57 = [1, 3, 5].map(i => { return (<td colspan="8"><NominalInfoSandbox thisYear = {1857} thisNominal={i} /></td>) })
     let headerArrDir57 = [1, 3, 5 ].map(i => {
         return (<>
             <td>
@@ -179,53 +180,6 @@ const Header = (props) => {
 }
 
 
-const UpperInfoRow = (props) => {
-    
-    let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
-    return (
-        <>
-           {rowsArray}
-        </>
-    )
-}
-
-const InfoRow = (props) => {
-
-
-    let propsObj = props.info.row
-    let concatArray = propsObj[0].nominals[0].state.concat(propsObj[0].nominals[1].state, propsObj[0].nominals[2].state,
-        propsObj[0].nominals[3].state, propsObj[0].nominals[4].state, propsObj[0].nominals[5].state, propsObj[0].nominals[6].state, propsObj[1].nominals[0].state,
-        propsObj[1].nominals[1].state,
-        propsObj[1].nominals[2].state,
-        propsObj[1].nominals[3].state,
-        propsObj[1].nominals[4].state,
-        propsObj[1].nominals[5].state,
-        propsObj[2].nominals[0].state,
-        propsObj[2].nominals[1].state,
-        propsObj[2].nominals[2].state)
-
-
-    let catalogArray = concatArray.map((item) => {
-        return (<>
-        
-         <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
-                <div className={styles.infoCellDetail}>Смотреть информацию</div>
-            </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} sign ={'+'} />
-                    <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
-            </td> 
-        </>
-        )
-    })
-    return (
-        <>
-        <tr>
-            <td>{props.info.kassir}</td>
-            {catalogArray}
-        </tr>
-        </>)
-
-}
 export default MainTable
 
 

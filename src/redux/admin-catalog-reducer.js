@@ -10,6 +10,7 @@ const SET_CATALOG_LIST_66 = 'SET_CATALOG_LIST_66'
 const SET_CATALOG_LIST_66_A = 'SET_CATALOG_LIST_66_A'
 const SET_CATALOG_LIST_66_B = 'SET_CATALOG_LIST_66_B'
 const SET_CATALOG_LIST_66_C = 'SET_CATALOG_LIST_66_C'
+const SET_CATALOG_LIST_95 = 'SET_CATALOG_LIST_95'
 const IS_LOADING = 'IS_LOADING'
 const SET_AUTH = 'SET_AUTH'
 const BUTTON_DISABLE = 'BUTTON_DISABLE'
@@ -25,7 +26,8 @@ let initialstate = {
     catalogItems66:[],
     catalogItems66a:[],
     catalogItems66b:[],
-    catalogItems66c:[]
+    catalogItems66c:[],
+    catalogItems95:[]
 }
 
 let AdminCatalogReducer = (state = initialstate, action) => {
@@ -68,12 +70,15 @@ let AdminCatalogReducer = (state = initialstate, action) => {
             let stateCopy = { ...state, catalogItems66c: action.response }
             return stateCopy
         }
+        case SET_CATALOG_LIST_95:{
+            let stateCopy = { ...state, catalogItems95: action.response }
+            return stateCopy
+        }
         case IS_LOADING: {
             let stateCopy = { ...state, preloader: action.loadingStatus }
             return stateCopy
         }
         case BUTTON_DISABLE: {
-
             let stateCopy = { ...state, buttonDisable: action.buttonStatus }
             return stateCopy
         }
@@ -114,6 +119,9 @@ const setCatalogList66b = (response) => {
 const setCatalogList66c = (response) => {
     return { type: SET_CATALOG_LIST_66_C, response }
 }
+const setCatalogList95 = (response) => {
+    return { type: SET_CATALOG_LIST_95, response }
+}
 const isLoading = (loadingStatus) => {
     return { type: IS_LOADING, loadingStatus }
 }
@@ -122,164 +130,73 @@ export const setAuth = (loginStatus) => {
     return { type: SET_AUTH, loginStatus }
 }
 
+const catalogListSelector = (table, dispatch, response) => {
+    if (table === 1) dispatch(setCatalogList43(response))
+    if (table === 2) dispatch(setCatalogList(response))
+    if (table === 3) dispatch(setCatalogList58(response))
+    if (table === 4) dispatch(setCatalogList63(response))
+    if (table === 5) dispatch(setCatalogList66(response))
+    if (table === 6) dispatch(setCatalogList66a(response))
+    if (table === 7) dispatch(setCatalogList66b(response))
+    if (table === 8) dispatch(setCatalogList66c(response))
+    if (table === 9) dispatch(setCatalogList95(response))
+    dispatch(isLoading(false))
+}
 
 export const getCatalogList = (table) => {
     return (dispatch) => {
         dispatch(isLoading(true))
         dal.getItems(table).then(response => {
-            dispatch(setCatalogList(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
+            catalogListSelector(table, dispatch, response)
             }
         )
     }
 }
-export const getCatalogList43 = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList43(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
+export const changeDataBaseCeilInfo = (nominal, number, common, varieties) =>
+    async (dispatch) => {
+        await dal.changeDataBaseCeil(nominal, number, common, varieties)
+        console.log('change in dataBase made')
+        // dal.getItems().then(dispatch(getCatalogList()))
     }
+const tableSelector = (year, id, dispatch, response) => {
+    if (year >= 1843 && year <= 1854) dispatch(setCatalogList43(response.data.catalogItems))
+    if (year >= 1855 && year <= 1857) dispatch(setCatalogList(response.data.catalogItems))
+    if (year >= 1858 && year <= 1862) dispatch(setCatalogList58(response.data.catalogItems))
+    if (year >= 1863 && year <= 1865) dispatch(setCatalogList63(response.data.catalogItems))
+    if (year >= 1866 && year <= 1895 && id >= 1 && id <= 20) dispatch(setCatalogList66(response.data.catalogItems))
+    if (year >= 1866 && year <= 1895 && id >= 21 && id <= 40) dispatch(setCatalogList66a(response.data.catalogItems))
+    if (year >= 1866 && year <= 1895 && id >= 41 && id <= 60) dispatch(setCatalogList66b(response.data.catalogItems))
+    if (year >= 1866 && year <= 1895 && id >= 61 && id <= 78) dispatch(setCatalogList66c(response.data.catalogItems))
+    if (year >= 1898 && year <= 1912) dispatch(setCatalogList95(response.data.catalogItems))
 }
-export const getCatalogList58 = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList58(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
-    }
-}
-
-export const getCatalogList63 = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList63(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
-    }
-}
-export const getCatalogList66 = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList66(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
-    }
-}
-export const getCatalogList66a = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList66a(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
-    }
-}
-export const getCatalogList66b = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList66b(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
-    }
-}
-export const getCatalogList66c = (table) => {
-    return (dispatch) => {
-        dispatch(isLoading(true))
-        dal.getItems(table).then(response => {
-            dispatch(setCatalogList66c(response.data[0].catalogItems),
-                dispatch(isLoading(false)))
-            }
-        )
-    }
-}
-
-// export const changeDataBaseCeilInfo = (nominal, number, common, varieties) =>
-//     async (dispatch) => {
-//         await dal.changeDataBaseCeil(nominal, number, common, varieties)
-//         console.log('change in dataBase made')
-//         // dal.getItems().then(dispatch(getCatalogList()))
-//     }
-const tableChange = (year, dispatch, response) => {
-    if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
-        if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
-        if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
-        if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
-        if(year>=1866 && year <=1895)dispatch(setCatalogList66(response.data.catalogItems))
-}
-export const changeDescriptionCells = (id, year, nominal, number, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2) =>
+export const changeDescriptionCells = (id, year, nominal, number,upravl, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2) =>
 
     async (dispatch, getStore) => {
-   
         dispatch(buttonDisabledAC(true))
-        let response = await TableAPI.changeDescriptionCells(id, year, nominal, number, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2)
-        
-        if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
-        if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
-        if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
-        if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=1 && id<=20)dispatch(setCatalogList66(response.data.catalogItems))
-      
-        if(year>=1866 && year <=1895 && id>=21 && id<=40)dispatch(setCatalogList66a(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=41 && id<=60)dispatch(setCatalogList66b(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=61 && id<=78)dispatch(setCatalogList66c(response.data.catalogItems))
+        let response = await TableAPI.changeDescriptionCells(id, year, nominal, number,upravl, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2)
+        tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     };
 
-export const changeDescriptionPhotos = (id, year, nominal, number, photo1, photo2) =>
-    
-    async (dispatch, getStore) => {
-        
+export const changeDescriptionPhotos = (id, year, nominal, number,upravl, photo1, photo2) =>
+    async (dispatch, getStore) => {  
         dispatch(buttonDisabledAC(true))
-        let response = await TableAPI.changeDescriptionPhotos(id, year, nominal, number, photo1, photo2)
-        debugger
-        if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
-        if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
-        if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
-        if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=1 && id<=20)dispatch(setCatalogList66(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=21 && id<=40)dispatch(setCatalogList66a(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=41 && id<=60)dispatch(setCatalogList66b(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=61 && id<=78)dispatch(setCatalogList66c(response.data.catalogItems))
+        let response = await TableAPI.changeDescriptionPhotos(id, year, nominal, number,upravl, photo1, photo2)
+        tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     };
 export const numberEditRequest = (id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ) => 
     async (dispatch, getStore) =>{
         dispatch(buttonDisabledAC(true))
         let response = await NumbersEditingAPI.numberEdit(id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 )
-        if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
-        if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
-        if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
-        if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems)) 
-        if(year>=1866 && year <=1895 && id>=1 && id<=20)dispatch(setCatalogList66(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=21 && id<=40)dispatch(setCatalogList66a(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=41 && id<=60)dispatch(setCatalogList66b(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=61 && id<=78)dispatch(setCatalogList66c(response.data.catalogItems))
+        tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     }
 export const numberDeleteRequest = (id, year, nominal, number, itemNumber) => 
     async (dispatch, getStore) =>{
         dispatch(buttonDisabledAC(true))
         let response = await NumbersEditingAPI.numberDelete(id, year, nominal, number, itemNumber)
-        if(year>=1843 && year <=1854)dispatch(setCatalogList43(response.data.catalogItems))
-        if(year>=1855 && year <=1857)dispatch(setCatalogList(response.data.catalogItems))
-        if(year>=1858 && year <=1862)dispatch(setCatalogList58(response.data.catalogItems))
-        if(year>=1863 && year <=1865)dispatch(setCatalogList63(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=1 && id<=20)dispatch(setCatalogList66(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=21 && id<=40)dispatch(setCatalogList66a(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=41 && id<=60)dispatch(setCatalogList66b(response.data.catalogItems))
-        if(year>=1866 && year <=1895 && id>=61 && id<=78)dispatch(setCatalogList66c(response.data.catalogItems))
+        tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     }
 
