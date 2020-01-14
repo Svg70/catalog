@@ -27,10 +27,9 @@ const InfoRow = (props) => {
         return (<>
 
             <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
-                <div className={styles.infoCellDetail}>Смотреть информацию</div>
             </div> :
-                <div className={styles.infoCell}><AddingFormSandbox description={item} sign={'+'} />
-                    <div className={styles.infoCellDetail}>Запрос на добавление в каталог</div></div>}
+                <div className={styles.infoCell} ><AddingFormSandbox description={item} sign={'+'} />
+                </div>}
             </td>
         </>
         )

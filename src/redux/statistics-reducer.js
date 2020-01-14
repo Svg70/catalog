@@ -29,10 +29,10 @@ export const getTotalYearCount = (count) => {
 export const getTotalYearNominalCount = (count) => {
     return { type: GET_TOTAL_YEAR_NOMINAL_COUNT, count }
 }
-export const getTotalYearCountThunk = (year) => async (dispatch) => {
-    if (year >= 1843 && year <= 1865) {
-        let totalCount = await StatisticsAPI.yearTotalCount(year)
+export const getTotalYearCountThunk = (year, upravl) => async (dispatch) => {
+    if ((year >= 1843 && year <= 1865) || (year >= 1895 && year <= 1912)) {
         debugger
+        let totalCount = await StatisticsAPI.yearTotalCount(year, upravl)
         dispatch(getTotalYearCount(totalCount))
     }
     if (year >= 1866 && year <= 1895) {
@@ -40,9 +40,9 @@ export const getTotalYearCountThunk = (year) => async (dispatch) => {
         dispatch(getTotalYearCount(totalCount))
     }
 }
-export const getTotalYearNominalCountThunk = (year,nominal) => async (dispatch) => {
-    if (year >= 1843 && year <= 1865) {
-        let totalCount = await StatisticsAPI.yearNominalTotalCount(year, nominal)
+export const getTotalYearNominalCountThunk = (year,nominal, upravl) => async (dispatch) => {
+    if ((year >= 1843 && year <= 1865) || (year >= 1895 && year <= 1912)) {
+        let totalCount = await StatisticsAPI.yearNominalTotalCount(year, nominal, upravl)
         dispatch(getTotalYearNominalCount(totalCount))
     }
     if (year >= 1866 && year <= 1895) {

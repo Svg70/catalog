@@ -10,13 +10,13 @@ import { getTotalYearNominalCountThunk, getTotalYearNominalCount } from '../../.
 
 
 const NominalInfo = ({
-  isOpen, onCancel, onSubmit, thisNominal, thisYear, info
+  isOpen, onCancel, onSubmit, thisNominal, thisYear, info, thisUpravl
 }) => {
   const totalYearNominalCount = useSelector(store => store.statistics.totalYearNominalCount)
   const dispatch = useDispatch()
  
   const getData = () => {
-   dispatch(getTotalYearNominalCountThunk(thisYear, thisNominal))
+   dispatch(getTotalYearNominalCountThunk(thisYear, thisNominal, thisUpravl))
   }
   const onClose = () => {
    dispatch(getTotalYearNominalCount(null))

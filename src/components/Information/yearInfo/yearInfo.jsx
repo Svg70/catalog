@@ -11,36 +11,37 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTotalYearCountThunk, getTotalYearCount } from '../../../redux/statistics-reducer';
 
 const YearInfo = ({
-  isOpen, onCancel, onSubmit, info, thisYear
+  isOpen, onCancel, onSubmit, info, thisYear, thisUpravl
 }) => {
- const totalYearCount = useSelector(store => store.statistics.totalYearCount)
- const dispatch = useDispatch()
+  const totalYearCount = useSelector(store => store.statistics.totalYearCount)
+  const dispatch = useDispatch()
 
- const getData = () => {
-  dispatch(getTotalYearCountThunk(thisYear))
- }
- const onClose = () => {
-  dispatch(getTotalYearCount(null))
-  onCancel()
- }
- useEffect(()=>{
-  
-}, [totalYearCount])
-// let nominalsArr = []
-// info.map(item => { 
-//   for(let i = 0; i < item.row.length; i++){
-//     nominalsArr = nominalsArr.concat(item.row[i].nominals)
-  
-// }})
-// let determineCellsArray = []
-// for(let i = 0; i < nominalsArr.length; i++){
-//   determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
+  const getData = () => {
+    debugger
+    dispatch(getTotalYearCountThunk(thisYear, thisUpravl))
+  }
+  const onClose = () => {
+    dispatch(getTotalYearCount(null))
+    onCancel()
+  }
+  useEffect(() => {
 
-// let totalYearItemsCount = 0
-// for(let i =0; i < determineCellsArray.length; i++){
-// if(determineCellsArray[i].year === thisYear){
-//       totalYearItemsCount = totalYearItemsCount+determineCellsArray[i].numbers.length
-// } }
+  }, [totalYearCount])
+  // let nominalsArr = []
+  // info.map(item => { 
+  //   for(let i = 0; i < item.row.length; i++){
+  //     nominalsArr = nominalsArr.concat(item.row[i].nominals)
+
+  // }})
+  // let determineCellsArray = []
+  // for(let i = 0; i < nominalsArr.length; i++){
+  //   determineCellsArray = determineCellsArray.concat(nominalsArr[i].state)}
+
+  // let totalYearItemsCount = 0
+  // for(let i =0; i < determineCellsArray.length; i++){
+  // if(determineCellsArray[i].year === thisYear){
+  //       totalYearItemsCount = totalYearItemsCount+determineCellsArray[i].numbers.length
+  // } }
 
 
 
@@ -55,11 +56,11 @@ const YearInfo = ({
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-                    <div>В {thisYear} зафиксировано {totalYearCount} коллекционных позиций</div>
+                <div>В {thisYear} зафиксировано {totalYearCount} коллекционных позиций</div>
 
               </div>
               <div className="modalFooter">
-                <Button onClick = {getData}> Запросить данные</Button>
+                <Button onClick={getData}> Запросить данные</Button>
                 <Button onClick={onClose} invert>Закрыть</Button>
               </div>
             </div>

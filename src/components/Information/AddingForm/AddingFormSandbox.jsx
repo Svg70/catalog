@@ -28,7 +28,7 @@ class AddingFormSandbox extends Component {
       <Fragment>
 
         
-        <span onClick={this.openModal}>{this.props.sign}</span>
+        <span onClick={this.openModal} title ={`добавление в каталог ${this.props.description.nominal} руб. ${this.props.description.year} года ${this.props.description.upravl}-${this.props.description.kassir}-${this.props.description.director}`}>{this.props.sign}</span>
         <AddingForm
 
           description ={this.props.description}

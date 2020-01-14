@@ -21,6 +21,7 @@ import LoginContainer from './components/logreg/Login/LoginContainer';
 import { connect } from 'react-redux';
 import {checkAutorization} from './redux/auth-reducer'
 import ApplicationAdmin from './components/applicationAdmin/applicationAdmin';
+import CatalogMainPage from './components/CatalogMainPage/CatalogMainPage';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 function App(props) {
 
@@ -46,28 +47,21 @@ useEffect(()=>{
           <LoginContainer />
         </div>} />
         
-        <Route exact path='/catalog' render={() => <div className="tableWrapper">
-          <div><NavLink to='/catalog/catalog43'>Электронный каталог 1</NavLink></div>
-          <div><NavLink to='/catalog/catalog66'>Электронный каталог 2</NavLink></div>
-          <div><NavLink to='/catalog/catalog95'>Электронный каталог 3</NavLink></div>
-          <div><NavLink to='/catalog/catalogsoviets'>Электронный каталог 4</NavLink></div>
-        </div>} />
+        <Route exact path='/catalog' render={() => <CatalogMainPage/>} />
         <Route exact path='/catalog/catalog43' render={() => <div className="tableWrapper">
-          <h2>1843-1854гг</h2>
+          <h4>1843-1854гг</h4>
           <MainTableContainer43 />
-          <h2>1855-1857гг</h2>
+          <h4>1855-1857гг</h4>
           <MainTableContainer />
-          <h2>1858-1862гг</h2>
+          <h4>1858-1862гг</h4>
           <MainTableContainer58/>
-          <h2>1863-1865гг</h2>
+          <h4>1863-1865гг</h4>
           <MainTableContainer63/>
         </div>} />
         <Route exact path='/catalog/catalog66' render={() => <div className="tableWrapper">
-        <h2>1866-1895гг</h2>
           <MainTableContainer66 />
       </div>} />
         <Route exact path='/catalog/catalog95' render={() => <div className="tableWrapper">
-          <h1>Каталог 95-12</h1>
           <MainTableContainer95/>
       </div>} />
         <Route exact path='/catalog/catalogsoviets' render={() => <div className="tableWrapper">

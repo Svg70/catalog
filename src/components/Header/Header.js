@@ -48,7 +48,7 @@ const Header = (props) => {
             <div className={styles.secondHeader}>
                 <div className={styles.navBar}>
                     <a className={styles.links}>Банкноты</a>
-                    <a className={styles.links}>Каталог</a>
+                    <div className={styles.navigationLinkTop}><NavLink to = '/catalog' className={styles.links} >Каталог</NavLink></div>
                     <a className={styles.links}>Наши контакты</a>
                     {adminIsAuth
                     ?<div style={{display: 'flex', width: '30%', justifyContent: 'space-between'}}>

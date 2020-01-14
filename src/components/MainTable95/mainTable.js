@@ -9,7 +9,7 @@ import Krutilka from './../../images/preloader.gif'
 import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
 class MainTable extends Component {
     render() {
-        return <div>
+        return <div className={styles.scrollArea}>
             {!this.props.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
@@ -75,19 +75,13 @@ const Header = (props) => {
     let headerArrShipovGovernment = [1, 50, 3, 5, 10, 25, 100, 500].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>И
-                <div className={styles.infoCellDetail}>Императорское правительство</div>
-                </div>
+                <div className={styles.infoCell} title = {'Императорское правительство'}>И</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Вр
-                <div className={styles.infoCellDetail}>Временное правительство</div>
-                </div>
+                <div className={styles.infoCell} title = {'Временное правительство'}>Вр</div>
             </td>
             <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Советское правительство</div>
-                </div>
+                <div className={styles.infoCell} title = {'Советское правительство'}>С</div>
             </td>
             
         </>)

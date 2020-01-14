@@ -24,16 +24,17 @@ class NominalInfoSandbox extends Component {
   }
 
   render() {
-
+    let styleDef = (this.props.thisYear <=1895 && this.props.thisYear >= 1866)?{writingMode: 'vertical-lr', fontSize: '8px', marginLeft: '-3px',marginRight: '-3px'}:null
     return (
+      
       <Fragment>
-        <div className= 'nominalPointer' onClick={this.openModal}>{this.props.thisNominal}
-        <div className= 'nominalPointerDescr'>Смотреть общую статистику по номиналу</div>
+        <div className= 'nominalPointer' onClick={this.openModal} title ={`Смотреть общую статистику по номиналу`} style = {styleDef}>{this.props.thisNominal}
         </div>
         <NominalInfo
           info = {this.props.info}
           thisYear = {this.props.thisYear}
           thisNominal ={this.props.thisNominal}
+          thisUpravl = {this.props.thisUpravl}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
           onSubmit={this.handleSubmit}

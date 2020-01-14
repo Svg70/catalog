@@ -6,8 +6,8 @@ import * as axios from "axios";
 const instance = axios.create({
     withCredentials: false,
     // withCredentials: false,
-    baseURL: 'https://serene-cliffs-91865.herokuapp.com',
-    // baseURL: 'http://localhost:80',
+    // baseURL: 'https://serene-cliffs-91865.herokuapp.com',
+    baseURL: 'http://localhost:80',
     headers:{"Content-Type": "application/json",
     'Access-Control-Allow-Origin':'*'},
     
@@ -66,16 +66,17 @@ export const ApplicationsAPI = {
 }
 
 export const StatisticsAPI = {
-    yearTotalCount(year){
-        return instance.get(`/statistics/year/${year}`).then(response => 
+    yearTotalCount(year, upravl){
+        debugger
+        return instance.get(`/statistics/year/${year}/upravl/${upravl}`).then(response => 
             response.data.totalCount)
     },
     year1866TotalCount(year){
         return instance.get(`/statistics/year1866/${year}`).then(response => 
             response.data.totalCount)
     },
-    yearNominalTotalCount(year, nominal){
-        return instance.get(`/statistics/year/${year}/nominal/${nominal}`).then(response => 
+    yearNominalTotalCount(year, nominal, upravl){
+        return instance.get(`/statistics/year/${year}/nominal/${nominal}/upravl/${upravl}`).then(response => 
             response.data.totalCount)
     },
     yearNominal1866TotalCount(year,nominal){

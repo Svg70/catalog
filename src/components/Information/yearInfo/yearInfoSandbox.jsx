@@ -28,11 +28,12 @@ class YearInfoSandbox extends Component {
       <Fragment>
 
         
-        <div className= 'yearPointer' onClick={this.openModal}>{this.props.thisYear}
-        <div className= 'yearPointerDescr'>Смотреть общую статистику по году</div>
+        <div className= 'yearPointer' onClick={this.openModal} title={`Смотреть общую статистику по ${this.props.thisYear} году`}>{this.props.thisYear}
+        
         </div>
         <YearInfo
           thisYear = {this.props.thisYear}
+          thisUpravl = {this.props.thisUpravl}
           info ={this.props.info}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}

@@ -10,7 +10,7 @@ import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
 // import InfoRow from './../MainTable43/mainTable'
 class MainTable extends Component {
     render() {
-        return <div>
+        return <div className={styles.scrollArea}>
             {!this.props.state.preloader? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
                 <tr>
@@ -20,11 +20,11 @@ class MainTable extends Component {
                 </tr>
                 <tr>
                     <td>Год</td>
-                    <td colspan="24"><YearInfoSandbox thisYear={1858} /></td>
-                    <td colspan="21"><YearInfoSandbox thisYear={1859} /></td>
-                    <td colspan="15"><YearInfoSandbox thisYear={1860} /></td>
-                    <td colspan="20"><YearInfoSandbox thisYear={1861} /></td>
-                    <td colspan="22"><YearInfoSandbox thisYear={1862} /></td>
+                    <td colspan="24"><YearInfoSandbox thisYear={1858} thisUpravl ={'Ростовцев'}/></td>
+                    <td colspan="21"><YearInfoSandbox thisYear={1859} thisUpravl ={'Ламанский'}/></td>
+                    <td colspan="15"><YearInfoSandbox thisYear={1860} thisUpravl ={'Ламанский'}/></td>
+                    <td colspan="20"><YearInfoSandbox thisYear={1861} thisUpravl ={'Ламанский'}/></td>
+                    <td colspan="22"><YearInfoSandbox thisYear={1862} thisUpravl ={'Ламанский'}/></td>
                 </tr>
                 <Header/>
 
@@ -36,199 +36,137 @@ class MainTable extends Component {
 
 const Header = (props) => {
 
-    let headerArr58 = [1, 3, 5, 10].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear={1858} thisNominal={i}  /></td>) })
+    let headerArr58 = [1, 3, 5, 10].map(i => { return (<td colspan="6"><NominalInfoSandbox thisYear={1858} thisNominal={i} thisUpravl ={'Ростовцев'} /></td>) })
     let headerArrDir58 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
-                </div>
+                <div className={styles.infoCell} title ={`Ерогин`}>Е</div>
             </td>
             <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Поморский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Поморский`}>П</div>
             </td>
             <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Семенов</div>
-                </div>
+                <div className={styles.infoCell} title ={`Семенов`}>С</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Ч
-                <div className={styles.infoCellDetail}>Чухломин</div>
-                </div>
+                <div className={styles.infoCell} title ={`Чухломин`}>Ч</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Ш
-                <div className={styles.infoCellDetail}>Шитц</div>
-                </div>
+                <div className={styles.infoCell} title ={`Шитц`}>Ш</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
-                </div>
+                <div className={styles.infoCell} title ={`Щерба`}>Щ</div>
             </td>
         </>)
     })
-    let headerArr59 = [1, 3, 5].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear={1859} thisNominal={i}  /></td>) })
+    let headerArr59 = [1, 3, 5].map(i => { return (<td colspan="7"><NominalInfoSandbox thisYear={1859} thisNominal={i} thisUpravl ={'Ламанский'} /></td>) })
     let headerArrDir59 = [1, 3, 5].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>Б
-                <div className={styles.infoCellDetail}>Березайский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Березайский`}>Б</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
-                </div>
+                <div className={styles.infoCell} title ={`Ерогин`}>Е</div>
             </td>
             <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Павловский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Павловский`}>П</div>
             </td>
             <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Семенов</div>
-                </div>
+                <div className={styles.infoCell} title ={`Семенов`}>С</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Ч
-                <div className={styles.infoCellDetail}>Чухломин</div>
-                </div>
+                <div className={styles.infoCell} title ={`Чухломин`}>Ч</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Ш
-                <div className={styles.infoCellDetail}>Шитц</div>
-                </div>
+                <div className={styles.infoCell} title ={`Шитц`}>Ш</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
-                </div>
+                <div className={styles.infoCell} title ={`Щерба`}>Щ</div>
             </td>
         </>)
     })
-    let headerArr60 = [1, 3, 5].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1860} thisNominal={i} /></td>) })
+    let headerArr60 = [1, 3, 5].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1860} thisNominal={i} thisUpravl ={'Ламанский'}/></td>) })
     let headerArrDir60 = [1, 3, 5].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>Б
-                <div className={styles.infoCellDetail}>Березайский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Березайский`}>Б</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
-                </div>
+                <div className={styles.infoCell} title ={`Ерогин`}>Е</div>
             </td>
             <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Павловский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Павловский`}>П</div>
             </td>
             <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Семенов</div>
-                </div>
+                <div className={styles.infoCell} title ={`Семенов`}>С</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
-                </div>
+                <div className={styles.infoCell} title ={`Щерба`}>Щ</div>
             </td>
         </>)
     })
-    let headerArr61 = [1, 3, 5, 10].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1861} thisNominal={i} /></td>) })
+    let headerArr61 = [1, 3, 5, 10].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1861} thisNominal={i} thisUpravl ={'Ламанский'} /></td>) })
     let headerArrDir61 = [1, 3, 5, 10].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>Б
-                <div className={styles.infoCellDetail}>Березайский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Березайский`}>Б</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
-                </div>
+                <div className={styles.infoCell} title ={`Ерогин`}>Е</div>
             </td>
             <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Павловский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Павловский`}>П</div>
             </td>
             <td>
-                <div className={styles.infoCell}>С
-                <div className={styles.infoCellDetail}>Семенов</div>
-                </div>
+                <div className={styles.infoCell} title ={`Семенов`}>С</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
-                </div>
+                <div className={styles.infoCell} title ={`Щерба`}>Щ</div>
             </td>
         </>)
 
     })
-    let headerArr62 = [1, 3].map(i => { return (<td colspan="11"><NominalInfoSandbox thisYear={1862} thisNominal={i} /></td>) })
+    let headerArr62 = [1, 3].map(i => { return (<td colspan="11"><NominalInfoSandbox thisYear={1862} thisNominal={i} thisUpravl ={'Ламанский'}/></td>) })
     let headerArrDir62 = [1, 3].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell}>Б
-                <div className={styles.infoCellDetail}>Березайский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Березайский`}>Б</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Е
+                <div className={styles.infoCell} title ={`Ерогин`}>Е
                 <div className={styles.infoCellDetail}>Ерогин</div>
                 </div>
             </td>
             <td>
-                <div className={styles.infoCell}>Л
+                <div className={styles.infoCell} title ={`Лихошерстов`}>Л
                 <div className={styles.infoCellDetail}>Лихошерстов</div>
                 </div>
             </td>
             <td>
-                <div className={styles.infoCell}>Н
-                <div className={styles.infoCellDetail}>Наумов</div>
-                </div>
+                <div className={styles.infoCell} title ={`Наумов`}>Н</div>
             </td>
             <td>
-                <div className={styles.infoCell}>П
-                <div className={styles.infoCellDetail}>Павловский</div>
-                </div>
+                <div className={styles.infoCell} title ={`Павловский`}>П</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Р
-                <div className={styles.infoCellDetail}>Рорбек</div>
-                </div>
+                <div className={styles.infoCell} title ={`Рорбек`}>Р</div>
             </td>
             <td>
-                <div className={styles.infoCell}>С
+                <div className={styles.infoCell} title ={`Семенов`}>С
                 <div className={styles.infoCellDetail}>Семенов</div>
                 </div>
             </td>
             <td>
-                <div className={styles.infoCell}>Ф
-                <div className={styles.infoCellDetail}>Фревиль</div>
-                </div>
+                <div className={styles.infoCell} title ={`Фревиль`}>Ф</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Ш
-                <div className={styles.infoCellDetail}>Шилов</div>
-                </div>
+                <div className={styles.infoCell} title ={`Шилов`}>Ш</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Щ
-                <div className={styles.infoCellDetail}>Щерба</div>
-                </div>
+                <div className={styles.infoCell} title ={`Щерба`}>Щ</div>
             </td>
             <td>
-                <div className={styles.infoCell}>Э
-                <div className={styles.infoCellDetail}>Эстеррейх</div>
-                </div>
+                <div className={styles.infoCell} title ={`Эстеррейх`}>Э</div>
             </td>
         </>)
 
