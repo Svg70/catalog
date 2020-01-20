@@ -2,18 +2,15 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import change from './../../../images/change.png'
 import Portal from '../portal/Portal';
-import Button from '../button/Button';
 import styles from './Modal.module.css';
 import { SimpleSlider } from '../Slider/Slider';
-import { NavLink } from 'react-router-dom';
 import exit from './../../../images/exit.png'
-import photoIcon from './../../../images/photo.png'
 import NumberInfoSandbox from '../NumberInfo/NumberInfoSandbox';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeDescriptionCells } from '../../../redux/admin-catalog-reducer';
 import ImageLoader from '../../imageLoader';
 import AddingFormSandbox from '../AddingForm/AddingFormSandbox';
-
+import Button from '@material-ui/core/Button';
 
 import BigImageSliderContainer from './BigImageSlider/EachNumberInfoContainer.js';
 
@@ -46,7 +43,6 @@ const Modal = ({
   }
 
   const deactivateEditModeRequest = () => {
-    debugger
     setEditMode(false)
     dispatch(changeDescriptionCells(description.id, description.year, description.nominal, description.number,description.upravl, common,varieties,astimation,kassirInfo,sourses, status))
   }
@@ -106,7 +102,7 @@ const Modal = ({
                      <div><b>Ориентировочная стоимость:{' '}</b>{description.astimation}</div>
                 <div><b>Дополнительная информация:{' '}</b>{description.kassirInfo}</div>
                 <div><b>Источники/ссылки:{' '}</b>{description.sourses}</div>
-                {approved && userIsAuth && !adminIsAuth && <AddingFormSandbox description={description} sign ={<Button>Добавить в каталог</Button>} />}
+                {approved && userIsAuth && !adminIsAuth && <AddingFormSandbox description={description} sign ={<Button variant="contained" color="primary">Добавить в каталог</Button>} />}
                 {adminIsAuth ? <div style = {{ display: 'flex', alignItems: 'center'}}><img src={change} style={{ width: '40px', cursor: 'pointer' }} onClick={activateEditMode} /> 
                                  
                               <ImageLoader description= {description}/>
@@ -136,7 +132,7 @@ const Modal = ({
                     }
               </div>
               <div className={styles.modalFooter}>
-                <Button onClick={onCancel}>Закрыть</Button>
+                <Button  variant="contained" color="primary" onClick={onCancel}>Закрыть</Button>
               </div>
             </div>
           </div>

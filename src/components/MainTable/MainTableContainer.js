@@ -1,8 +1,5 @@
 import React from 'react'
-
 import { connect } from 'react-redux';
-
-import { compose } from 'redux';
 import MainTable from './mainTable';
 import {getCatalogList} from './../../redux/admin-catalog-reducer'
 

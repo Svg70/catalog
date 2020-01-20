@@ -6,7 +6,7 @@ import NoPhoto from '../../../images/NoPhoto.png'
 export const SimpleSliderBig = (props) => {
   let srcOne = props.photos.photo1?props.photos.photo1:NoPhoto
   let srcSecond = props.photos.photo2?props.photos.photo2:NoPhoto
-  
+  let srcThird = props.photos.photo3?props.photos.photo3:NoPhoto
   return <Slider props={props} dots>
     <div >
       <div className= {styles.imageInfo}>
@@ -15,6 +15,9 @@ export const SimpleSliderBig = (props) => {
     </div>
     <div >
       <img className = {styles.center}   src ={srcSecond}/>
+    </div>   
+    <div >
+      <img className = {styles.center}   src ={srcThird}/>
     </div>   
   </Slider>
 };

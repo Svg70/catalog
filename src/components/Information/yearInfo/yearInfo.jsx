@@ -1,23 +1,21 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import Portal from '../portal/Portal';
 import Icon from '../icon/Icon';
-import Button from '../button/Button';
 import './yearInfo.css';
-import SimpleExample, { MyCarousel, SimpleSlider } from '../Slider/Slider';
-import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotalYearCountThunk, getTotalYearCount } from '../../../redux/statistics-reducer';
+import Button from '@material-ui/core/Button';
+import Krutilka from './../../../images/preloader.gif'
 
 const YearInfo = ({
   isOpen, onCancel, onSubmit, info, thisYear, thisUpravl
 }) => {
   const totalYearCount = useSelector(store => store.statistics.totalYearCount)
+  const preloader = useSelector(store => store.statistics.preloader)
   const dispatch = useDispatch()
 
   const getData = () => {
-    debugger
     dispatch(getTotalYearCountThunk(thisYear, thisUpravl))
   }
   const onClose = () => {
@@ -26,7 +24,7 @@ const YearInfo = ({
   }
   useEffect(() => {
 
-  }, [totalYearCount])
+  }, [totalYearCount,preloader ])
   // let nominalsArr = []
   // info.map(item => { 
   //   for(let i = 0; i < item.row.length; i++){
@@ -57,11 +55,11 @@ const YearInfo = ({
               </div>
               <div className="modalBody">
                 <div>В {thisYear} зафиксировано {totalYearCount} коллекционных позиций</div>
-
+                {/* {preloader?<img style ={{width: '50px'}} src={Krutilka} />:{totalYearCount}} */}
               </div>
               <div className="modalFooter">
-                <Button onClick={getData}> Запросить данные</Button>
-                <Button onClick={onClose} invert>Закрыть</Button>
+                {/* <Button variant="contained" color="primary" onClick={getData}> Запросить данные</Button> */}
+                <Button variant="contained" color="primary" onClick={getData} onClick={onClose} invert>Закрыть</Button>
               </div>
             </div>
           </div>

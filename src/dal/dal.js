@@ -5,7 +5,6 @@ import * as axios from "axios";
 //для переключения сменить комментированные строки и убрать 'Access-Control-Allow-Origin':'*'
 const instance = axios.create({
     withCredentials: false,
-    // withCredentials: false,
     baseURL: 'https://serene-cliffs-91865.herokuapp.com',
     // baseURL: 'http://localhost:80',
     headers:{"Content-Type": "application/json",
@@ -51,23 +50,26 @@ export const TableAPI = {
 
 export const NumbersEditingAPI = {
     
-    numberEdit(id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ){
-        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}/addnum`, {itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 })
+    numberEdit(id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ){
+        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}/upravl/${upravl}/addnum`, {itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 })
     },
-    numberDelete(id, year, nominal, number, itemNumber ){
-        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}/delnum`, { itemNumber })
+    numberDelete(id, year, nominal, number, upravl, itemNumber ){
+        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}/upravl/${upravl}/delnum`, { itemNumber })
     }
 
 }
 export const ApplicationsAPI = {
+    getListOfApplications(){
+        return instance.get('applications/get').then(response => response.data)
+    },
     makeNewApplication(name,  description, photo1, photo2, photo3){
         return instance.post(`/applications/new`, {name,  description, photo1, photo2, photo3})
     }
+
 }
 
 export const StatisticsAPI = {
     yearTotalCount(year, upravl){
-        debugger
         return instance.get(`/statistics/year/${year}/upravl/${upravl}`).then(response => 
             response.data.totalCount)
     },

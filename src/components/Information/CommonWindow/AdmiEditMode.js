@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDescriptionCells } from '../../../redux/admin-catalog-reducer';
 import Button from '@material-ui/core/Button';
+import Krutilka from './../../../images/preloader.gif'
 
 const AdminEditMode = ({ description }) => {
   const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
@@ -126,7 +126,7 @@ const AdminEditMode = ({ description }) => {
         )}
     </div>
 {/* Загрузка изображений */}
-
+{buttonDisable && <div><img src={Krutilka} /></div>}
     <Button variant="contained" color="primary" onClick={deactivateEditModeRequest} disabled ={buttonDisable}>
     Внести изменения
 </Button>

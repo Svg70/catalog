@@ -52,7 +52,7 @@ const Header = (props) => {
                     <a className={styles.links}>Наши контакты</a>
                     {adminIsAuth
                     ?<div style={{display: 'flex', width: '30%', justifyContent: 'space-between'}}>
-                        <div className={styles.navigationLinkTop}><NavLink to = '/management'>Пользователи</NavLink></div>
+                        
                     <div className={styles.navigationLinkTop}><NavLink to = '/requests'>Запросы</NavLink></div></div>: null}
                     
                 </div>

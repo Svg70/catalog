@@ -11,6 +11,7 @@ const SET_CATALOG_LIST_66_A = 'SET_CATALOG_LIST_66_A'
 const SET_CATALOG_LIST_66_B = 'SET_CATALOG_LIST_66_B'
 const SET_CATALOG_LIST_66_C = 'SET_CATALOG_LIST_66_C'
 const SET_CATALOG_LIST_95 = 'SET_CATALOG_LIST_95'
+const SET_CATALOG_LIST_17 = 'SET_CATALOG_LIST_17'
 const IS_LOADING = 'IS_LOADING'
 const SET_AUTH = 'SET_AUTH'
 const BUTTON_DISABLE = 'BUTTON_DISABLE'
@@ -27,7 +28,8 @@ let initialstate = {
     catalogItems66a:[],
     catalogItems66b:[],
     catalogItems66c:[],
-    catalogItems95:[]
+    catalogItems95:[],
+    catalogItems17:[]
 }
 
 let AdminCatalogReducer = (state = initialstate, action) => {
@@ -72,6 +74,10 @@ let AdminCatalogReducer = (state = initialstate, action) => {
         }
         case SET_CATALOG_LIST_95:{
             let stateCopy = { ...state, catalogItems95: action.response }
+            return stateCopy
+        }
+        case SET_CATALOG_LIST_17:{
+            let stateCopy = { ...state, catalogItems17: action.response }
             return stateCopy
         }
         case IS_LOADING: {
@@ -122,6 +128,9 @@ const setCatalogList66c = (response) => {
 const setCatalogList95 = (response) => {
     return { type: SET_CATALOG_LIST_95, response }
 }
+const setCatalogList17 = (response) => {
+    return { type: SET_CATALOG_LIST_17, response }
+}
 const isLoading = (loadingStatus) => {
     return { type: IS_LOADING, loadingStatus }
 }
@@ -134,12 +143,15 @@ const catalogListSelector = (table, dispatch, response) => {
     if (table === 1) dispatch(setCatalogList43(response))
     if (table === 2) dispatch(setCatalogList(response))
     if (table === 3) dispatch(setCatalogList58(response))
-    if (table === 4) dispatch(setCatalogList63(response))
+    if (table === 4) dispatch(setCatalogList63(response))  
     if (table === 5) dispatch(setCatalogList66(response))
     if (table === 6) dispatch(setCatalogList66a(response))
     if (table === 7) dispatch(setCatalogList66b(response))
     if (table === 8) dispatch(setCatalogList66c(response))
+    
+
     if (table === 9) dispatch(setCatalogList95(response))
+    if (table === 10) dispatch(setCatalogList17(response))
     dispatch(isLoading(false))
 }
 
@@ -152,6 +164,17 @@ export const getCatalogList = (table) => {
         )
     }
 }
+export const getCatalogList66 = () =>{
+    return (dispatch) => {
+debugger
+        let promise1 = dal.getItems(5).then(response => dispatch(setCatalogList66(response)))
+        let promise2 = dal.getItems(6).then(response => dispatch(setCatalogList66a(response)))
+        let promise3 = dal.getItems(7).then(response => dispatch(setCatalogList66b(response)))
+        let promise4 = dal.getItems(8).then(response => dispatch(setCatalogList66c(response)))
+        Promise.all([promise1, promise2, promise3, promise4])
+    }
+}
+
 export const changeDataBaseCeilInfo = (nominal, number, common, varieties) =>
     async (dispatch) => {
         await dal.changeDataBaseCeil(nominal, number, common, varieties)
@@ -168,6 +191,7 @@ const tableSelector = (year, id, dispatch, response) => {
     if (year >= 1866 && year <= 1895 && id >= 41 && id <= 60) dispatch(setCatalogList66b(response.data.catalogItems))
     if (year >= 1866 && year <= 1895 && id >= 61 && id <= 78) dispatch(setCatalogList66c(response.data.catalogItems))
     if (year >= 1898 && year <= 1912) dispatch(setCatalogList95(response.data.catalogItems))
+    if (year >= 1817 && year <= 1928) dispatch(setCatalogList17(response.data.catalogItems))
 }
 export const changeDescriptionCells = (id, year, nominal, number,upravl, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2) =>
 
@@ -185,17 +209,17 @@ export const changeDescriptionPhotos = (id, year, nominal, number,upravl, photo1
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     };
-export const numberEditRequest = (id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ) => 
+export const numberEditRequest = (id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ) => 
     async (dispatch, getStore) =>{
         dispatch(buttonDisabledAC(true))
-        let response = await NumbersEditingAPI.numberEdit(id, year, nominal, number, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 )
+        let response = await NumbersEditingAPI.numberEdit(id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 )
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     }
-export const numberDeleteRequest = (id, year, nominal, number, itemNumber) => 
+export const numberDeleteRequest = (id, year, nominal, number, itemNumber, upravl) => 
     async (dispatch, getStore) =>{
         dispatch(buttonDisabledAC(true))
-        let response = await NumbersEditingAPI.numberDelete(id, year, nominal, number, itemNumber)
+        let response = await NumbersEditingAPI.numberDelete(id, year, nominal, number, itemNumber, upravl)
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     }

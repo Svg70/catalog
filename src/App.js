@@ -11,6 +11,7 @@ import MainTableContainer58 from './components/MainTable58/MainTableContainer';
 import MainTableContainer63 from './components/MainTable63/MainTableContainer';
 import MainTableContainer66 from './components/MainTable66/MainTableContainer';
 import MainTableContainer95 from './components/MainTable95/MainTableContainer';
+import MainTableContainer17 from './components/MainTable17/MainTableContainer';
 import Footer from './components/Footer/Footer';
 
 
@@ -65,7 +66,7 @@ useEffect(()=>{
           <MainTableContainer95/>
       </div>} />
         <Route exact path='/catalog/catalogsoviets' render={() => <div className="tableWrapper">
-          Каталог Советы
+          <MainTableContainer17/>
       </div>} />
       <Route exact path='/requests' render={() => <div className="tableWrapper">
       <ApplicationAdmin/>

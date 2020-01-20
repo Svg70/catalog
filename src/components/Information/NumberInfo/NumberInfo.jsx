@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '../portal/Portal';
-import Button from '../button/Button';
+import Button from '@material-ui/core/Button';
 import styles from './NumberInfo.module.css';
 import exit from './../../../images/exit.png';
 import { numberEditRequest, numberDeleteRequest } from './../../../redux/admin-catalog-reducer'
 import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleImageLoader from '../singleImageLoader';
-
+import Krutilka from './../../../images/preloader.gif'
 // import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer';
 
 const NumberInfo = ({
@@ -18,7 +18,7 @@ const NumberInfo = ({
   const [itemNumberInfo, setItemNumberInfo] = useState('')
   const dispatch = useDispatch()
   const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
-
+  const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
 
   const onItemNumberChange = (e) => {
     setItemNumber(e.currentTarget.value)
@@ -29,11 +29,11 @@ const NumberInfo = ({
 
 
   const numberEdit = () => {
-    dispatch(numberEditRequest(description.id, description.year, description.nominal, description.number, itemNumber, itemNumberInfo, image1, image2))
+    dispatch(numberEditRequest(description.id, description.year, description.nominal, description.number,description.upravl, itemNumber, itemNumberInfo, image1, image2))
   }
 
   const numberDelete = (itemNumber) => {
-    dispatch(numberDeleteRequest(description.id, description.year, description.nominal, description.number, itemNumber))
+    dispatch(numberDeleteRequest(description.id, description.year, description.nominal, description.number,description.upravl, itemNumber))
   }
   // Загрузка изображений start
   const [image1, setImage1] = useState('')
@@ -71,12 +71,14 @@ const NumberInfo = ({
                       value={itemNumberInfo} />
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc1} numberName ={1}/>
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc2} numberName ={2}/>
+                    {buttonDisable && <div><img src={Krutilka} /></div>}
+                    <Button variant="contained" color="primary" onClick={numberEdit}>Внести изменения</Button>
                   </div>
-                  <Button onClick={numberEdit}>Внести изменения</Button>
+                  
                 </>}
                 </div>
               <div className={styles.modalFooter}>
-                <Button onClick={onCancel} invert>Закрыть</Button>
+                <Button variant="contained" color="primary" onClick={onCancel} invert>Закрыть</Button>
 
               </div>
             </div>

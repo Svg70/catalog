@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
 import AddingForm from './AddingForm';
-import Button from '../button/Button';
+
 
 class AddingFormSandbox extends Component {
   state = {

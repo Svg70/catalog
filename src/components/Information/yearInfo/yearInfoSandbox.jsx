@@ -1,14 +1,18 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-
-import Button from '../button/Button';
 import YearInfo from './yearInfo';
+import { getTotalYearCountThunk } from '../../../redux/statistics-reducer';
+import { connect } from 'react-redux';
 
 class YearInfoSandbox extends Component {
   state = {
     isOpen: false,
   }
-
+  getData = () => {
+    debugger
+    this.props.getTotalYearCountThunk(this.props.thisYear, this.props.thisUpravl)
+    this.openModal()
+  }
   openModal = () => {
     this.setState({ isOpen: true });
   }
@@ -28,8 +32,7 @@ class YearInfoSandbox extends Component {
       <Fragment>
 
         
-        <div className= 'yearPointer' onClick={this.openModal} title={`Смотреть общую статистику по ${this.props.thisYear} году`}>{this.props.thisYear}
-        
+        <div className= 'yearPointer' onClick={this.getData} title={`Смотреть общую статистику по ${this.props.thisYear} году`}>{this.props.thisYear}
         </div>
         <YearInfo
           thisYear = {this.props.thisYear}
@@ -47,5 +50,10 @@ class YearInfoSandbox extends Component {
   }
 }
 
-export default YearInfoSandbox;
+const mapStateToProps = (store) => ({
+
+})
+
+export default connect(mapStateToProps,{getTotalYearCountThunk})(YearInfoSandbox)
+
 /* eslint-enable */

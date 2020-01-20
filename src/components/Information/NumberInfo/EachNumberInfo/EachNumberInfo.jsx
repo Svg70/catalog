@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Portal from '../../portal/Portal';
-import Button from '../../button/Button';
+import Button from '@material-ui/core/Button';
 import './EachNumberInfo.css';
 import { SimpleSlider } from '../../Slider/Slider';
 import BigImageSliderContainer from '../../CommonWindow/BigImageSlider/EachNumberInfoContainer.js';
-
+import Krutilka from './../../../../images/preloader.gif'
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -15,7 +15,7 @@ const EachNumberInfo = ({
 }) => {
 
   const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
-  
+  const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
   const numberDeleteSend = () => {
     numberDelete(item.number)
   }
@@ -38,8 +38,9 @@ const EachNumberInfo = ({
                 </div>
               </div>
               <div className="modalFooter">
-              {adminIsAuth && <Button onClick = {numberDeleteSend}>Удалить номер</Button>}
-                <Button onClick={onCancel} invert>Закрыть</Button>
+              {buttonDisable && <div><img src={Krutilka} /></div>}
+              {adminIsAuth && <Button variant="contained" color="primary" onClick = {numberDeleteSend}>Удалить номер</Button>}
+                <Button variant="contained" color="primary" onClick={onCancel} invert>Закрыть</Button>
               </div>
             </div>
           </div>

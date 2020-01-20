@@ -2,6 +2,7 @@ import React from 'react'
 import {useForm} from "react-hook-form";
 import { Redirect } from 'react-router-dom';
 import './Register.css'
+import Krutilka from './../../../images/preloader.gif'
 const RegistrationPage = ({registerMe, success, message, buttonDisable}) =>{
     const {register, handleSubmit, errors} = useForm({
         mode: 'onBlur'
@@ -53,7 +54,7 @@ const RegistrationPage = ({registerMe, success, message, buttonDisable}) =>{
                 <input ref={register({required: true})} name='telephone' placeholder='введите номер телефона'
                        className={errors.telephone ? 'input_error' : 'input'} type="telephone"/>
                 {errors.telephone && <span className='loginError'>Необходимо заполнить поле</span>}
-
+                {buttonDisable && <div><img src={Krutilka} /></div>}
                 <button type='submit' className='btn' disabled={buttonDisable}>Регистрация</button>
             </form>
         </div>

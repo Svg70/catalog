@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import Button from '@material-ui/core/Button';
 import Portal from '../portal/Portal';
 import Icon from '../icon/Icon';
-import Button from '../button/Button';
 import './nominalInfo.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotalYearNominalCountThunk, getTotalYearNominalCount } from '../../../redux/statistics-reducer';
@@ -56,8 +55,8 @@ const NominalInfo = ({
 
               </div>
               <div className="modalFooter">
-              <Button onClick = {getData}> Запросить данные</Button>
-                <Button onClick={onClose} invert>Закрыть</Button>
+              <Button variant="contained" color="primary" onClick={getData} onClick = {getData}> Запросить данные</Button>
+                <Button variant="contained" color="primary" onClick={getData} onClick={onClose} invert>Закрыть</Button>
               </div>
             </div>
           </div>

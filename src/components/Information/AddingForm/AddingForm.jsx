@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import Portal from '../portal/Portal';
 import Icon from '../icon/Icon';
-import Button from '../button/Button';
+import Krutilka from './../../../images/preloader.gif'
 import styles from './AddingForm.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import AdminEditMode from '../CommonWindow/AdmiEditMode';
 import SingleImageLoader from '../singleImageLoader';
 import { sendApplication, sendMessageAC } from '../../../redux/applications-reducer';
-
+import Button from '@material-ui/core/Button';
 
 
 const AddingForm = ({
@@ -62,8 +62,9 @@ const AddingForm = ({
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className={styles.modalBody}>
-                <div className={styles.modalTitle}>Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}{description.nominal === 5 && 'рублей'}
-                  {description.nominal === 10 && 'рублей'}{description.nominal === 25 && 'рублей'}{description.nominal === 50 && 'рублей'}{description.nominal === 100 && 'рублей'} {description.year} года {description.upravl}-{description.director}-{description.kassir}
+                <div className={styles.modalTitle}>Внести в каталог позицию {description.nominal} {description.nominal === 1 && 'рубль'}{description.nominal === 3 && 'рубля'}
+                  {(description.nominal >= 5) && 'рублей'} {description.year} года {(description.year >= 1843 && description.year <= 1865)&& `${description.upravl}-${description.director}-${description.kassir}`}
+                  {(description.year >= 1866)&& `${description.upravl}-${description.kassir}-${description.director}`}
                 </div>
 
                 {!userIsAuth && !adminIsAuth && <div>Авторизируйтесь в системе, чтобы вносить позиции в каталог</div>}
@@ -84,7 +85,8 @@ const AddingForm = ({
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc1} numberName ={1}/>
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc2} numberName ={2}/>
                     <SingleImageLoader imageReturnFunc = {imageReturnFunc3} numberName ={3}/>
-                    <Button onClick={newApplicationCreation} disabled={buttonDisable}>Отправить</Button>
+                    {buttonDisable && <div><img src={Krutilka} /></div>}
+                    <Button variant="contained" color="primary" onClick={newApplicationCreation} disabled={buttonDisable}>Отправить</Button>
                     <div>{message}</div>
                   </div>}
 
@@ -96,7 +98,7 @@ const AddingForm = ({
                   </div>}
               </div>
               <div className={styles.modalFooter}>
-                <Button onClick={deleteUserMessage} invert>Закрыть</Button>
+                <Button variant="contained" color="primary" onClick={deleteUserMessage} invert>Закрыть</Button>
 
 
               </div>

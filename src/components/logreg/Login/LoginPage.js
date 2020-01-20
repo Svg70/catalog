@@ -2,6 +2,7 @@ import React from 'react'
 import {useForm, reset} from "react-hook-form";
 import { Redirect, NavLink } from 'react-router-dom';
 import './Login.css'
+import Krutilka from './../../../images/preloader.gif'
 const LoginPage = ({loginMe, success, message, buttonDisable}) =>{
 
     const {register, handleSubmit, errors} = useForm({
@@ -38,7 +39,7 @@ const LoginPage = ({loginMe, success, message, buttonDisable}) =>{
                 <input ref={register({required: true})} name='password' placeholder='пароль'
                        className={errors.password ? 'input_error' : 'input'} type="password"/>
                 {errors.password && <span className='loginError'>Необходимо заполнить поле</span>}
-
+                {buttonDisable && <div><img src={Krutilka} /></div>}
                 <button type='submit' className='btn' disabled={buttonDisable}>Войти</button>
 
                 <div>Ранее не зарегистрированы?<br/>Пройдите <NavLink to='./registration'>регистрацию</NavLink></div>
