@@ -7,16 +7,19 @@ import CommonWindowContainer from '../Information/CommonWindow/CommonWindowConta
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
 import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
+import { StickyTable, Row, Cell } from 'react-sticky-table';
+
+
 class MainTable extends Component {
     render() {
         return <div className={styles.scrollArea}>
             {!this.props.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
 
-
+            <thead style = {{backgroundColor: 'lightpink'}}>
                 <tr>
-                    <td>Год</td>
-                    <td colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></td>
-                    <td colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></td>
+                    <th style = {{position: 'sticky'}}>Год</th>
+                    <th style = {{position: 'sticky'}} colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></th>
+                    <th style = {{position: 'sticky'}} colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></th>
                     <td colspan="23"><YearInfoSandbox thisYear={1919} thisUpravl={'Крестинский'} /></td>
                     <td colspan="8"><YearInfoSandbox thisYear={1921} thisUpravl={'Крестинский'} /></td>
                     <td colspan="12"><YearInfoSandbox thisYear={1922} thisUpravl={'Крестинский'} /></td>
@@ -26,6 +29,7 @@ class MainTable extends Component {
                     <td colspan="3"><YearInfoSandbox thisYear={1928} thisUpravl={'Сокольников'} /></td>
                 </tr>
                 <Header />
+                </thead>
                 <UpperInfoRow info={this.props.state} userIsAuth={this.props.userIsAuth} />
             </table> : <div><img src={Krutilka} /></div>}
         </div>
@@ -331,13 +335,13 @@ const Header = (props) => {
     let headerArrLowString28 = [1].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell} title={'1'}>1</div>
+                <div className={styles.infoCell} title={'Серия  совпадает с двумя последними цифрами номера'}>1</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'2'}>2</div>
+                <div className={styles.infoCell} title={'Серия  не совпадает с двумя последними цифрами номера'}>2</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'3'}>3</div>
+                <div className={styles.infoCell} title={'Литеры'}>3</div>
             </td>
         </>)
     })

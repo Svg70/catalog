@@ -25,7 +25,7 @@ class NominalInfoSandbox extends Component {
 
   render() {
     let styleDef = ((this.props.thisYear <=1895 && this.props.thisYear >= 1866)||(this.props.thisYear <=1928 && this.props.thisYear >= 1917))
-    ?{writingMode: 'vertical-lr', fontSize: '8px', marginLeft: 'auto',marginRight: 'auto', }:null
+    ?{writingMode: 'vertical-lr', fontSize: '10px', marginLeft: 'auto',marginRight: 'auto', }:null
     return (
       
       <Fragment>

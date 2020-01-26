@@ -20,7 +20,6 @@ let StatisticsReducer = (state = initialstate, action) => {
             return stateCopy
         }
         case IS_LOADING: {
-            debugger
             return{...state, preloader: action.preloaderStatus}
         }
         default:

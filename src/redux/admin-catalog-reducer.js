@@ -164,15 +164,15 @@ export const getCatalogList = (table) => {
         )
     }
 }
-export const getCatalogList66 = () =>{
-    return (dispatch) => {
-debugger
+export const getCatalogList66 = () =>
+    async(dispatch) => {
         let promise1 = dal.getItems(5).then(response => dispatch(setCatalogList66(response)))
         let promise2 = dal.getItems(6).then(response => dispatch(setCatalogList66a(response)))
         let promise3 = dal.getItems(7).then(response => dispatch(setCatalogList66b(response)))
         let promise4 = dal.getItems(8).then(response => dispatch(setCatalogList66c(response)))
-        Promise.all([promise1, promise2, promise3, promise4])
-    }
+        await Promise.all([promise1, promise2, promise3, promise4])
+        dispatch(isLoading(false))
+    
 }
 
 export const changeDataBaseCeilInfo = (nominal, number, common, varieties) =>

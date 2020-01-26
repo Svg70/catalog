@@ -8,6 +8,12 @@
     height: 500px;
 }
 
+.antiscroll {
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
 .infoCell{
     cursor: pointer;
     margin: -2px -3px -2px -3px;

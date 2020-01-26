@@ -12,7 +12,6 @@ class MainTableContainer17 extends React.Component{
 
     }
     render(){
-        debugger
         let itemsArray = this.props.state.catalogItems17
 
     return <MainTable state = {itemsArray} preloader = {this.props.state.preloader} userIsAuth={this.props.userIsAuth}/>

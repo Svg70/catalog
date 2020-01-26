@@ -3,14 +3,11 @@ import AddingFormSandbox from './../components/Information/AddingForm/AddingForm
 import styles from './UpperInfoRow.module.css'
 import CommonWindowContainer from './../components/Information/CommonWindow/CommonWindowContainer'
 
-
-
-
-const UpperInfoRow = (props) => {
+const LeftColumn = (props) => {
     let rowsArray = props.info.map(i => <InfoRow key={i.id} info={i} userIsAuth={props.userIsAuth} />)
     return (
         <>
-        
+        <table     style = {{position: 'absolute', zIndex: '2', top: '0px'}}></table>
             {rowsArray}
             
         </>
@@ -42,10 +39,10 @@ const InfoRow = (props) => {
     return (
         <>
             <tr style = {{backgroundColor: '#E0FFFF'}}>
-                <td style = {{backgroundColor: '#7FFFD4', position: ''}}>{props.info.kassir}</td>
-                {catalogArray}
+                <td style = {{backgroundColor: '#7FFFD4'}}>{props.info.kassir}</td>
+                
                 </tr>
         </>)
 
 }
-export default UpperInfoRow
+export default LeftColumn

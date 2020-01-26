@@ -9,7 +9,7 @@ class YearInfoSandbox extends Component {
     isOpen: false,
   }
   getData = () => {
-    debugger
+
     this.props.getTotalYearCountThunk(this.props.thisYear, this.props.thisUpravl)
     this.openModal()
   }

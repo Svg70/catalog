@@ -24,7 +24,7 @@ class CommonWindowContainer extends Component {
     let cellStyle = this.props.description.photos.photo1 && this.props.description.photos.photo2 ? styles.activeImageStatus : styles.unactiveImageStatus
     return (
       <Fragment>
-        <span onClick={this.openModal} className={cellStyle} title = {`Смотреть информацию ${this.props.description.nominal} руб. ${this.props.description.year} года ${this.props.description.upravl}-${this.props.description.kassir}-${this.props.description.director}`}>{this.props.description.numbers.length}</span>
+        <span onClick={this.openModal} className={cellStyle} title = {`Смотреть информацию ${this.props.description.nominal} руб. ${this.props.description.year} года ${this.props.description.upravl}-${this.props.description.kassir}-${this.props.description.director}`}>V</span>
         <Modal
           description={this.props.description}
           isOpen={this.state.isOpen}
