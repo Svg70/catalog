@@ -5,8 +5,8 @@ import * as axios from "axios";
 //для переключения сменить комментированные строки и убрать 'Access-Control-Allow-Origin':'*'
 const instance = axios.create({
     withCredentials: false,
-    //baseURL: 'https://serene-cliffs-91865.herokuapp.com',
-    baseURL: 'http://localhost:80',
+    baseURL: 'https://serene-cliffs-91865.herokuapp.com',
+    // baseURL: 'http://localhost:80',
     headers:{"Content-Type": "application/json",
     'Access-Control-Allow-Origin':'*'},
     
