@@ -7,15 +7,21 @@ import CommonWindowContainer from '../Information/CommonWindow/CommonWindowConta
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
 import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel'; 
+
 class MainTable extends Component {
     render() {
-        return <div className={styles.scrollArea}>
-            {!this.props.state.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
-                <tr>
+        return <>
+        
+            {!this.props.state.preloader ? 
+            <>
+            <div className={styles.scrollArea}>
+            <table id="table-to-xls-1863" className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+                <tr style = {{background: "#f1e091"}}>
                     <td style = {{width: '250px'}}>Управляющий</td>
                     <td colspan="101">Ламанский</td>
                 </tr>
-                <tr>
+                <tr style = {{backgroundColor: '#f1e6b1'}}>
                     <td>Год</td>
                     <td colspan="30"><YearInfoSandbox thisYear={1863} thisUpravl ={'Ламанский'}/></td>
                     <td colspan="36"><YearInfoSandbox thisYear={1864} thisUpravl ={'Ламанский'}/></td>
@@ -23,8 +29,20 @@ class MainTable extends Component {
                 </tr>
                 <Header  />
                 <UpperInfoRow info={this.props.state.catalogItems63} userIsAuth={this.props.userIsAuth} />
-            </table>:<div><img src={Krutilka} /></div>}
-        </div>
+            </table>
+            </div>
+        <ReactHTMLTableToExcel
+        id="test-table-xls-button"
+        className="download-table-xls-button"
+        table="table-to-xls-1863"
+        filename="Выпуски 1863-1865 гг."
+        sheet="tablexls"
+        buttonText="Скачать XLS"/>
+            </>
+            :<div><img src={Krutilka} /></div>}
+        
+
+        </>
     }
 }
 
@@ -101,11 +119,11 @@ const Header = (props) => {
     
     return (
         <>
-            <tr>
+            <tr style ={{background: "#f2eccf"}}>
                 <td>Номинал</td>
                 {headerArr63}{headerArr64}{headerArr65}
             </tr>
-            <tr>
+            <tr style ={{background: "#f2eccf"}}>
                 <td>Кассир</td>
             {headerArrDir63}{headerArrDir64}{headerArrDir65}
             </tr>

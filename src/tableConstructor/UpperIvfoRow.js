@@ -18,6 +18,7 @@ const UpperInfoRow = (props) => {
 }
 
 const InfoRow = (props) => {
+    let cellColor = props.info.id %2 != 0 ? "#d3d2d2": "white"
     let info = props.info.row
     let nominalsArr = []
     info.map(item => { 
@@ -41,8 +42,8 @@ const InfoRow = (props) => {
     })
     return (
         <>
-            <tr style = {{backgroundColor: '#E0FFFF'}}>
-                <td style = {{backgroundColor: '#7FFFD4', position: ''}}>{props.info.kassir}</td>
+            <tr style = {{backgroundColor: cellColor}}>
+                <td style = {{backgroundColor: cellColor, position: ''}}>{props.info.kassir}</td>
                 {catalogArray}
                 </tr>
         </>)

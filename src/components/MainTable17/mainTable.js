@@ -7,32 +7,64 @@ import CommonWindowContainer from '../Information/CommonWindow/CommonWindowConta
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
 import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
-import { StickyTable, Row, Cell } from 'react-sticky-table';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 
 class MainTable extends Component {
     render() {
-        return <div className={styles.scrollArea}>
-            {!this.props.preloader ? <table className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+        return <>
+        
+            {!this.props.preloader ? 
 
-            <thead style = {{backgroundColor: 'lightpink'}}>
-                <tr>
-                    <th style = {{position: 'sticky'}}>Год</th>
-                    <th style = {{position: 'sticky'}} colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></th>
-                    <th style = {{position: 'sticky'}} colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></th>
+            <>
+            <div className={styles.scrollArea}>
+            <table  className = {styles.fixedHeader} width="80%" border="1" cellpadding="4">
+
+            <thead >
+            
+            <tr style = {{background: "#f1e091"}}>
+                    <td>Год</td>
+                    <td  colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></td>
+                    <td  colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></td>
                     <td colspan="23"><YearInfoSandbox thisYear={1919} thisUpravl={'Крестинский'} /></td>
                     <td colspan="8"><YearInfoSandbox thisYear={1921} thisUpravl={'Крестинский'} /></td>
                     <td colspan="12"><YearInfoSandbox thisYear={1922} thisUpravl={'Крестинский'} /></td>
                     <td colspan="23"><YearInfoSandbox thisYear={1923} thisUpravl={'Сокольников'} /></td>
-                    <td colspan="6"><YearInfoSandbox thisYear={1924} thisUpravl={'Сокольников'} /></td>
+                    <td colspan="5"><YearInfoSandbox thisYear={1924} thisUpravl={'Сокольников'} /></td>
+                    <td colspan="6"><YearInfoSandbox thisYear={1925} thisUpravl={'Сокольников'} /></td>
+                    <td colspan="3"><YearInfoSandbox thisYear={1928} thisUpravl={'Сокольников'} /></td>
+                </tr>
+                <Header />
+                </thead>
+            </table>
+            <table id="table-to-xls-1917" className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
+            <thead >
+                <tr style = {{background: "#f1e091"}}>
+                    <td>Год</td>
+                    <td colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></td>
+                    <td colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></td>
+                    <td colspan="23"><YearInfoSandbox thisYear={1919} thisUpravl={'Крестинский'} /></td>
+                    <td colspan="8"><YearInfoSandbox thisYear={1921} thisUpravl={'Крестинский'} /></td>
+                    <td colspan="12"><YearInfoSandbox thisYear={1922} thisUpravl={'Крестинский'} /></td>
+                    <td colspan="23"><YearInfoSandbox thisYear={1923} thisUpravl={'Сокольников'} /></td>
+                    <td colspan="5"><YearInfoSandbox thisYear={1924} thisUpravl={'Сокольников'} /></td>
                     <td colspan="6"><YearInfoSandbox thisYear={1925} thisUpravl={'Сокольников'} /></td>
                     <td colspan="3"><YearInfoSandbox thisYear={1928} thisUpravl={'Сокольников'} /></td>
                 </tr>
                 <Header />
                 </thead>
                 <UpperInfoRow info={this.props.state} userIsAuth={this.props.userIsAuth} />
-            </table> : <div><img src={Krutilka} /></div>}
-        </div>
+            </table> </div><ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="download-table-xls-button"
+                    table="table-to-xls-1917"
+                    filename="Выпуски 1917-1928 гг."
+                    sheet="tablexls"
+                    buttonText="Скачать XLS"/></> : <div><img src={Krutilka} /></div>}
+        </>
+        
+        
     }
 }
 
@@ -69,7 +101,7 @@ const Header = (props) => {
     let headerArr23c = [250, 500, 1000, 5000, 10000, 15000, 25000].map(i => { return (<td><NominalInfoSandbox thisYear={1923} thisNominal={i} thisUpravl={'Сокольников'} /></td>) })
 
 
-    let headerArr24a = [0.5, 1].map(i => { return (<td ><NominalInfoSandbox thisYear={1924} thisNominal={i} thisUpravl={'Сокольников'} /></td>) })
+    let headerArr24a = [ 1].map(i => { return (<td ><NominalInfoSandbox thisYear={1924} thisNominal={i} thisUpravl={'Сокольников'} /></td>) })
     let headerArr24b = [3, 5].map(i => { return (<td colspan="2"><NominalInfoSandbox thisYear={1924} thisNominal={i} thisUpravl={'Сокольников'} /></td>) })
     
     let headerArr25 = [3, 5].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear={1925} thisNominal={i} thisUpravl={'Сокольников'} /></td>) })
@@ -305,7 +337,7 @@ const Header = (props) => {
     })
     let headerArrLowString24a = [1].map(i => {
         return (<>
-            <td colspan="2">     
+            <td colspan="1">     
             </td>
         </>)
     })
@@ -347,7 +379,7 @@ const Header = (props) => {
     })
     return (
         <>
-            <tr>
+            <tr style = {{backgroundColor: '#f1e6b1'}}>
                 <td>Номинал</td>
                 {headerArr17}{headerArr18a}{headerArr18b}{headerArr18c}
                 {headerArr18d}{headerArr18e}{headerArr18f}{headerArr19a}
@@ -357,8 +389,8 @@ const Header = (props) => {
                 {headerArr24a}{headerArr24b}{headerArr25}{headerArr28}
 
             </tr>
-            <tr>
-                <td>Кассир</td>
+            <tr style ={{background: "#f2eccf"}}>
+                <td>Кассир и разновидность</td>
             {headerArrLowString17}{headerArrLowString18a}{headerArrLowString18b}
             {headerArrLowString18c}{headerArrLowString18d}{headerArrLowString18e}
             {headerArrLowString18k}{headerArrLowString19a}{headerArrLowString19b}

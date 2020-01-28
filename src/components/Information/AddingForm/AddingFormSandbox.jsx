@@ -24,11 +24,12 @@ class AddingFormSandbox extends Component {
   }
 
   render() {
+    let cellColor = this.props.description.id %2 != 0 ? "#d3d2d2": "white"
     return (
       <Fragment>
 
         
-        <span onClick={this.openModal} title ={`добавление в каталог ${this.props.description.nominal} руб. ${this.props.description.year} года ${this.props.description.upravl}-${this.props.description.kassir}-${this.props.description.director}`} style = {{color:'#E0FFFF'}}>O</span>
+        <span onClick={this.openModal} title ={`добавление в каталог ${this.props.description.nominal} руб. ${this.props.description.year} года ${this.props.description.upravl}-${this.props.description.kassir}-${this.props.description.director}`} style = {{color: cellColor}}>O</span>
         <AddingForm
 
           description ={this.props.description}
