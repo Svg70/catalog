@@ -8,16 +8,23 @@ import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
 import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-
+import ReactTable from "react-table"
+import $ from "jquery"
 
 class MainTable extends Component {
     render() {
-
+        $(document).ready(function() {
+            $('tbody').scroll(function(e) { 
+              $('thead').css("left", -$("tbody").scrollLeft());
+              $('thead th:nth-child(1)').css("left", $("tbody").scrollLeft()-0); 
+              $('tbody td:nth-child(1)').css("left", $("tbody").scrollLeft()-0); 
+            });
+          })
         return <>
             {!this.props.state.preloader ?
                 <>        <div className={styles.scrollArea}>
                     <table id="table-to-xls-1858" className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
-
+                        <thead>
                         <tr style={{ background: "#f1e091" }}>
                             <td>Управляющий</td>
                             <td colspan="24">Ростовцев</td>
@@ -33,17 +40,19 @@ class MainTable extends Component {
                         </tr>
 
                         <Header />
-
+                        </thead>
+                        <tbody>
                         <UpperInfoRow info={this.props.state.catalogItems58} userIsAuth={this.props.userIsAuth} />
+                        </tbody>
                     </table>
                 </div>
-                    <ReactHTMLTableToExcel
-                        id="test-table-xls-button"
-                        className="download-table-xls-button"
-                        table="table-to-xls-1858"
-                        filename="Выпуски 1858-1862 гг."
-                        sheet="tablexls"
-                        buttonText="Скачать XLS" />
+                <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            className="download-table-xls-button"
+            table="table-to-xls-1858"
+            filename="Выпуски 1858-1862 гг."
+            sheet="tablexls"
+            buttonText="Скачать XLS"/>
                 </> : <div><img src={Krutilka} /></div>}
         </>
     }
@@ -149,12 +158,12 @@ const Header = (props) => {
             </td>
             <td>
                 <div className={styles.infoCell} title={`Ерогин`}>Е
-                <div className={styles.infoCellDetail}>Ерогин</div>
+            
                 </div>
             </td>
             <td>
                 <div className={styles.infoCell} title={`Лихошерстов`}>Л
-                <div className={styles.infoCellDetail}>Лихошерстов</div>
+             
                 </div>
             </td>
             <td>
@@ -168,7 +177,7 @@ const Header = (props) => {
             </td>
             <td>
                 <div className={styles.infoCell} title={`Семенов`}>С
-                <div className={styles.infoCellDetail}>Семенов</div>
+                
                 </div>
             </td>
             <td>
@@ -192,8 +201,8 @@ const Header = (props) => {
                 <td >Номинал</td>
                 {headerArr58}{headerArr59}{headerArr60}{headerArr61}{headerArr62}
             </tr>
-            <tr style={{ background: "#f2eccf" }}>
-                <td >Кассир</td>
+            <tr style ={{background: "#f7f4e4"}}>
+                <td ><div style = {{width: '120px'}}>Кассир</div></td>
                 {headerArrDir58}{headerArrDir59}{headerArrDir60}{headerArrDir61}{headerArrDir62}
             </tr>
         </>

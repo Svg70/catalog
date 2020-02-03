@@ -3,8 +3,9 @@ import {useForm, reset} from "react-hook-form";
 import { Redirect, NavLink } from 'react-router-dom';
 import './Login.css'
 import Krutilka from './../../../images/preloader.gif'
+import { useSelector } from 'react-redux';
 const LoginPage = ({loginMe, success, message, buttonDisable}) =>{
-
+    const userIsAuth = useSelector(store => store.loginPage.userIsAuth)
     const {register, handleSubmit, errors} = useForm({
         mode: 'onBlur'
     });
@@ -16,7 +17,7 @@ const LoginPage = ({loginMe, success, message, buttonDisable}) =>{
 
     // if(success) return <Redirect to='/catalog' />
 
-
+    if(userIsAuth)return <Redirect to={"/catalog"}/>
 
     return<>
     <div className='register'>

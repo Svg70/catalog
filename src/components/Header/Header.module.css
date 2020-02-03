@@ -30,7 +30,9 @@
 .logo{
     margin-left: 10%;
     margin-bottom: 20px;
+    margin-top: 20px;
     height: 80%;
+    
     
 }
 
@@ -49,7 +51,7 @@
   .infoNav{
     margin-left: 10%; 
     display: flex;
-    margin: 20px 0 0 10%
+    margin: 20px 0 20px 10%
 }
 
 @media screen and (max-width: 800px){
@@ -74,6 +76,7 @@
       justify-content: center;
       width: 100%;
       margin: 0 0 0 0;
+      
   }
   .thirdHeader{
     height: 110px;

@@ -6,7 +6,7 @@ import './yearInfo.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotalYearCountThunk, getTotalYearCount } from '../../../redux/statistics-reducer';
 import Button from '@material-ui/core/Button';
-import Krutilka from './../../../images/preloader.gif'
+
 
 const YearInfo = ({
   isOpen, onCancel, onSubmit, info, thisYear, thisUpravl
@@ -48,13 +48,13 @@ const YearInfo = ({
       {isOpen &&
         <Portal>
           <div className="modalOverlay">
-            <div className="modalWindow">
+            <div className="modalWindowWW">
               <div className="modalHeader">
                 <div className="modalTitle">Статистика по {thisYear} году</div>
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-                <div>В {thisYear} зафиксировано {totalYearCount} коллекционных позиций</div>
+                <div>В {thisYear} Зафиксировано {totalYearCount} коллекционных позиций</div>
                 {/* {preloader?<img style ={{width: '50px'}} src={Krutilka} />:{totalYearCount}} */}
               </div>
               <div className="modalFooter">

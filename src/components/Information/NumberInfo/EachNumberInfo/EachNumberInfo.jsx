@@ -7,15 +7,20 @@ import { SimpleSlider } from '../../Slider/Slider';
 import BigImageSliderContainer from '../../CommonWindow/BigImageSlider/EachNumberInfoContainer.js';
 import Krutilka from './../../../../images/preloader.gif'
 import { useSelector, useDispatch } from 'react-redux';
+import AddingFormSandbox from '../../AddingForm/AddingFormSandbox';
 
 
 
 const EachNumberInfo = ({
-  isOpen, onCancel, item, numberDelete, props
+  isOpen, onCancel, item, numberDelete, description
 }) => {
 
   const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
   const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
+  const userIsAuth = useSelector(store => store.loginPage.userIsAuth)
+  const approved = useSelector(store => store.loginPage.approved)
+
+
   const numberDeleteSend = () => {
     numberDelete(item.number)
   }
@@ -40,6 +45,7 @@ const EachNumberInfo = ({
               <div className="modalFooter">
               {buttonDisable && <div><img src={Krutilka} /></div>}
               {adminIsAuth && <Button variant="contained" color="primary" onClick = {numberDeleteSend}>Удалить номер</Button>}
+              {approved && userIsAuth && !adminIsAuth && <AddingFormSandbox description={description} sign ={<Button variant="contained" color="primary">Добавить в каталог</Button>} />}
                 <Button variant="contained" color="primary" onClick={onCancel} invert>Закрыть</Button>
               </div>
             </div>

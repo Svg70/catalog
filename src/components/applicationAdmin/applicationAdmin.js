@@ -10,19 +10,21 @@ const ApplicationAdmin = React.memo((props) => {
     const preloader = useSelector(store => store.applications.buttonDisable)
     const dispatch = useDispatch()
     const listOfApplications = useSelector(store => store.applications.listOfApplications)
-
-const applicationsArray = listOfApplications.map(i => <div key ={i._id} style = {{display: 'flex'}}>
+  
+const applicationsArray = listOfApplications.map(i => {
+  const sendDate = new Date(i.date).toLocaleString()
+return <div key ={i._id} style = {{display: 'flex'}}>
   <div style = {{display: 'flex', flexDirection: 'column', border: '1px solid', width: '300px', margin: '10px'}}>
   <div style ={{display: 'flex', justifyContent: 'start', paddingLeft: '5px', textAlign: 'left', backgroundColor: 'grey'}}><b>Имя заявки:{` `} {i.name}</b></div>
   <div style ={{display: 'flex', justifyContent: 'start', paddingLeft: '5px', textAlign: 'left'}}><b>Описание: </b> {i.description}</div>
-  <div style ={{display: 'flex', justifyContent: 'start', marginLeft: '5px', textAlign: 'left'}}><b>Дата подачи: </b> {i.date}</div>
+  <div style ={{display: 'flex', justifyContent: 'start', marginLeft: '5px', textAlign: 'left'}}><b>Дата подачи: </b>{sendDate} </div>
   
-                <div ><SimpleSlider photos={{photo1:i.photo1, photo2: i.photo2, 
+                <div  style ={{zIndex: '0'}}><SimpleSlider photos={{photo1:i.photo1, photo2: i.photo2, 
                   photo3:i.photo3}} /></div>
                 <BigImageSliderContainer item = {{photos: {photo1:i.photo1, photo2: i.photo2, 
                   photo3:i.photo3}}}/>
                   </div>
-</div>)
+                </div>})
     useEffect(() => {
       dispatch(gettingListOfApplications())
     },[])

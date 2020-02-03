@@ -27,6 +27,7 @@ class EachNumberInfoContainer extends Component {
       <Fragment>
         <div onClick={this.openModal}>{this.props.item.number}</div>
         <EachNumberInfo
+          description = {this.props.description}
           numberDelete = {this.props.numberDelete}
           item = {this.props.item}
           isOpen={this.state.isOpen}

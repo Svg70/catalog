@@ -45,17 +45,17 @@ const NominalInfo = ({
       {isOpen &&
         <Portal>
           <div className="modalOverlay">
-            <div className="modalWindow">
+            <div className="modalWindowWW">
               <div className="modalHeader">
-      <div className="modalTitle">Статистика по {thisNominal} рубль {thisYear} годa</div>
+      <div className="modalTitle">Статистика по {thisNominal} руб. {thisYear} годa</div>
                 <Icon name="times" onClick={onCancel} />
               </div>
               <div className="modalBody">
-      <div>Известно {totalYearNominalCount} коллекционных позиций</div>
+      <div>Зафиксировано {totalYearNominalCount} коллекционных позиций</div>
 
               </div>
               <div className="modalFooter">
-              <Button variant="contained" color="primary" onClick={getData} onClick = {getData}> Запросить данные</Button>
+              {/* <Button variant="contained" color="primary" onClick={getData} onClick = {getData}> Запросить данные</Button> */}
                 <Button variant="contained" color="primary" onClick={getData} onClick={onClose} invert>Закрыть</Button>
               </div>
             </div>

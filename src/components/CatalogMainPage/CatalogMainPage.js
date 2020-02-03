@@ -18,10 +18,10 @@ const CatalogMainPage = () => {
         Каталог сайта Perekupi.ru позволяет верефицированным посетитеям вносить информацию о своих коллекционных экземплярах.<br/>
        Подобное взаимодействие между коллекционерами позволит быстро и эффективно собрать данные
        и <b>нести Бонистику в массы!</b></p>
-    <div><NavLink to='/catalog/catalog43'>Электронный каталог 1</NavLink></div>
-    <div><NavLink to='/catalog/catalog66'>Электронный каталог 2</NavLink></div>
-    <div><NavLink to='/catalog/catalog95'>Электронный каталог 3</NavLink></div>
-    <div><NavLink to='/catalog/catalogsoviets'>Электронный каталог 4</NavLink></div>
+    <div><NavLink to='/catalog/catalog43'>1843-1865 гг.</NavLink></div>
+    <div><NavLink to='/catalog/catalog66'>1866-1894 гг.</NavLink></div>
+    <div><NavLink to='/catalog/catalog95'>1895-1912 гг.</NavLink></div>
+    <div><NavLink to='/catalog/catalogsoviets'>1917-1928 гг.</NavLink></div>
   </div>
 }
 

@@ -9,6 +9,7 @@ import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js
 import { useDispatch, useSelector } from 'react-redux';
 import SingleImageLoader from '../singleImageLoader';
 import Krutilka from './../../../images/preloader.gif'
+import AddingFormSandbox from '../AddingForm/AddingFormSandbox';
 // import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer';
 
 const NumberInfo = ({
@@ -19,7 +20,8 @@ const NumberInfo = ({
   const dispatch = useDispatch()
   const adminIsAuth = useSelector(store => store.loginPage.adminIsAuth)
   const buttonDisable = useSelector(store => store.AdminCatalog.buttonDisable)
-
+  const userIsAuth = useSelector(store => store.loginPage.userIsAuth)
+  const approved = useSelector(store => store.loginPage.approved)
   const onItemNumberChange = (e) => {
     setItemNumber(e.currentTarget.value)
   }
@@ -47,7 +49,7 @@ const NumberInfo = ({
     setImage2(imageLink)
   }
   const numbersArray = description.numbers.map((item, i) => <div style={{ display: 'flex', cursor: 'pointer' }}>
-    <EachNumberInfoContainer item={item} key={i} numberDelete = {numberDelete} /> | </div>)
+    <EachNumberInfoContainer item={item} key={i} numberDelete = {numberDelete} description = {description}/> | </div>)
   return (
     <>
       {isOpen &&
@@ -78,6 +80,7 @@ const NumberInfo = ({
                 </>}
                 </div>
               <div className={styles.modalFooter}>
+              {approved && userIsAuth && !adminIsAuth && <AddingFormSandbox description={description} sign ={<Button variant="contained" color="primary">Добавить в каталог</Button>} />}
                 <Button variant="contained" color="primary" onClick={onCancel} invert>Закрыть</Button>
 
               </div>

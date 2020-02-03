@@ -22,7 +22,7 @@ const Header = (props) => {
         <div className={styles.headerWrapper}>
             <div className={styles.firstHeader}>
                 <div className={styles.logo}>
-                    <img src={logo} className={styles.logoImg} />
+                    <img src={logo} className={styles.logoImg} width = '200px'/>
                 </div>
                 {!userIsAuth ? <div className={styles.infoEntrance}>
                     <NavLink to='/login'><img src={entrance} /></NavLink>
@@ -47,9 +47,9 @@ const Header = (props) => {
             </div>
             <div className={styles.secondHeader}>
                 <div className={styles.navBar}>
-                    <a className={styles.links}>Банкноты</a>
+                <div className={styles.navigationLinkTop}><a className={styles.links} href ='http://perekupi.ru/catalog/banknoty/'>Банкноты</a></div>
                     <div className={styles.navigationLinkTop}><NavLink to = '/catalog' className={styles.links} >Каталог</NavLink></div>
-                    <a className={styles.links}>Наши контакты</a>
+                    {/* <a className={styles.links}>Наши контакты</a> */}
                     {adminIsAuth
                     ?<div style={{display: 'flex', width: '30%', justifyContent: 'space-between'}}>
                         

@@ -3,12 +3,17 @@ import React, { Component, Fragment } from 'react';
 
 import Button from '../button/Button';
 import NominalInfo from './nominalInfo';
-
+import { getTotalYearNominalCountThunk } from '../../../redux/statistics-reducer';
+import { connect } from 'react-redux';
 class NominalInfoSandbox extends Component {
   state = {
     isOpen: false,
   }
+  getData = () => {
 
+    this.props.getTotalYearNominalCountThunk(this.props.thisYear, this.props.thisNominal, this.props.thisUpravl)
+    this.openModal()
+  }
   openModal = () => {
     this.setState({ isOpen: true });
   }
@@ -24,12 +29,12 @@ class NominalInfoSandbox extends Component {
   }
 
   render() {
-    let styleDef = ((this.props.thisYear <=1895 && this.props.thisYear >= 1866)||(this.props.thisYear <=1928 && this.props.thisYear >= 1895))
-    ?{writingMode: 'vertical-lr', fontSize: '10px', marginLeft: 'auto',marginRight: 'auto', }:null
+    let styleDef = ((this.props.thisYear <=1895 && this.props.thisYear >= 1866 && this.props.thisNominal>9)||(this.props.thisYear <=1928 && this.props.thisYear >= 1895 && this.props.thisNominal > 9))
+    ?{writingMode: 'vertical-lr',webkitTransform: 'rotate(-180deg)', fontSize: '10px',width: '9px', marginLeft: 'auto', marginRight: 'auto'}:{width: '9px', marginLeft: 'auto', marginRight: 'auto' }
     return (
       
       <Fragment>
-        <div className= 'nominalPointer' onClick={this.openModal} title ={`Смотреть общую статистику по номиналу`} style = {styleDef}>{this.props.thisNominal}
+        <div className= 'nominalPointer' onClick={this.getData} title ={`Смотреть общую статистику по номиналу`} style = {styleDef} >{this.props.thisNominal}
         </div>
         <NominalInfo
           info = {this.props.info}
@@ -47,6 +52,11 @@ class NominalInfoSandbox extends Component {
     );
   }
 }
+const mapStateToProps = (store) => ({
 
-export default NominalInfoSandbox;
+})
+
+export default connect(mapStateToProps,{getTotalYearNominalCountThunk})(NominalInfoSandbox)
+
+
 /* eslint-enable */

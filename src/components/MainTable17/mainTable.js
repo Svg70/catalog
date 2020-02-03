@@ -2,42 +2,31 @@ import React, { Component } from 'react'
 import AddingFormSandbox from '../Information/AddingForm/AddingFormSandbox'
 import YearInfoSandbox from '../Information/yearInfo/yearInfoSandbox'
 import NominalInfoSandbox from '../Information/nominalInfo/nominalInfoSandbox'
-import styles from './mainTable.module.css'
+import styles from './mainTable17.module.css'
 import CommonWindowContainer from '../Information/CommonWindow/CommonWindowContainer'
 import { useSelector } from 'react-redux'
 import Krutilka from './../../images/preloader.gif'
 import UpperInfoRow from '../../tableConstructor/UpperIvfoRow'
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-
+import $ from "jquery"
 
 
 class MainTable extends Component {
     render() {
+        $(document).ready(function() {
+            $('tbody').scroll(function(e) { 
+              $('thead').css("left", -$("tbody").scrollLeft());
+              $('thead th:nth-child(1)').css("left", $("tbody").scrollLeft()-0); 
+              $('tbody td:nth-child(1)').css("left", $("tbody").scrollLeft()-0); 
+            });
+          })
         return <>
         
             {!this.props.preloader ? 
 
             <>
             <div className={styles.scrollArea}>
-            <table  className = {styles.fixedHeader} width="80%" border="1" cellpadding="4">
 
-            <thead >
-            
-            <tr style = {{background: "#f1e091"}}>
-                    <td>Год</td>
-                    <td  colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></td>
-                    <td  colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></td>
-                    <td colspan="23"><YearInfoSandbox thisYear={1919} thisUpravl={'Крестинский'} /></td>
-                    <td colspan="8"><YearInfoSandbox thisYear={1921} thisUpravl={'Крестинский'} /></td>
-                    <td colspan="12"><YearInfoSandbox thisYear={1922} thisUpravl={'Крестинский'} /></td>
-                    <td colspan="23"><YearInfoSandbox thisYear={1923} thisUpravl={'Сокольников'} /></td>
-                    <td colspan="5"><YearInfoSandbox thisYear={1924} thisUpravl={'Сокольников'} /></td>
-                    <td colspan="6"><YearInfoSandbox thisYear={1925} thisUpravl={'Сокольников'} /></td>
-                    <td colspan="3"><YearInfoSandbox thisYear={1928} thisUpravl={'Сокольников'} /></td>
-                </tr>
-                <Header />
-                </thead>
-            </table>
             <table id="table-to-xls-1917" className={styles.tablestyle} width="80%" border="1" cellpadding="4" >
             <thead >
                 <tr style = {{background: "#f1e091"}}>
@@ -54,7 +43,9 @@ class MainTable extends Component {
                 </tr>
                 <Header />
                 </thead>
+                <tbody>
                 <UpperInfoRow info={this.props.state} userIsAuth={this.props.userIsAuth} />
+                </tbody>
             </table> </div><ReactHTMLTableToExcel
                     id="test-table-xls-button"
                     className="download-table-xls-button"
@@ -120,8 +111,8 @@ const Header = (props) => {
     })
     let headerArrLowString18a = [1, 3, 5, 10].map(i => {
         return (<>
-            <td>
-                
+            <td >
+            <div className={styles.infoCell}></div>
             </td>
         </>)
     })
@@ -177,22 +168,23 @@ const Header = (props) => {
     let headerArrLowString18k = [10000].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell} title={'А(г)'}>А(г)</div>
+                <div className={styles.infoCell} title={'А(г)'} style = {{fontSize: '10px'}}>А(г)</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'А(в)'}>А(в)</div>
+                <div className={styles.infoCell} title={'А(в)'}  style = {{fontSize: '10px'}}>А(в)</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'Б(г)'}>Б(г)</div>
+                <div className={styles.infoCell} title={'Б(г)'}  style = {{fontSize: '10px'}}>Б(г)</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'Б(в)'}>Б(в)</div>
+                <div className={styles.infoCell} title={'Б(в)'}  style = {{fontSize: '10px'}}>Б(в)</div>
             </td>
         </>)
     })
     let headerArrLowString19a = [15, 30, 60].map(i => {
         return (<>
-            <td>     
+            <td>  
+            <div className={styles.infoCell}></div>   
             </td>
         </>)
     })
@@ -277,7 +269,7 @@ const Header = (props) => {
     let headerArrLowString21b = [10000].map(i => {
         return (<>
             <td>
-                
+            <div className={styles.infoCell}></div>
             </td>
 
         </>)
@@ -295,14 +287,15 @@ const Header = (props) => {
     let headerArrLowString21d = [100000].map(i => {
         return (<>
             <td>
-                
+            <div className={styles.infoCell}></div>
             </td>
 
         </>)
     })
-    let headerArrLowString22 = [1].map(i => {
+    let headerArrLowString22 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12].map(i => {
         return (<>
-            <td colspan = "12">          
+            <td >  
+            <div className={styles.infoCell}></div>        
             </td>
         </>)
     })
@@ -329,15 +322,17 @@ const Header = (props) => {
             </td>
         </>)
     })
-    let headerArrLowString23с = [1].map(i => {
+    let headerArrLowString23с = [1, 2, 3, 4, 5, 6, 7].map(i => {
         return (<>
-            <td colspan="7">     
+            <td >     
+            <div className={styles.infoCell}></div>
             </td>
         </>)
     })
     let headerArrLowString24a = [1].map(i => {
         return (<>
             <td colspan="1">     
+            <div className={styles.infoCell}></div>
             </td>
         </>)
     })
@@ -390,7 +385,7 @@ const Header = (props) => {
 
             </tr>
             <tr style ={{background: "#f2eccf"}}>
-                <td>Кассир и разновидность</td>
+                <td><div style ={{width: '120px'}}>Кассир</div></td>
             {headerArrLowString17}{headerArrLowString18a}{headerArrLowString18b}
             {headerArrLowString18c}{headerArrLowString18d}{headerArrLowString18e}
             {headerArrLowString18k}{headerArrLowString19a}{headerArrLowString19b}

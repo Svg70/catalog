@@ -31,7 +31,7 @@ tbody {
   overflow: scroll;
 }
 tbody td {
-  min-width: 9px;
+  min-width: 15px;
 }
 tbody tr td:nth-child(1) {
   width: 119px;

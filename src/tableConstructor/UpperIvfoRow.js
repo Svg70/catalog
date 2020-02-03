@@ -34,7 +34,7 @@ const InfoRow = (props) => {
 
 <td>{item.status ? <div className={styles.infoCell}><CommonWindowContainer description={item} />
             </div> :
-                <div className={styles.infoCell} ><AddingFormSandbox description={item} sign={'+'} />
+                <div className={styles.infoCell} ><AddingFormSandbox description={item} sign={'O'} />
                 </div>}
             </td>
         </>
@@ -42,8 +42,8 @@ const InfoRow = (props) => {
     })
     return (
         <>
-            <tr style = {{backgroundColor: cellColor}}>
-                <td style = {{backgroundColor: cellColor, position: ''}}>{props.info.kassir}</td>
+            <tr style = {{background: cellColor}}>
+                <td style = {{backgroundColor: cellColor, position: ''}}><div >{props.info.kassir}</div></td>
                 {catalogArray}
                 </tr>
         </>)

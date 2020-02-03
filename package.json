@@ -13,6 +13,8 @@
     "classnames": "^2.2.6",
     "gh-pages": "^2.1.1",
     "infinite-react-carousel": "^1.2.5",
+    "jquery": "^3.4.1",
+    "namor": "^2.0.2",
     "nodemailer": "^6.4.2",
     "nuka-carousel": "^4.5.13",
     "prop-types": "^15.7.2",
@@ -26,6 +28,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-sticky-table": "^4.1.0",
+    "react-table": "^6.11.4",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6",
     "redux-thunk": "^2.3.0"

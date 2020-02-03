@@ -20,21 +20,21 @@ import LoginPage from './components/logreg/Login/LoginPage'
 import RegistrationContainer from './components/logreg/Registration/RegistrationContainer'
 import LoginContainer from './components/logreg/Login/LoginContainer';
 import { connect } from 'react-redux';
-import {checkAutorization} from './redux/auth-reducer'
+import { checkAutorization } from './redux/auth-reducer'
 import ApplicationAdmin from './components/applicationAdmin/applicationAdmin';
 import CatalogMainPage from './components/CatalogMainPage/CatalogMainPage';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 function App(props) {
 
-useEffect(()=>{
+  useEffect(() => {
 
-  props.checkAutorization()
-}, [])
+    props.checkAutorization()
+  }, [])
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Header currentPage = {''}/>
+        <Header currentPage={''} />
         <Route exact path='/registration' render={() => <div className="tableWrapper">
           <RegistrationContainer />
         </div>} />
@@ -47,35 +47,63 @@ useEffect(()=>{
         <Route exact path='/login' render={() => <div className="tableWrapper">
           <LoginContainer />
         </div>} />
-        
-        <Route exact path='/catalog' render={() => <CatalogMainPage/>} />
+
+        <Route exact path='/catalog' render={() => <CatalogMainPage />} />
+
         <Route exact path='/catalog/catalog43' render={() => <div className="tableWrapper">
-          <h4>1843-1854гг</h4>
+          <div style={{ display: 'flex', justifyContent: 'space-around', marginTop:'20px', marginBottom: '20px'}}>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog43'><b>1843-1854гг</b></NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog55'>1855-1857гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog58'>1858-1862гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog63'>1863-1865гг</NavLink></div>
+          </div>
           <MainTableContainer43 />
-          <h4>1855-1857гг</h4>
+
+        </div>} />
+        <Route exact path='/catalog/catalog55' render={() => <div className="tableWrapper">
+          <div style={{ display: 'flex', justifyContent: 'space-around', marginTop:'20px', marginBottom: '20px'}}>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog43'>1843-1854гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog55'><b>1855-1857гг</b></NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog58'>1858-1862гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog63'>1863-1865гг</NavLink></div>
+          </div>
           <MainTableContainer />
-          <h4>1858-1862гг</h4>
-          <MainTableContainer58/>
-          <h4>1863-1865гг</h4>
-          <MainTableContainer63/>
+        </div>} />
+        <Route exact path='/catalog/catalog58' render={() => <div className="tableWrapper">
+          <div style={{ display: 'flex', justifyContent: 'space-around',marginTop:'20px', marginBottom: '20px' }}>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog43'>1843-1854гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog55'>1855-1857гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog58'><b>1858-1862гг</b></NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog63'>1863-1865гг</NavLink></div>
+          </div>
+          <MainTableContainer58 />
+        </div>} />
+        <Route exact path='/catalog/catalog63' render={() => <div className="tableWrapper">
+          <div style={{ display: 'flex', justifyContent: 'space-around',marginTop:'20px', marginBottom: '20px' }}>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog43'>1843-1854гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog55'>1855-1857гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog58'>1858-1862гг</NavLink></div>
+            <div className='navigationLink' ><NavLink to='/catalog/catalog63'><b>1863-1865гг</b></NavLink></div>
+          </div>
+          <MainTableContainer63 />
         </div>} />
         <Route exact path='/catalog/catalog66' render={() => <div className="tableWrapper">
           <MainTableContainer66 />
-      </div>} />
+        </div>} />
         <Route exact path='/catalog/catalog95' render={() => <div className="tableWrapper">
-          <MainTableContainer95/>
-      </div>} />
+          <MainTableContainer95 />
+        </div>} />
         <Route exact path='/catalog/catalogsoviets' render={() => <div className="tableWrapper">
-          <MainTableContainer17/>
-      </div>} />
-      <Route exact path='/requests' render={() => <div className="tableWrapper">
-      <ApplicationAdmin/>
-      </div>} />
-      
+          <MainTableContainer17 />
+        </div>} />
+        <Route exact path='/requests' render={() => <div className="tableWrapper">
+          <ApplicationAdmin />
+        </div>} />
+
       </div>
       <Footer />
     </BrowserRouter>
   );
 }
 
-export default connect(null, {checkAutorization})( App );
+export default connect(null, { checkAutorization })(App);
