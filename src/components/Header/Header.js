@@ -22,7 +22,7 @@ const Header = (props) => {
         <div className={styles.headerWrapper}>
             <div className={styles.firstHeader}>
                 <div className={styles.logo}>
-                    <img src={logo} className={styles.logoImg} width = '200px'/>
+                   <a href = 'http://perekupi.ru/'> <img src={logo} className={styles.logoImg} width = '200px' /></a>
                 </div>
                 {!userIsAuth ? <div className={styles.infoEntrance}>
                     <NavLink to='/login'><img src={entrance} /></NavLink>
