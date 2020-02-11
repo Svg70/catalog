@@ -20,16 +20,16 @@ const BUTTON_DISABLE = 'BUTTON_DISABLE'
 let initialstate = {
     preloader: true,
     buttonDisable: false,
-    catalogItems43:[],
-    catalogItems:[],
-    catalogItems58:[],
-    catalogItems63:[],
-    catalogItems66:[],
-    catalogItems66a:[],
-    catalogItems66b:[],
-    catalogItems66c:[],
-    catalogItems95:[],
-    catalogItems17:[]
+    catalogItems43: [],
+    catalogItems: [],
+    catalogItems58: [],
+    catalogItems63: [],
+    catalogItems66: [],
+    catalogItems66a: [],
+    catalogItems66b: [],
+    catalogItems66c: [],
+    catalogItems95: [],
+    catalogItems17: []
 }
 
 let AdminCatalogReducer = (state = initialstate, action) => {
@@ -64,19 +64,19 @@ let AdminCatalogReducer = (state = initialstate, action) => {
             let stateCopy = { ...state, catalogItems66a: action.response }
             return stateCopy
         }
-        case SET_CATALOG_LIST_66_B:{
+        case SET_CATALOG_LIST_66_B: {
             let stateCopy = { ...state, catalogItems66b: action.response }
             return stateCopy
         }
-        case SET_CATALOG_LIST_66_C:{
+        case SET_CATALOG_LIST_66_C: {
             let stateCopy = { ...state, catalogItems66c: action.response }
             return stateCopy
         }
-        case SET_CATALOG_LIST_95:{
+        case SET_CATALOG_LIST_95: {
             let stateCopy = { ...state, catalogItems95: action.response }
             return stateCopy
         }
-        case SET_CATALOG_LIST_17:{
+        case SET_CATALOG_LIST_17: {
             let stateCopy = { ...state, catalogItems17: action.response }
             return stateCopy
         }
@@ -98,7 +98,7 @@ let AdminCatalogReducer = (state = initialstate, action) => {
 }
 
 const buttonDisabledAC = (buttonStatus) => {
-    return{type: BUTTON_DISABLE, buttonStatus}
+    return { type: BUTTON_DISABLE, buttonStatus }
 }
 const setCatalogList = (response) => {
 
@@ -143,12 +143,12 @@ const catalogListSelector = (table, dispatch, response) => {
     if (table === 1) dispatch(setCatalogList43(response))
     if (table === 2) dispatch(setCatalogList(response))
     if (table === 3) dispatch(setCatalogList58(response))
-    if (table === 4) dispatch(setCatalogList63(response))  
+    if (table === 4) dispatch(setCatalogList63(response))
     if (table === 5) dispatch(setCatalogList66(response))
     if (table === 6) dispatch(setCatalogList66a(response))
     if (table === 7) dispatch(setCatalogList66b(response))
     if (table === 8) dispatch(setCatalogList66c(response))
-    
+
 
     if (table === 9) dispatch(setCatalogList95(response))
     if (table === 10) dispatch(setCatalogList17(response))
@@ -160,20 +160,20 @@ export const getCatalogList = (table) => {
         dispatch(isLoading(true))
         dal.getItems(table).then(response => {
             catalogListSelector(table, dispatch, response)
-            }
+        }
         )
     }
 }
 export const getCatalogList66 = () =>
-    async(dispatch) => {
+    async (dispatch) => {
         let promise1 = dal.getItems(5).then(response => dispatch(setCatalogList66(response)))
         let promise2 = dal.getItems(6).then(response => dispatch(setCatalogList66a(response)))
         let promise3 = dal.getItems(7).then(response => dispatch(setCatalogList66b(response)))
         let promise4 = dal.getItems(8).then(response => dispatch(setCatalogList66c(response)))
         await Promise.all([promise1, promise2, promise3, promise4])
         dispatch(isLoading(false))
-    
-}
+
+    }
 
 export const changeDataBaseCeilInfo = (nominal, number, common, varieties) =>
     async (dispatch) => {
@@ -193,37 +193,44 @@ const tableSelector = (year, id, dispatch, response) => {
     if (year >= 1898 && year <= 1912) dispatch(setCatalogList95(response.data.catalogItems))
     if (year >= 1817 && year <= 1928) dispatch(setCatalogList17(response.data.catalogItems))
 }
-export const changeDescriptionCells = (id, year, nominal, number,upravl, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2) =>
+export const changeDescriptionCells = (id, year, nominal, number, upravl, common, varieties, astimation, addInfo, sourses, status, photo1, photo2) =>
 
     async (dispatch, getStore) => {
         dispatch(buttonDisabledAC(true))
-        let response = await TableAPI.changeDescriptionCells(id, year, nominal, number,upravl, common, varieties, astimation, addInfo, sourses, status,  photo1, photo2)
+        let response = await TableAPI.changeDescriptionCells(id, year, nominal, number, upravl, common, varieties, astimation, addInfo, sourses, status, photo1, photo2)
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     };
 
-export const changeDescriptionPhotos = (id, year, nominal, number,upravl, photo1, photo2) =>
-    async (dispatch, getStore) => {  
+export const changeDescriptionPhotos = (id, year, nominal, number, upravl, photo1, photo2) =>
+    async (dispatch, getStore) => {
         dispatch(buttonDisabledAC(true))
-        let response = await TableAPI.changeDescriptionPhotos(id, year, nominal, number,upravl, photo1, photo2)
+        let response = await TableAPI.changeDescriptionPhotos(id, year, nominal, number, upravl, photo1, photo2)
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     };
-export const numberEditRequest = (id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 ) => 
-    async (dispatch, getStore) =>{
+export const numberEditRequest = (id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2) =>
+    async (dispatch, getStore) => {
         dispatch(buttonDisabledAC(true))
-        let response = await NumbersEditingAPI.numberEdit(id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2 )
+        let response = await NumbersEditingAPI.numberEdit(id, year, nominal, number, upravl, itemNumber, itemNumberInfo, itemNumberPhoto1, itemNumberPhoto2)
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     }
-export const numberDeleteRequest = (id, year, nominal, number, itemNumber, upravl) => 
-    async (dispatch, getStore) =>{
+export const numberDeleteRequest = (id, year, nominal, number, itemNumber, upravl) =>
+    async (dispatch, getStore) => {
         dispatch(buttonDisabledAC(true))
         let response = await NumbersEditingAPI.numberDelete(id, year, nominal, number, itemNumber, upravl)
         tableSelector(year, id, dispatch, response)
         dispatch(buttonDisabledAC(false))
     }
 
+export const sendNumbersPhotoRequest = (id, year, nominal, number, upravl, itemNumber, image1, image2) =>
+    async (dispatch, getStore) => {
+        dispatch(buttonDisabledAC(true))
+        let response = await NumbersEditingAPI.sendNumbersPhoto(id, year, nominal, number, upravl, itemNumber, image1, image2)
+        tableSelector(year, id, dispatch, response)
+        dispatch(buttonDisabledAC(false))
+    }
 
 
 

@@ -4,7 +4,7 @@ import Portal from '../portal/Portal';
 import Button from '@material-ui/core/Button';
 import styles from './NumberInfo.module.css';
 import exit from './../../../images/exit.png';
-import { numberEditRequest, numberDeleteRequest } from './../../../redux/admin-catalog-reducer'
+import { numberEditRequest, numberDeleteRequest, sendNumbersPhotoRequest } from './../../../redux/admin-catalog-reducer'
 import EachNumberInfoContainer from './EachNumberInfo/EachNumberInfoContainer.js';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleImageLoader from '../singleImageLoader';
@@ -37,6 +37,9 @@ const NumberInfo = ({
   const numberDelete = (itemNumber) => {
     dispatch(numberDeleteRequest(description.id, description.year, description.nominal, description.number,description.upravl, itemNumber))
   }
+  const sendNumbersPhoto = (number, image1, image2) =>{
+    dispatch(sendNumbersPhotoRequest(description.id, description.year, description.nominal, description.number,description.upravl, number, image1, image2))
+  }
   // Загрузка изображений start
   const [image1, setImage1] = useState('')
   const [image2, setImage2] = useState('')
@@ -49,7 +52,7 @@ const NumberInfo = ({
     setImage2(imageLink)
   }
   const numbersArray = description.numbers.map((item, i) => <div style={{ display: 'flex', cursor: 'pointer' }}>
-    <EachNumberInfoContainer item={item} key={i} numberDelete = {numberDelete} description = {description}/> | </div>)
+    <EachNumberInfoContainer item={item} key={i} numberDelete = {numberDelete} sendNumbersPhoto = {sendNumbersPhoto} description = {description}/> | </div>)
   return (
     <>
       {isOpen &&

@@ -55,6 +55,10 @@ export const NumbersEditingAPI = {
     },
     numberDelete(id, year, nominal, number, upravl, itemNumber ){
         return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}/upravl/${upravl}/delnum`, { itemNumber })
+    },
+    sendNumbersPhoto(id, year, nominal, number, upravl, itemNumber, image1, image2){
+        console.log(itemNumber, image1, image2)
+        return instance.put(`/catalog/kassir/${id}/year/${year}/nominal/${nominal}/number/${number}/upravl/${upravl}/addphoto`, { number: itemNumber, photo1: image1, photo2: image2 })
     }
 
 }

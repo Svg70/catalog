@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import MainTable from './components/MainTable/mainTable';
-import { catalogItems } from './api/api'
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import Header from './components/Header/Header';
 import MainTableContainer from './components/MainTable/MainTableContainer';
@@ -13,10 +10,7 @@ import MainTableContainer66 from './components/MainTable66/MainTableContainer';
 import MainTableContainer95 from './components/MainTable95/MainTableContainer';
 import MainTableContainer17 from './components/MainTable17/MainTableContainer';
 import Footer from './components/Footer/Footer';
-
-
 import RegistrationSuccess from './components/logreg/Registration/RegistrationSuccess';
-import LoginPage from './components/logreg/Login/LoginPage'
 import RegistrationContainer from './components/logreg/Registration/RegistrationContainer'
 import LoginContainer from './components/logreg/Login/LoginContainer';
 import { connect } from 'react-redux';
@@ -41,9 +35,6 @@ function App(props) {
         <Route exact path='/registration/success' render={() => <div className="tableWrapper">
           <RegistrationSuccess />
         </div>} />
-
-
-
         <Route exact path='/login' render={() => <div className="tableWrapper">
           <LoginContainer />
         </div>} />

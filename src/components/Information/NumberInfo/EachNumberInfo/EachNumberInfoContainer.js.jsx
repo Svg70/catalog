@@ -29,6 +29,7 @@ class EachNumberInfoContainer extends Component {
         <EachNumberInfo
           description = {this.props.description}
           numberDelete = {this.props.numberDelete}
+          sendNumbersPhoto = {this.props.sendNumbersPhoto}
           item = {this.props.item}
           isOpen={this.state.isOpen}
           onCancel={this.handleCancel}
