@@ -96,7 +96,7 @@ const Modal = ({
                 <BigImageSliderContainer item = {description}/>
                   {!editMode &&
                   <div >
-                    <div><b>Описание:{' '}</b>{description.common}</div>
+                    <div><b>Описание:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.common }} /></div>
                      <div><b>Разновидности:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.varieties }} /></div>
                      <div style = {{cursor: 'pointer', textDecoration: 'underline'}}><b><NumberInfoSandbox  description={description} name={"Известные номера"} /></b></div>
                      <div><b>Ориентировочная стоимость:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.astimation }} /></div>
