@@ -97,11 +97,11 @@ const Modal = ({
                   {!editMode &&
                   <div >
                     <div><b>Описание:{' '}</b>{description.common}</div>
-                     <div><b>Разновидности:{' '}</b>{description.varieties}</div>
+                     <div><b>Разновидности:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.varieties }} /></div>
                      <div style = {{cursor: 'pointer', textDecoration: 'underline'}}><b><NumberInfoSandbox  description={description} name={"Известные номера"} /></b></div>
-                     <div><b>Ориентировочная стоимость:{' '}</b>{description.astimation}</div>
-                <div><b>Дополнительная информация:{' '}</b>{description.kassirInfo}</div>
-                <div><b>Источники/ссылки:{' '}</b>{description.sourses}</div>
+                     <div><b>Ориентировочная стоимость:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.astimation }} /></div>
+                <div><b>Дополнительная информация:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.kassirInfo }} /></div>
+                <div><b>Источники/ссылки:{' '}</b><div dangerouslySetInnerHTML={{ __html: description.sourses }} /></div>
                 {approved && userIsAuth && !adminIsAuth && <AddingFormSandbox description={description} sign ={<Button variant="contained" color="primary">Добавить в каталог</Button>} />}
                 {adminIsAuth ? <div style = {{ display: 'flex', alignItems: 'center'}}><img src={change} style={{ width: '40px', cursor: 'pointer' }} onClick={activateEditMode} /> 
                                  
