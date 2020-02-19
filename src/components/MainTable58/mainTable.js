@@ -27,8 +27,8 @@ class MainTable extends Component {
                         <thead>
                         <tr style={{ background: "#f1e091" }}>
                             <td>Управляющий</td>
-                            <td colspan="24">Ростовцев</td>
-                            <td colspan="78">Ламанский</td>
+                            <td colspan="45">Ростовцев</td>
+                            <td colspan="57">Ламанский</td>
                         </tr>
                         <tr style={{ backgroundColor: '#f1e6b1' }}>
                             <td>Год</td>
