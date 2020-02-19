@@ -38,7 +38,7 @@ function App(props) {
         <Route exact path='/login' render={() => <div className="tableWrapper">
           <LoginContainer />
         </div>} />
-
+        <Route exact path='/' render={() => <CatalogMainPage />} />
         <Route exact path='/catalog' render={() => <CatalogMainPage />} />
 
         <Route exact path='/catalog/catalog43' render={() => <div className="tableWrapper">
