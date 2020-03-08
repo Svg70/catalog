@@ -243,16 +243,16 @@ const Header = (props) => {
     let headerArrLowString19f = [5000, 10000].map(i => {
         return (<>
             <td>
-                <div className={styles.infoCell} title={'Водяной знак горизонтальные цифры'}>гц</div>
+                <div className={styles.infoCell} title={'Водяной знак широкие волны'}>шв</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'Водяной знак вертикальные цифры'}>вц</div>
+                <div className={styles.infoCell} title={'Водяной знак узкие волны'}>ув</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'Водяной знак узор'}>у</div>
+                <div className={styles.infoCell} title={'Водяной знак горизотальные звезды'}>гз</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'Водяной знак звезды'}>з</div>
+                <div className={styles.infoCell} title={'Водяной знак вертикальные звезды'}>вз</div>
             </td>
         </>)
     })
