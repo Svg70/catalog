@@ -31,8 +31,8 @@ class MainTable extends Component {
                                 <td>Управляющий</td>
                                 <td colspan="38" >Ламанский</td>
                                 <td colspan="18" >Цимсен</td>
-                                <td colspan="14" >Жуковский</td>
-                                <td colspan="8" >Плеске</td>
+                                <td colspan="16" >Жуковский</td>
+                                <td colspan="11" >Плеске</td>
                             </tr>
                             <tr style = {{backgroundColor: '#f1e6b1'}}>
                                 <td>Год</td>
@@ -47,11 +47,12 @@ class MainTable extends Component {
                                 <td colspan="5"><YearInfoSandbox thisYear={1884} thisUpravl={'Цимсен'} /></td>
                                 <td colspan="3"><YearInfoSandbox thisYear={1886} thisUpravl={'Цимсен'} /></td>
                                 <td colspan="5"><YearInfoSandbox thisYear={1887} thisUpravl={'Цимсен'} /></td>
-                                <td colspan="4"><YearInfoSandbox thisYear={1889} thisUpravl={'Жуковский'} /></td>
-                                <td colspan="5"><YearInfoSandbox thisYear={1890} thisUpravl={'Жуковский'} /></td>
-                                <td colspan="6"><YearInfoSandbox thisYear={1892} thisUpravl={'Жуковский'} /></td>
-                                <td colspan="4"><YearInfoSandbox thisYear={1894} thisUpravl={'Плеске'} /></td>
+                                <td colspan="5"><YearInfoSandbox thisYear={1889} thisUpravl={'Жуковский'} /></td>
+                                <td colspan="6"><YearInfoSandbox thisYear={1890} thisUpravl={'Жуковский'} /></td>
+                                <td colspan="7"><YearInfoSandbox thisYear={1892} thisUpravl={'Жуковский'} /></td>
+                                <td colspan="5"><YearInfoSandbox thisYear={1894} thisUpravl={'Плеске'} /></td>
                                 <td colspan="3"><YearInfoSandbox thisYear={1895} thisUpravl={'Плеске'} /></td>
+                                <td colspan="1"><YearInfoSandbox thisYear={1896} thisUpravl={'Плеске'} /></td>
                             </tr>
                             <tr>
                                 <Header />
@@ -93,11 +94,11 @@ const Header = (props) => {
     let headerArr84 = [1, 3, 5, 10, 100].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1884} thisNominal={i} thisUpravl={'Цимсен'} /></div></td>) })
     let headerArr86 = [1, 10, 100].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1886} thisNominal={i} thisUpravl={'Цимсен'} /></div></td>) })
     let headerArr87 = [1, 3, 5, 10, 25].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1887} thisNominal={i} thisUpravl={'Цимсен'} /></div></td>) })
-    let headerArr89 = [1, 3, 5, 10].map(i => { return (<td style={{ background: "#f2eccf" }} ><div className={styles.infoCell}><NominalInfoSandbox thisYear={1889} thisNominal={i} thisUpravl={'Жуковский'} /></div></td>) })
-    let headerArr90 = [1, 3, 5, 10, 25].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1890} thisNominal={i} thisUpravl={'Жуковский'} /></div></td>) })
-    let headerArr92 = [1, 3, 5, 10, 25].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1892} thisNominal={i} thisUpravl={'Жуковский'} /></div></td>) })
-    let headerArr94 = [25, 1, 3, 5, 10].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1894} thisNominal={i} thisUpravl={'Плеске'} /></div></td>) })
-    let headerArr95 = [1, 3, 5].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1895} thisNominal={i} thisUpravl={'Плеске'} /></div></td>) })
+    let headerArr89 = [1, 3, 5, 10, 100].map(i => { return (<td style={{ background: "#f2eccf" }} ><div className={styles.infoCell}><NominalInfoSandbox thisYear={1889} thisNominal={i} thisUpravl={'Жуковский'} /></div></td>) })
+    let headerArr90 = [1, 3, 5, 10, 25, 100].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1890} thisNominal={i} thisUpravl={'Жуковский'} /></div></td>) })
+    let headerArr92 = [1, 3, 5, 10, 25, 25, 100].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1892} thisNominal={i} thisUpravl={'Жуковский'} /></div></td>) })
+    let headerArr94 = [ 1, 3, 5, 10, 100].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1894} thisNominal={i} thisUpravl={'Плеске'} /></div></td>) })
+    let headerArr95 = [1, 3, 5, 100].map(i => { return (<td style={{ background: "#f2eccf" }}><div className={styles.infoCell}><NominalInfoSandbox thisYear={1895} thisNominal={i} thisUpravl={'Плеске'} /></div></td>) })
 
     return (
         <>
