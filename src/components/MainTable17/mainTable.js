@@ -33,7 +33,7 @@ class MainTable extends Component {
                     <td>Год</td>
                     <td colspan="4"><YearInfoSandbox thisYear={1917} thisUpravl={'Шипов'} /></td>
                     <td colspan="27"><YearInfoSandbox thisYear={1918} thisUpravl={'Пятаков'} /></td>
-                    <td colspan="23"><YearInfoSandbox thisYear={1919} thisUpravl={'Крестинский'} /></td>
+                    <td colspan="21"><YearInfoSandbox thisYear={1919} thisUpravl={'Крестинский'} /></td>
                     <td colspan="8"><YearInfoSandbox thisYear={1921} thisUpravl={'Крестинский'} /></td>
                     <td colspan="12"><YearInfoSandbox thisYear={1922} thisUpravl={'Крестинский'} /></td>
                     <td colspan="23"><YearInfoSandbox thisYear={1923} thisUpravl={'Сокольников'} /></td>
@@ -76,7 +76,7 @@ const Header = (props) => {
     let headerArr19b = [100, 250].map(i => { return (<td colspan="2"><NominalInfoSandbox thisYear={1919} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
     let headerArr19c = [500].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear={1919} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
     let headerArr19d = [1000].map(i => { return (<td colspan="5"><NominalInfoSandbox thisYear={1919} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
-    let headerArr19e = [5000, 10000].map(i => { return (<td colspan="4"><NominalInfoSandbox thisYear={1919} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
+    let headerArr19e = [5000, 10000].map(i => { return (<td colspan="3"><NominalInfoSandbox thisYear={1919} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
   
     let headerArr21a = [5000].map(i => { return (<td colspan="2"><NominalInfoSandbox thisYear={1921} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
     let headerArr21b = [10000].map(i => { return (<td ><NominalInfoSandbox thisYear={1921} thisNominal={i} thisUpravl={'Крестинский'} /></td>) })
@@ -249,10 +249,7 @@ const Header = (props) => {
                 <div className={styles.infoCell} title={'Водяной знак узкие волны'}>ув</div>
             </td>
             <td>
-                <div className={styles.infoCell} title={'Водяной знак горизотальные звезды'}>гз</div>
-            </td>
-            <td>
-                <div className={styles.infoCell} title={'Водяной знак вертикальные звезды'}>вз</div>
+                <div className={styles.infoCell} title={'Водяной знак звезды'}>з</div>
             </td>
         </>)
     })
