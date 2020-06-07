@@ -42,7 +42,6 @@ const RegistrationPage = ({registerMe, success, message, buttonDisable}) =>{
                        className={errors.name ? 'input_error' : 'input'} type="name"/>
                 {errors.name && <span className='loginError'>Необходимо заполнить поле</span>}
 
-
                 <input ref={register({required: true})} name='surname' placeholder='введите фамилию'
                        className={errors.surname ? 'input_error' : 'input'} type="surname"/>
                 {errors.surname && <span className='loginError'>Необходимо заполнить поле</span>}
