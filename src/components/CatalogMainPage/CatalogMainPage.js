@@ -5,14 +5,8 @@ import { NavLink } from "react-router-dom";
 
 export default class CatalogMainPage extends React.Component {
 
-
-  componentDidMount() {
-    this.addscriptFunc()
-  }
   render() {
     return <div className="tableWrapper">
-
-
     <p><b>Электронный каталог Perekupi.ru</b><br/> - это современное решение для коллекционеров, 
         позволяющее получать самую актуальную информацию об известных коллекционных позициях,
         их количестве, актуальным ценам и провенансе. <br/>
